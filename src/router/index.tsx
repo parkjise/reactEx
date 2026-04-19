@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { MainLayout } from '../layouts/MainLayout';
 import { EXAMPLE_LIST } from '../constants/exampleCatalog';
 import { NotFound } from '../pages/NotFound';
@@ -14,7 +14,7 @@ const exampleRoutes = EXAMPLE_LIST.filter((example) => example.path !== '/').map
   };
 });
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
     element: <MainLayout />,
