@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactECharts from 'echarts-for-react';
-import * as echarts from 'echarts'; // For types
 import { SamplePageLayout } from '../layouts/SamplePageLayout';
 import { Card } from '../components/common/Card';
 

@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SamplePageLayout } from '../layouts/SamplePageLayout';
 import { Button } from '../components/common/Button';
 import { Input } from '../components/common/Input';
-import { Card } from '../components/common/Card';
 
 const TableContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};

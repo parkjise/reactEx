@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { SamplePageLayout } from '../layouts/SamplePageLayout';
 import { Card } from '../components/common/Card';
-import { Button } from '../components/common/Button';
 
 // --- Styled Components ---
 

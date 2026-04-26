@@ -85,7 +85,9 @@ export const MultiStepWizard: React.FC = () => {
     >
       <Card>
         <WizardContainer>
-          <StepIndicator steps={steps} currentStep={currentStep} style={{ marginBottom: '20px' }} />
+          <div style={{ marginBottom: '20px' }}>
+            <StepIndicator steps={steps} currentStep={currentStep} />
+          </div>
           
           <StepContent>
             {currentStep === 0 && (
