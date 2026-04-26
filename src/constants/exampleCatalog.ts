@@ -40,6 +40,12 @@ import { FormInteractionShowcase } from '../pages/FormInteractionShowcase';
 import { InteractiveTable } from '../pages/InteractiveTable';
 import { FloatingInteractions } from '../pages/FloatingInteractions';
 import { LayoutInteractions } from '../pages/LayoutInteractions';
+import { TagInputField } from '../pages/TagInputField';
+import { SelectionToggleInteractions } from '../pages/SelectionToggleInteractions';
+import { LoadingFeedbackInteractions } from '../pages/LoadingFeedbackInteractions';
+import { AdminControlInteractions } from '../pages/AdminControlInteractions';
+import { ListTableFilterInteractions } from '../pages/ListTableFilterInteractions';
+import { AdvancedPanelMediaInteractions } from '../pages/AdvancedPanelMediaInteractions';
 import { ComponentShowcase } from '../pages/ComponentShowcase';
 import { MultiStepWizard } from '../pages/MultiStepWizard';
 import { GlobalCartSample } from '../pages/GlobalCartSample';
@@ -143,6 +149,30 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/adv-table', label: '반응형 고급 테이블', icon: 'ri-table-line', file: 'InteractiveTable.tsx', component: InteractiveTable, summary: '인라인 수정, 호버 액션, 다중 선택' },
       { path: '/adv-floating', label: '플로팅 요소 모음', icon: 'ri-chat-3-line', file: 'FloatingInteractions.tsx', component: FloatingInteractions, summary: '툴팁, 우클릭 메뉴, 스낵바' },
       { path: '/adv-layout', label: '고급 레이아웃 제어', icon: 'ri-layout-row-line', file: 'LayoutInteractions.tsx', component: LayoutInteractions, summary: '축소 헤더, 탑버튼, 더보기 접기' },
+      { path: '/ui-modal-basic', label: '모달 열기/닫기', icon: 'ri-window-line', file: 'ModalSample.tsx', component: ModalSample, summary: '기본 모달 오버레이 제어' },
+      { path: '/ui-modal-advanced', label: '모달 ESC/스크롤락', icon: 'ri-window-2-line', file: 'AdvancedModalInteraction.tsx', component: AdvancedModalInteraction, summary: 'ESC 닫기, 배경 스크롤 잠금, 다중 모달' },
+      { path: '/ui-dropdown-outside', label: '외부 클릭 드롭다운', icon: 'ri-arrow-down-s-line', file: 'DropdownSample.tsx', component: DropdownSample, summary: '드롭다운 열기/닫기와 외부 클릭 닫기' },
+      { path: '/ui-tooltip-copy', label: '툴팁/복사/스낵바', icon: 'ri-chat-3-line', file: 'FloatingInteractions.tsx', component: FloatingInteractions, summary: '툴팁 표시, 복사 완료 메시지, 우클릭 메뉴' },
+      { path: '/ui-selection-toggle', label: '선택/토글/패널', icon: 'ri-toggle-line', file: 'SelectionToggleInteractions.tsx', component: SelectionToggleInteractions, summary: '사이드바, 라디오, 카드 선택, active 메뉴, 스위치, 좋아요, 알림/프로필 패널' },
+      { path: '/ui-loading-feedback', label: '로딩/피드백 종합', icon: 'ri-loader-4-line', file: 'LoadingFeedbackInteractions.tsx', component: LoadingFeedbackInteractions, summary: '버튼 로딩, 비활성화, 저장 성공/실패, 자동 닫힘 알림' },
+      { path: '/ui-loading-state', label: '로딩/에러 상태', icon: 'ri-loader-4-line', file: 'ApiFetchSample.tsx', component: ApiFetchSample, summary: '로딩 스피너와 실패 상태 메시지' },
+      { path: '/ui-skeleton-state', label: '스켈레톤 표시', icon: 'ri-layout-masonry-line', file: 'SkeletonList.tsx', component: SkeletonList, summary: '목록 로딩 중 뼈대 UI 표시' },
+      { path: '/ui-file-drag', label: '파일 드래그 업로드', icon: 'ri-upload-cloud-line', file: 'FileUpload.tsx', component: FileUpload, summary: '드래그 상태와 업로드 진행률 표시' },
+      { path: '/ui-admin-controls', label: '관리자 제어 종합', icon: 'ri-dashboard-3-line', file: 'AdminControlInteractions.tsx', component: AdminControlInteractions, summary: '상세 검색, 확인 모달, 페이지 크기, 컬럼 설정, 공지/위젯 접기' },
+      { path: '/ui-admin-search-filter', label: '검색 필터 펼침', icon: 'ri-search-eye-line', file: 'AdminSearchAction.tsx', component: AdminSearchAction, summary: '관리자 목록 상단 검색과 액션 버튼' },
+      { path: '/ui-filter-reset', label: '필터 초기화', icon: 'ri-filter-clear-line', file: 'FilterReset.tsx', component: FilterReset, summary: '여러 조건 필터 조합과 초기화' },
+      { path: '/ui-sort-toggle', label: '정렬 토글', icon: 'ri-arrow-up-down-line', file: 'SortTable.tsx', component: SortTable, summary: '오름차순/내림차순 반복 전환' },
+      { path: '/ui-pagination-active', label: '페이지네이션 Active', icon: 'ri-pages-line', file: 'PaginationSample.tsx', component: PaginationSample, summary: '현재 페이지 active 처리' },
+      { path: '/ui-list-table-filters', label: '리스트/테이블 필터 종합', icon: 'ri-filter-3-line', file: 'ListTableFilterInteractions.tsx', component: ListTableFilterInteractions, summary: '검색, 상태 탭, 북마크, Empty, Skeleton, 즉시 삭제, 현재 페이지 active' },
+      { path: '/ui-table-detail-edit', label: '행 상세/수정/삭제', icon: 'ri-table-line', file: 'InteractiveTable.tsx', component: InteractiveTable, summary: '행 클릭 상세, 더블클릭 수정, hover 액션, Empty UI' },
+      { path: '/ui-bulk-actionbar', label: '선택 액션바', icon: 'ri-list-check-3', file: 'BulkActionTable.tsx', component: BulkActionTable, summary: '행 선택 시 상단 액션바 노출' },
+      { path: '/ui-infinite-scroll', label: '무한 스크롤 로딩', icon: 'ri-align-vertically', file: 'InfiniteScrollFeed.tsx', component: InfiniteScrollFeed, summary: '스크롤 하단 도달 시 추가 데이터 로딩' },
+      { path: '/ui-drag-sort', label: '드래그 앤 드롭 정렬', icon: 'ri-drag-drop-line', file: 'DragDropList.tsx', component: DragDropList, summary: '아이템 순서 변경' },
+      { path: '/ui-scroll-layout', label: '스크롤 레이아웃 제어', icon: 'ri-layout-row-line', file: 'LayoutInteractions.tsx', component: LayoutInteractions, summary: '텍스트 접기, sticky 헤더, Top 버튼' },
+      { path: '/ui-tag-input', label: '복수 태그 입력', icon: 'ri-price-tag-3-line', file: 'TagInputField.tsx', component: TagInputField, summary: '태그 추가와 삭제' },
+      { path: '/ui-advanced-panel-media', label: '고급 패널/미디어', icon: 'ri-sparkling-line', file: '', component: AdvancedPanelMediaInteractions, summary: '리사이즈, split view, 타이머, 이미지, 날짜, 컨텍스트 메뉴, 슬라이드 패널, 바텀시트' },
+      { path: '/ui-step-progress', label: '스텝형 진행 UI', icon: 'ri-magic-line', file: 'MultiStepWizard.tsx', component: MultiStepWizard, summary: '단계별 입력 흐름과 진행 상태' },
+      { path: '/ui-approval-confirm', label: '승인/반려 확인', icon: 'ri-git-branch-line', file: 'ApprovalWorkflow.tsx', component: ApprovalWorkflow, summary: '상태 변경 전 확인 흐름' },
     ],
   },
   {
