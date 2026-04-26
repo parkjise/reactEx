@@ -25,10 +25,11 @@ const SectionTitle = styled.h3`
 `;
 
 const ExplanationBox = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary}10;
+  background-color: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
   border-left: 4px solid ${({ theme }) => theme.colors.primary};
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 8px;
   margin-bottom: 30px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 0.95rem;
@@ -135,7 +136,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({ rawCode, filename }) => 
   return (
     <ViewerContainer>
       <SectionTitle>
-        <i className="ri-lightbulb-flash-fill"></i> 아주 상세한 코드 설명
+        <i className="ri-lightbulb-flash-fill"></i> 코드 설명
       </SectionTitle>
       <ExplanationBox>
         {explanationBlocks.map((block, index) =>
@@ -163,10 +164,10 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({ rawCode, filename }) => 
           {copied ? 'Copied!' : 'Copy Code'}
         </CopyButton>
       </CodeHeader>
-      
+
       <HighlighterWrapper>
-        <SyntaxHighlighter 
-          language="tsx" 
+        <SyntaxHighlighter
+          language="tsx"
           style={vscDarkPlus}
           showLineNumbers={true}
         >

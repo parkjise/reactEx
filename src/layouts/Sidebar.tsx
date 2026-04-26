@@ -4,8 +4,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { EXAMPLE_CATEGORIES } from '../constants/exampleCatalog';
 import { useStore } from '../store/useStore';
 
-const SidebarContainer = styled.aside<{ isOpen: boolean }>`
-  width: ${({ isOpen }) => (isOpen ? '280px' : '0px')};
+const SidebarContainer = styled.aside<{ $isOpen: boolean }>`
+  width: ${({ $isOpen }) => ($isOpen ? '280px' : '0px')};
   background-color: ${({ theme }) => theme.colors.sidebar};
   border-right: 1px solid ${({ theme }) => theme.colors.border};
   height: 100vh;
@@ -97,7 +97,7 @@ export const Sidebar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <SidebarContainer isOpen={isSidebarOpen}>
+    <SidebarContainer $isOpen={isSidebarOpen}>
       <SidebarTitle>
         <i className="ri-dashboard-3-fill"></i>
         GXON Pro
