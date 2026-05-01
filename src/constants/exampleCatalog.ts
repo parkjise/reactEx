@@ -61,6 +61,28 @@ import { EchartsCompare } from '../pages/EchartsCompare';
 import { EchartsDashboard } from '../pages/EchartsDashboard';
 import { EchartsAdvanced } from '../pages/EchartsAdvanced';
 
+// Styled-components Guide
+import { StyledGlobalSample } from '../pages/styled/StyledGlobalSample';
+import { StyledThemeSample } from '../pages/styled/StyledThemeSample';
+import { StyledMixinsSample } from '../pages/styled/StyledMixinsSample';
+import { StyledButtonSample } from '../pages/styled/StyledButtonSample';
+import { StyledInputSample } from '../pages/styled/StyledInputSample';
+import { StyledPropsSample } from '../pages/styled/StyledPropsSample';
+import { StyledResponsiveSample } from '../pages/styled/StyledResponsiveSample';
+import { StyledDarkModeSample } from '../pages/styled/StyledDarkModeSample';
+import { StyledCardSample } from '../pages/styled/StyledCardSample';
+import { StyledModalSample } from '../pages/styled/StyledModalSample';
+import { StyledToastSample } from '../pages/styled/StyledToastSample';
+import { StyledBadgeSample } from '../pages/styled/StyledBadgeSample';
+import { StyledTableSample } from '../pages/styled/StyledTableSample';
+import { StyledFormLayoutSample } from '../pages/styled/StyledFormLayoutSample';
+import { StyledDashboardLayoutSample } from '../pages/styled/StyledDashboardLayoutSample';
+import { StyledSidebarLayoutSample } from '../pages/styled/StyledSidebarLayoutSample';
+import { StyledEllipsisSample } from '../pages/styled/StyledEllipsisSample';
+import { StyledScrollbarSample } from '../pages/styled/StyledScrollbarSample';
+import { StyledStatesSample } from '../pages/styled/StyledStatesSample';
+import { StyledTipsSample } from '../pages/styled/StyledTipsSample';
+
 export interface ExampleItem {
   path: string;
   label: string;
@@ -265,6 +287,34 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/echarts-compare', label: '비교 차트 (5종)', icon: 'ri-bar-chart-grouped-line', file: 'EchartsCompare.tsx', component: EchartsCompare, summary: '다중 라인, 누적 막대, 면적 그래프 비교' },
       { path: '/echarts-dashboard-cards', label: '대시보드 차트 (5종)', icon: 'ri-dashboard-2-line', file: 'EchartsDashboard.tsx', component: EchartsDashboard, summary: 'KPI 스파크라인, 미니 차트, 게이지, 상태 도넛' },
       { path: '/echarts-advanced', label: '고급 기능 (7종)', icon: 'ri-tools-fill', file: 'EchartsAdvanced.tsx', component: EchartsAdvanced, summary: 'Tooltip, DataZoom, 마커 커스텀 및 실시간 렌더링' },
+    ],
+  },
+  {
+    key: 'styled-guide',
+    title: '13. Styled-components 가이드',
+    icon: 'ri-palette-line',
+    description: '실무에서 바로 쓰는 Styled-components 구조와 20가지 핵심 패턴',
+    items: [
+      { path: '/styled-global', label: '1. GlobalStyle / Reset', icon: 'ri-global-line', file: 'StyledGlobalSample.tsx', component: StyledGlobalSample, summary: '전역 스타일 및 CSS 변수 셋업' },
+      { path: '/styled-theme', label: '2. ThemeProvider', icon: 'ri-paint-brush-line', file: 'StyledThemeSample.tsx', component: StyledThemeSample, summary: '테마 토큰 주입 및 활용' },
+      { path: '/styled-button', label: '3. 공통 Button', icon: 'ri-focus-2-line', file: 'StyledButtonSample.tsx', component: StyledButtonSample, summary: 'Props 기반 버튼 UI' },
+      { path: '/styled-input', label: '4. 공통 Form 요소', icon: 'ri-input-cursor-move', file: 'StyledInputSample.tsx', component: StyledInputSample, summary: 'Input, Select, Checkbox' },
+      { path: '/styled-props', label: '5. Props 동적 스타일', icon: 'ri-code-s-slash-line', file: 'StyledPropsSample.tsx', component: StyledPropsSample, summary: '상태(status)에 따른 다중 조건 분기' },
+      { path: '/styled-mixins', label: '6. Mixins 공통 스타일', icon: 'ri-magic-line', file: 'StyledMixinsSample.tsx', component: StyledMixinsSample, summary: '중복 CSS를 제거하는 mixins 패턴' },
+      { path: '/styled-responsive', label: '7. 반응형 레이아웃', icon: 'ri-smartphone-line', file: 'StyledResponsiveSample.tsx', component: StyledResponsiveSample, summary: '모바일/태블릿 분기 미디어 쿼리' },
+      { path: '/styled-darkmode', label: '8. 다크모드', icon: 'ri-moon-clear-line', file: 'StyledDarkModeSample.tsx', component: StyledDarkModeSample, summary: '테마 스위칭으로 다크모드 구현' },
+      { path: '/styled-card', label: '9. Card UI', icon: 'ri-layout-masonry-line', file: 'StyledCardSample.tsx', component: StyledCardSample, summary: '패딩과 그림자 제어 카드' },
+      { path: '/styled-modal', label: '10. Modal UI', icon: 'ri-window-line', file: 'StyledModalSample.tsx', component: StyledModalSample, summary: 'Portal 기반 애니메이션 모달' },
+      { path: '/styled-toast', label: '11. Toast 알림', icon: 'ri-message-3-line', file: 'StyledToastSample.tsx', component: StyledToastSample, summary: '타이머 애니메이션 알림' },
+      { path: '/styled-badge', label: '12. Badge / Status', icon: 'ri-price-tag-3-line', file: 'StyledBadgeSample.tsx', component: StyledBadgeSample, summary: '투명도 기반 상태 뱃지' },
+      { path: '/styled-table', label: '13. Table 스타일링', icon: 'ri-table-2', file: 'StyledTableSample.tsx', component: StyledTableSample, summary: '정렬 및 hover가 포함된 테이블' },
+      { path: '/styled-form-layout', label: '14. Form Layout', icon: 'ri-layout-column-line', file: 'StyledFormLayoutSample.tsx', component: StyledFormLayoutSample, summary: 'Grid/Flex 기반 폼 구조' },
+      { path: '/styled-dashboard', label: '15. Dashboard Layout', icon: 'ri-dashboard-2-line', file: 'StyledDashboardLayoutSample.tsx', component: StyledDashboardLayoutSample, summary: '12-Grid 시스템 레이아웃' },
+      { path: '/styled-sidebar', label: '16. Sidebar Layout', icon: 'ri-layout-left-2-line', file: 'StyledSidebarLayoutSample.tsx', component: StyledSidebarLayoutSample, summary: '모바일 대응 토글 사이드바' },
+      { path: '/styled-ellipsis', label: '17. 말줄임 처리', icon: 'ri-text-wrap', file: 'StyledEllipsisSample.tsx', component: StyledEllipsisSample, summary: '1줄 및 다중 라인 Ellipsis' },
+      { path: '/styled-scrollbar', label: '18. 스크롤 커스텀', icon: 'ri-list-check-2', file: 'StyledScrollbarSample.tsx', component: StyledScrollbarSample, summary: '스크롤바 디자인 및 숨김' },
+      { path: '/styled-states', label: '19. 상태 (Hover/Active)', icon: 'ri-cursor-line', file: 'StyledStatesSample.tsx', component: StyledStatesSample, summary: '인터랙션 및 disabled CSS' },
+      { path: '/styled-tips', label: '20. 실무 팁 & 안티패턴', icon: 'ri-lightbulb-flash-line', file: 'StyledTipsSample.tsx', component: StyledTipsSample, summary: '최적화 및 흔한 실수 해결' },
     ],
   },
 ];

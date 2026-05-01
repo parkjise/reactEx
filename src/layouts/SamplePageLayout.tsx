@@ -93,8 +93,8 @@ interface SamplePageLayoutProps {
   title: string;
   icon?: string;
   description: string;
-  learningPoints: string[];
-  whyImportant: string;
+  learningPoints?: string[];
+  whyImportant?: string;
   children: React.ReactNode;
 }
 
@@ -115,20 +115,26 @@ export const SamplePageLayout: React.FC<SamplePageLayoutProps> = ({
         </Title>
         <Description>{description}</Description>
 
-        <InfoGrid>
-          <InfoBox>
-            <h3><i className="ri-check-double-line"></i> 핵심 학습 포인트</h3>
-            <ul>
-              {learningPoints.map((point, idx) => (
-                <li key={idx}>{point}</li>
-              ))}
-            </ul>
-          </InfoBox>
-          <InfoBox $type="highlight">
-            <h3><i className="ri-briefcase-4-line"></i> 실무 도입 이유</h3>
-            <p>{whyImportant}</p>
-          </InfoBox>
-        </InfoGrid>
+        {(learningPoints || whyImportant) && (
+          <InfoGrid>
+            {learningPoints && (
+              <InfoBox>
+                <h3><i className="ri-check-double-line"></i> 핵심 학습 포인트</h3>
+                <ul>
+                  {learningPoints.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              </InfoBox>
+            )}
+            {whyImportant && (
+              <InfoBox $type="highlight">
+                <h3><i className="ri-briefcase-4-line"></i> 실무 도입 이유</h3>
+                <p>{whyImportant}</p>
+              </InfoBox>
+            )}
+          </InfoGrid>
+        )}
       </HeaderSection>
 
       <ContentSection>

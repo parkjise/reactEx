@@ -103,6 +103,7 @@ const HighlighterWrapper = styled.div`
 interface CodeViewerProps {
   rawCode: string;
   filename: string;
+  language?: string;
 }
 
 const parseExplanationBlocks = (rawExplanation: string) =>
@@ -120,7 +121,7 @@ const parseExplanationBlocks = (rawExplanation: string) =>
       };
     });
 
-export const CodeViewer: React.FC<CodeViewerProps> = ({ rawCode, filename }) => {
+export const CodeViewer: React.FC<CodeViewerProps> = ({ rawCode, filename, language }) => {
   const [copied, setCopied] = useState(false);
 
   const explanationMatch = rawCode.match(/\/\*\s*\[설명\]([\s\S]*?)\*\//);
@@ -167,7 +168,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({ rawCode, filename }) => 
 
       <HighlighterWrapper>
         <SyntaxHighlighter
-          language="tsx"
+          language={language || 'tsx'}
           style={vscDarkPlus}
           showLineNumbers={true}
         >
