@@ -102,6 +102,20 @@ import {
   ScssThemeMixinSample,
   ScssTipsSample,
 } from '../pages/scss/ScssGuidePage';
+import {
+  TypescriptAdvancedSample,
+  TypescriptApiSample,
+  TypescriptBasicTypeSample,
+  TypescriptFunctionSample,
+  TypescriptGenericSample,
+  TypescriptHookSample,
+  TypescriptModelSample,
+  TypescriptObjectSample,
+  TypescriptReactSample,
+  TypescriptSetupSample,
+  TypescriptUnionSample,
+  TypescriptUtilitySample,
+} from '../pages/typescript/TypescriptGuidePage';
 
 export interface ExampleItem {
   path: string;
@@ -359,6 +373,26 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/scss-card', label: '14. Card UI 스타일링', icon: 'ri-layout-masonry-line', file: 'ScssGuidePage.tsx', component: ScssCardSample, summary: '카드 구조와 상태 스타일' },
       { path: '/scss-layout', label: '15. Layout 스타일링', icon: 'ri-layout-2-line', file: 'ScssGuidePage.tsx', component: ScssLayoutSample, summary: 'Grid/Flex 반응형 레이아웃' },
       { path: '/scss-tips', label: '16. 실무 팁 정리', icon: 'ri-lightbulb-flash-line', file: 'ScssGuidePage.tsx', component: ScssTipsSample, summary: '안티패턴과 운영 체크리스트' },
+    ],
+  },
+  {
+    key: 'typescript-guide',
+    title: '15. TypeScript 가이드',
+    icon: 'ri-code-box-line',
+    description: '기초 타입부터 React, API, 고급 타입 설계까지 실무 중심으로 익히는 TypeScript 패턴',
+    items: [
+      { path: '/ts-setup', label: '1. TypeScript 실무 셋업', icon: 'ri-settings-3-line', file: 'TypescriptGuidePage.tsx', component: TypescriptSetupSample, summary: 'strict 설정과 타입 작성 기준' },
+      { path: '/ts-basic-types', label: '2. 기본 타입과 Literal Union', icon: 'ri-font-size', file: 'TypescriptGuidePage.tsx', component: TypescriptBasicTypeSample, summary: '상태값과 권한을 오타 없이 제한' },
+      { path: '/ts-object-array', label: '3. 객체/배열/Optional', icon: 'ri-braces-line', file: 'TypescriptGuidePage.tsx', component: TypescriptObjectSample, summary: '실무 데이터 모델 작성법' },
+      { path: '/ts-union-narrowing', label: '4. Union과 Narrowing', icon: 'ri-git-branch-line', file: 'TypescriptGuidePage.tsx', component: TypescriptUnionSample, summary: 'API 상태를 안전하게 분기' },
+      { path: '/ts-function-callback', label: '5. 함수 타입과 Callback', icon: 'ri-function-line', file: 'TypescriptGuidePage.tsx', component: TypescriptFunctionSample, summary: 'validator, formatter 계약 고정' },
+      { path: '/ts-interface-type', label: '6. interface와 type 설계', icon: 'ri-node-tree', file: 'TypescriptGuidePage.tsx', component: TypescriptModelSample, summary: '도메인 모델과 파생 타입 분리' },
+      { path: '/ts-generics', label: '7. Generics', icon: 'ri-recycle-line', file: 'TypescriptGuidePage.tsx', component: TypescriptGenericSample, summary: '공통 API와 컴포넌트 재사용' },
+      { path: '/ts-utility-types', label: '8. Utility Types', icon: 'ri-tools-line', file: 'TypescriptGuidePage.tsx', component: TypescriptUtilitySample, summary: 'Pick, Omit, Partial, Record' },
+      { path: '/ts-api-dto', label: '9. API DTO와 화면 모델', icon: 'ri-exchange-funds-line', file: 'TypescriptGuidePage.tsx', component: TypescriptApiSample, summary: '서버 응답과 UI 모델 분리' },
+      { path: '/ts-react-props-state', label: '10. React Props / State 타입', icon: 'ri-reactjs-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactSample, summary: 'props, state, event 타입 작성' },
+      { path: '/ts-custom-hook', label: '11. Custom Hook 타입', icon: 'ri-links-line', file: 'TypescriptGuidePage.tsx', component: TypescriptHookSample, summary: '비동기 훅 반환 타입 설계' },
+      { path: '/ts-advanced-patterns', label: '12. 고급 패턴과 Exhaustive Check', icon: 'ri-shield-check-line', file: 'TypescriptGuidePage.tsx', component: TypescriptAdvancedSample, summary: 'mapped type과 never 체크' },
     ],
   },
 ];
