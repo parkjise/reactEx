@@ -83,6 +83,26 @@ import { StyledScrollbarSample } from '../pages/styled/StyledScrollbarSample';
 import { StyledStatesSample } from '../pages/styled/StyledStatesSample';
 import { StyledTipsSample } from '../pages/styled/StyledTipsSample';
 
+// SCSS Guide
+import {
+  ScssAmpersandSample,
+  ScssCardSample,
+  ScssClassNameSample,
+  ScssCompareSample,
+  ScssComponentSelectorSample,
+  ScssFormSample,
+  ScssHelperMixinSample,
+  ScssLayoutSample,
+  ScssMediaMixinSample,
+  ScssNestedSample,
+  ScssPropsSample,
+  ScssPseudoSample,
+  ScssStateSample,
+  ScssTableSample,
+  ScssThemeMixinSample,
+  ScssTipsSample,
+} from '../pages/scss/ScssGuidePage';
+
 export interface ExampleItem {
   path: string;
   label: string;
@@ -315,6 +335,30 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/styled-scrollbar', label: '18. 스크롤 커스텀', icon: 'ri-list-check-2', file: 'StyledScrollbarSample.tsx', component: StyledScrollbarSample, summary: '스크롤바 디자인 및 숨김' },
       { path: '/styled-states', label: '19. 상태 (Hover/Active)', icon: 'ri-cursor-line', file: 'StyledStatesSample.tsx', component: StyledStatesSample, summary: '인터랙션 및 disabled CSS' },
       { path: '/styled-tips', label: '20. 실무 팁 & 안티패턴', icon: 'ri-lightbulb-flash-line', file: 'StyledTipsSample.tsx', component: StyledTipsSample, summary: '최적화 및 흔한 실수 해결' },
+    ],
+  },
+  {
+    key: 'scss-guide',
+    title: '14. SCSS 가이드',
+    icon: 'ri-braces-line',
+    description: 'SCSS와 styled-components를 함께 이해하는 실무 스타일링 핵심 패턴',
+    items: [
+      { path: '/scss-compare', label: '1. styled-components와 SCSS 차이', icon: 'ri-scales-3-line', file: 'ScssGuidePage.tsx', component: ScssCompareSample, summary: 'SCSS와 CSS-in-JS의 역할 분리' },
+      { path: '/scss-nested', label: '2. 중첩 선택자', icon: 'ri-node-tree', file: 'ScssGuidePage.tsx', component: ScssNestedSample, summary: 'Card 구조 기반 안전한 중첩' },
+      { path: '/scss-ampersand', label: '3. & 선택자', icon: 'ri-links-line', file: 'ScssGuidePage.tsx', component: ScssAmpersandSample, summary: '현재 선택자와 상태 패턴' },
+      { path: '/scss-states', label: '4. hover / active / focus / disabled', icon: 'ri-cursor-line', file: 'ScssGuidePage.tsx', component: ScssStateSample, summary: '인터랙션 상태와 접근성' },
+      { path: '/scss-pseudo', label: '5. ::before / ::after', icon: 'ri-asterisk', file: 'ScssGuidePage.tsx', component: ScssPseudoSample, summary: '장식 요소와 상태 dot 처리' },
+      { path: '/scss-media-mixin', label: '6. media query mixin', icon: 'ri-smartphone-line', file: 'ScssGuidePage.tsx', component: ScssMediaMixinSample, summary: 'breakpoint helper 설계' },
+      { path: '/scss-helper-mixin', label: '7. css helper mixin', icon: 'ri-tools-line', file: 'ScssGuidePage.tsx', component: ScssHelperMixinSample, summary: '반복 CSS helper 모음' },
+      { path: '/scss-theme-mixin', label: '8. theme + mixin 조합', icon: 'ri-palette-line', file: 'ScssGuidePage.tsx', component: ScssThemeMixinSample, summary: '토큰과 mixin 결합' },
+      { path: '/scss-props', label: '9. props 기반 스타일링', icon: 'ri-code-box-line', file: 'ScssGuidePage.tsx', component: ScssPropsSample, summary: 'variant/status/error/selected/columns' },
+      { path: '/scss-classname', label: '10. className 상태 스타일링', icon: 'ri-price-tag-3-line', file: 'ScssGuidePage.tsx', component: ScssClassNameSample, summary: 'is-active 계열 상태 클래스' },
+      { path: '/scss-component-selector', label: '11. 컴포넌트 선택자', icon: 'ri-parent-line', file: 'ScssGuidePage.tsx', component: ScssComponentSelectorSample, summary: '부모 hover와 내부 액션 표시' },
+      { path: '/scss-form', label: '12. Form 스타일링', icon: 'ri-input-cursor-move', file: 'ScssGuidePage.tsx', component: ScssFormSample, summary: '라벨/에러/disabled 폼 구조' },
+      { path: '/scss-table', label: '13. Table 스타일링', icon: 'ri-table-2', file: 'ScssGuidePage.tsx', component: ScssTableSample, summary: '헤더/행 hover/selected 처리' },
+      { path: '/scss-card', label: '14. Card UI 스타일링', icon: 'ri-layout-masonry-line', file: 'ScssGuidePage.tsx', component: ScssCardSample, summary: '카드 구조와 상태 스타일' },
+      { path: '/scss-layout', label: '15. Layout 스타일링', icon: 'ri-layout-2-line', file: 'ScssGuidePage.tsx', component: ScssLayoutSample, summary: 'Grid/Flex 반응형 레이아웃' },
+      { path: '/scss-tips', label: '16. 실무 팁 정리', icon: 'ri-lightbulb-flash-line', file: 'ScssGuidePage.tsx', component: ScssTipsSample, summary: '안티패턴과 운영 체크리스트' },
     ],
   },
 ];
