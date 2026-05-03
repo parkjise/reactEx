@@ -12507,7 +12507,11 @@ dataZoom: [
   background-color: var(--background);
   border: 1px solid var(--border);
   border-radius: 8px;
-`,S8e=()=>(0,R.jsx)(Kl,{title:`1. GlobalStyle / Reset 설정`,description:`styled-components의 createGlobalStyle을 사용하여 프로젝트 전체의 기본 스타일과 CSS 초기화(Reset)를 적용하는 실무 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`GlobalStyle 적용의 핵심`}),(0,R.jsxs)(`p`,{style:{marginBottom:`16px`,lineHeight:`1.6`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`GlobalStyle`}),`을 통해 단순히 margin/padding을 초기화하는 것을 넘어서,`,(0,R.jsx)(`br`,{}),`테마 시스템의 색상이나 공통 spacing 값을 `,(0,R.jsx)(`b`,{children:`CSS 변수(:root)`}),`로 등록하여,`,(0,R.jsx)(`br`,{}),`styled-components 외부(예: 일반 css 파일이나 인라인 스타일)에서도 테마 값을 접근할 수 있도록 구성합니다.`]}),(0,R.jsxs)(x8e,{children:[(0,R.jsx)(`h4`,{children:`이 박스는 CSS 변수를 사용하여 스타일링 되었습니다.`}),(0,R.jsx)(`p`,{children:`var(--background), var(--border) 등이 사용됨`})]}),(0,R.jsx)(`div`,{style:{marginTop:`24px`},children:(0,R.jsx)(Fx,{rawCode:`import { createGlobalStyle } from 'styled-components';
+`,S8e=()=>(0,R.jsx)(Kl,{title:`1. GlobalStyle / Reset 설정`,description:`styled-components의 createGlobalStyle을 사용하여 프로젝트 전체의 기본 스타일과 CSS 초기화(Reset)를 적용하는 실무 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`GlobalStyle 적용의 핵심`}),(0,R.jsxs)(`p`,{style:{marginBottom:`16px`,lineHeight:`1.6`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`GlobalStyle`}),`을 통해 단순히 margin/padding을 초기화하는 것을 넘어서,`,(0,R.jsx)(`br`,{}),`테마 시스템의 색상이나 공통 spacing 값을 `,(0,R.jsx)(`b`,{children:`CSS 변수(:root)`}),`로 등록하여,`,(0,R.jsx)(`br`,{}),`styled-components 외부(예: 일반 css 파일이나 인라인 스타일)에서도 테마 값을 접근할 수 있도록 구성합니다.`]}),(0,R.jsxs)(x8e,{children:[(0,R.jsx)(`h4`,{children:`이 박스는 CSS 변수를 사용하여 스타일링 되었습니다.`}),(0,R.jsx)(`p`,{children:`var(--background), var(--border) 등이 사용됨`})]}),(0,R.jsx)(`div`,{style:{marginTop:`24px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+GlobalStyle은 앱 전체에 한 번 적용되는 reset, body 기본값, 스크롤바, CSS 변수 같은 전역 스타일을 관리합니다.
+컴포넌트 스타일과 전역 스타일의 책임을 분리하면 예상하지 못한 CSS 충돌을 줄일 수 있습니다.
+*/
+import { createGlobalStyle } from 'styled-components';
 import { variables } from './variables';
 
 export const GlobalStyle = createGlobalStyle\`
@@ -12551,7 +12555,11 @@ export const GlobalStyle = createGlobalStyle\`
   align-items: center;
   margin-bottom: 12px;
   font-weight: 600;
-`,C8e=()=>{let e=$c();return(0,R.jsx)(Kl,{title:`2. ThemeProvider와 theme 사용법`,description:`styled-components의 ThemeProvider를 통해 전역적으로 색상, 여백, 둥글기 등의 디자인 토큰을 주입하고 사용하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{style:{marginBottom:`16px`},children:`현재 주입된 테마 색상 (useTheme 활용)`}),(0,R.jsxs)(x9,{bg:e.colors.primary,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Primary Color`}),(0,R.jsx)(`span`,{children:e.colors.primary})]}),(0,R.jsxs)(x9,{bg:e.colors.success,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Success Color`}),(0,R.jsx)(`span`,{children:e.colors.success})]}),(0,R.jsxs)(x9,{bg:e.colors.error,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Error Color`}),(0,R.jsx)(`span`,{children:e.colors.error})]}),(0,R.jsxs)(x9,{bg:e.colors.surface,color:e.colors.text,style:{border:`1px solid ${e.colors.border}`},children:[(0,R.jsx)(`span`,{children:`Surface (Card Background) Color`}),(0,R.jsx)(`span`,{children:e.colors.surface})]}),(0,R.jsx)(`div`,{style:{marginTop:`24px`},children:(0,R.jsx)(Fx,{rawCode:`// src/styles/theme.ts
+`,C8e=()=>{let e=$c();return(0,R.jsx)(Kl,{title:`2. ThemeProvider와 theme 사용법`,description:`styled-components의 ThemeProvider를 통해 전역적으로 색상, 여백, 둥글기 등의 디자인 토큰을 주입하고 사용하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{style:{marginBottom:`16px`},children:`현재 주입된 테마 색상 (useTheme 활용)`}),(0,R.jsxs)(x9,{bg:e.colors.primary,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Primary Color`}),(0,R.jsx)(`span`,{children:e.colors.primary})]}),(0,R.jsxs)(x9,{bg:e.colors.success,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Success Color`}),(0,R.jsx)(`span`,{children:e.colors.success})]}),(0,R.jsxs)(x9,{bg:e.colors.error,color:`#ffffff`,children:[(0,R.jsx)(`span`,{children:`Error Color`}),(0,R.jsx)(`span`,{children:e.colors.error})]}),(0,R.jsxs)(x9,{bg:e.colors.surface,color:e.colors.text,style:{border:`1px solid ${e.colors.border}`},children:[(0,R.jsx)(`span`,{children:`Surface (Card Background) Color`}),(0,R.jsx)(`span`,{children:e.colors.surface})]}),(0,R.jsx)(`div`,{style:{marginTop:`24px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+theme.ts는 색상, radius, spacing 같은 디자인 토큰을 한 곳에 모아 컴포넌트가 같은 기준을 쓰게 만드는 파일입니다.
+ThemeProvider와 함께 사용하면 하드코딩 색상을 줄이고 브랜드 변경이나 다크모드 대응이 쉬워집니다.
+*/
+// src/styles/theme.ts
 export const lightTheme = {
   colors: {
     primary: '#316AFF',
@@ -12647,7 +12655,11 @@ const StyledBox = styled.div\`
   background: ${({theme:e})=>e.colors.surface};
 
   p { margin-bottom: 20px; }
-`,A8e=()=>(0,R.jsx)(Kl,{title:`6. mixins 공통 스타일 관리`,description:`자주 쓰이는 CSS 패턴들(중앙 정렬, 말줄임, 스크롤바 디자인 등)을 mixin으로 추출하여 중복 코드를 방지하는 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. flexCenter 믹스인`}),(0,R.jsx)(D8e,{children:`이 박스는 flexCenter 믹스인으로 완벽하게 중앙 정렬되었습니다.`}),(0,R.jsx)(`h3`,{children:`2. textEllipsis 믹스인 (1줄 말줄임)`}),(0,R.jsx)(O8e,{children:`이 텍스트는 길이가 너무 길어서 부모 박스의 너비(250px)를 넘어가면 자동으로 말줄임표(...) 처리가 됩니다. 끝까지 보이지 않죠?`}),(0,R.jsx)(`h3`,{children:`3. customScrollbar 믹스인`}),(0,R.jsxs)(k8e,{children:[(0,R.jsx)(`p`,{children:`여기를 스크롤 해보세요.`}),(0,R.jsx)(`p`,{children:`커스텀 디자인된 얇은 스크롤바가 보입니다.`}),(0,R.jsx)(`p`,{children:`브라우저 기본 스크롤바 대신 테마와 어울리는 스크롤바를 믹스인 단 한 줄로 적용했습니다.`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`// src/styles/mixins.ts
+`,A8e=()=>(0,R.jsx)(Kl,{title:`6. mixins 공통 스타일 관리`,description:`자주 쓰이는 CSS 패턴들(중앙 정렬, 말줄임, 스크롤바 디자인 등)을 mixin으로 추출하여 중복 코드를 방지하는 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. flexCenter 믹스인`}),(0,R.jsx)(D8e,{children:`이 박스는 flexCenter 믹스인으로 완벽하게 중앙 정렬되었습니다.`}),(0,R.jsx)(`h3`,{children:`2. textEllipsis 믹스인 (1줄 말줄임)`}),(0,R.jsx)(O8e,{children:`이 텍스트는 길이가 너무 길어서 부모 박스의 너비(250px)를 넘어가면 자동으로 말줄임표(...) 처리가 됩니다. 끝까지 보이지 않죠?`}),(0,R.jsx)(`h3`,{children:`3. customScrollbar 믹스인`}),(0,R.jsxs)(k8e,{children:[(0,R.jsx)(`p`,{children:`여기를 스크롤 해보세요.`}),(0,R.jsx)(`p`,{children:`커스텀 디자인된 얇은 스크롤바가 보입니다.`}),(0,R.jsx)(`p`,{children:`브라우저 기본 스크롤바 대신 테마와 어울리는 스크롤바를 믹스인 단 한 줄로 적용했습니다.`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`}),(0,R.jsx)(`p`,{children:`내용 내용 내용`})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+mixins는 반복되는 CSS 조각을 함수처럼 재사용하기 위한 styled-components helper입니다.
+flexCenter, textEllipsis, media query처럼 자주 쓰는 규칙을 모아두면 스타일 중복과 오타를 줄일 수 있습니다.
+*/
+// src/styles/mixins.ts
 import { css } from 'styled-components';
 
 export const flexCenter = css\`
@@ -12743,7 +12755,11 @@ const Box = styled.div\`
   flex-wrap: wrap;
   margin-bottom: 24px;
   align-items: center;
-`,P8e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`3. 공통 Button 컴포넌트`,description:`styled-components를 활용하여 variant(스타일), size(크기), 상태(loading, disabled) 등 다양한 Props를 처리하는 실무형 공통 버튼 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Variants (버튼 종류)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{variant:`primary`,children:`Primary`}),(0,R.jsx)(T9,{variant:`secondary`,children:`Secondary`}),(0,R.jsx)(T9,{variant:`danger`,children:`Danger`}),(0,R.jsx)(T9,{variant:`outline`,children:`Outline`}),(0,R.jsx)(T9,{variant:`ghost`,children:`Ghost`})]}),(0,R.jsx)(`h3`,{children:`2. Sizes (버튼 크기)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{size:`small`,children:`Small`}),(0,R.jsx)(T9,{size:`medium`,children:`Medium`}),(0,R.jsx)(T9,{size:`large`,children:`Large`})]}),(0,R.jsx)(`h3`,{children:`3. States (상태)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{variant:`primary`,isLoading:e,onClick:()=>{t(!0),setTimeout(()=>t(!1),2e3)},children:e?`Processing...`:`Click to Load (2s)`}),(0,R.jsx)(T9,{variant:`secondary`,disabled:!0,children:`Disabled Button`})]}),(0,R.jsx)(`h3`,{children:`4. Layout (레이아웃)`}),(0,R.jsx)(`div`,{style:{marginBottom:`24px`},children:(0,R.jsx)(T9,{fullWidth:!0,variant:`outline`,children:`Full Width Button`})}),(0,R.jsx)(Fx,{rawCode:`<StyledButton variant="primary">Primary</StyledButton>
+`,P8e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`3. 공통 Button 컴포넌트`,description:`styled-components를 활용하여 variant(스타일), size(크기), 상태(loading, disabled) 등 다양한 Props를 처리하는 실무형 공통 버튼 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Variants (버튼 종류)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{variant:`primary`,children:`Primary`}),(0,R.jsx)(T9,{variant:`secondary`,children:`Secondary`}),(0,R.jsx)(T9,{variant:`danger`,children:`Danger`}),(0,R.jsx)(T9,{variant:`outline`,children:`Outline`}),(0,R.jsx)(T9,{variant:`ghost`,children:`Ghost`})]}),(0,R.jsx)(`h3`,{children:`2. Sizes (버튼 크기)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{size:`small`,children:`Small`}),(0,R.jsx)(T9,{size:`medium`,children:`Medium`}),(0,R.jsx)(T9,{size:`large`,children:`Large`})]}),(0,R.jsx)(`h3`,{children:`3. States (상태)`}),(0,R.jsxs)(E9,{children:[(0,R.jsx)(T9,{variant:`primary`,isLoading:e,onClick:()=>{t(!0),setTimeout(()=>t(!1),2e3)},children:e?`Processing...`:`Click to Load (2s)`}),(0,R.jsx)(T9,{variant:`secondary`,disabled:!0,children:`Disabled Button`})]}),(0,R.jsx)(`h3`,{children:`4. Layout (레이아웃)`}),(0,R.jsx)(`div`,{style:{marginBottom:`24px`},children:(0,R.jsx)(T9,{fullWidth:!0,variant:`outline`,children:`Full Width Button`})}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+StyledButton은 variant, size, loading, disabled 같은 버튼 상태를 props로 제어하는 공통 버튼 패턴입니다.
+화면마다 버튼 CSS를 새로 만들지 않고 제한된 옵션으로 재사용하면 UI 일관성과 유지보수성이 좋아집니다.
+*/
+<StyledButton variant="primary">Primary</StyledButton>
 <StyledButton variant="secondary">Secondary</StyledButton>
 <StyledButton variant="danger">Danger</StyledButton>
 <StyledButton variant="outline">Outline</StyledButton>
@@ -12910,7 +12926,11 @@ const Box = styled.div\`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
-`,Q8e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`4. 공통 Form 컴포넌트 (Input, Select, Checkbox)`,description:`상태(Error, Disabled), 라벨(Label), 아이콘(Icon)을 일관성 있게 관리하는 Form Elements 컴포넌트 샘플입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(Z8e,{children:[(0,R.jsx)(D9,{label:`이름 (기본)`,placeholder:`홍길동`,fullWidth:!0}),(0,R.jsx)(D9,{label:`비밀번호 (Disabled)`,type:`password`,placeholder:`비밀번호 입력불가`,disabled:!0,fullWidth:!0}),(0,R.jsx)(D9,{label:`이메일 주소 (Error State)`,type:`email`,placeholder:`example@email.com`,error:`이미 가입된 이메일 주소입니다.`,defaultValue:`wrong-email`,fullWidth:!0}),(0,R.jsx)(K8e,{label:`부서 선택`,options:[{label:`개발팀`,value:`dev`},{label:`디자인팀`,value:`design`},{label:`기획팀`,value:`pm`}],fullWidth:!0})]}),(0,R.jsx)(`div`,{style:{marginBottom:`24px`},children:(0,R.jsx)(X8e,{label:`이용약관에 동의합니다. (클릭해보세요)`,checked:e,onChange:e=>t(e.target.checked)})}),(0,R.jsx)(Fx,{rawCode:`// 1. 기본 Input
+`,Q8e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`4. 공통 Form 컴포넌트 (Input, Select, Checkbox)`,description:`상태(Error, Disabled), 라벨(Label), 아이콘(Icon)을 일관성 있게 관리하는 Form Elements 컴포넌트 샘플입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(Z8e,{children:[(0,R.jsx)(D9,{label:`이름 (기본)`,placeholder:`홍길동`,fullWidth:!0}),(0,R.jsx)(D9,{label:`비밀번호 (Disabled)`,type:`password`,placeholder:`비밀번호 입력불가`,disabled:!0,fullWidth:!0}),(0,R.jsx)(D9,{label:`이메일 주소 (Error State)`,type:`email`,placeholder:`example@email.com`,error:`이미 가입된 이메일 주소입니다.`,defaultValue:`wrong-email`,fullWidth:!0}),(0,R.jsx)(K8e,{label:`부서 선택`,options:[{label:`개발팀`,value:`dev`},{label:`디자인팀`,value:`design`},{label:`기획팀`,value:`pm`}],fullWidth:!0})]}),(0,R.jsx)(`div`,{style:{marginBottom:`24px`},children:(0,R.jsx)(X8e,{label:`이용약관에 동의합니다. (클릭해보세요)`,checked:e,onChange:e=>t(e.target.checked)})}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+입력 컴포넌트는 label, error, disabled 상태를 함께 다뤄야 실무 폼에서 재사용하기 좋습니다.
+공통 Input, Select, Checkbox를 분리하면 회원가입, 검색 필터, 관리자 설정 폼에서 같은 UX를 유지할 수 있습니다.
+*/
+// 1. 기본 Input
 <StyledInput label="이름" placeholder="이름을 입력하세요" fullWidth />
 
 // 2. 에러 상태 Input
@@ -12957,7 +12977,11 @@ const Box = styled.div\`
           color: ${t.colors.textMuted};
           border: 1px dashed ${t.colors.border};
         `}}}
-`,e5e=()=>{let[e,t]=(0,S.useState)(`idle`);return(0,R.jsx)(Kl,{title:`5. Props 기반 동적 스타일 변경`,description:`컴포넌트로 전달받은 props의 값에 따라 CSS를 완전히 분기(switch)하여 다이나믹한 상태를 렌더링하는 실무 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`h3`,{children:[`현재 상태: `,e.toUpperCase()]}),(0,R.jsxs)($8e,{status:e,children:[e===`idle`&&`대기 중입니다. 버튼을 눌러 상태를 변경해보세요.`,e===`active`&&`활성화되었습니다! 성공적으로 작업이 수행 중입니다.`,e===`error`&&`오류가 발생했습니다! 네트워크 연결을 확인하세요.`]}),(0,R.jsxs)(`div`,{style:{display:`flex`,gap:`10px`,marginBottom:`30px`},children:[(0,R.jsx)(T9,{onClick:()=>t(`idle`),variant:e===`idle`?`primary`:`outline`,children:`Idle`}),(0,R.jsx)(T9,{onClick:()=>t(`active`),variant:e===`active`?`primary`:`outline`,children:`Active`}),(0,R.jsx)(T9,{onClick:()=>t(`error`),variant:e===`error`?`primary`:`outline`,children:`Error`})]}),(0,R.jsx)(Fx,{rawCode:`const StatusBox = styled.div<{ status: 'idle' | 'active' | 'error' }>\`
+`,e5e=()=>{let[e,t]=(0,S.useState)(`idle`);return(0,R.jsx)(Kl,{title:`5. Props 기반 동적 스타일 변경`,description:`컴포넌트로 전달받은 props의 값에 따라 CSS를 완전히 분기(switch)하여 다이나믹한 상태를 렌더링하는 실무 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`h3`,{children:[`현재 상태: `,e.toUpperCase()]}),(0,R.jsxs)($8e,{status:e,children:[e===`idle`&&`대기 중입니다. 버튼을 눌러 상태를 변경해보세요.`,e===`active`&&`활성화되었습니다! 성공적으로 작업이 수행 중입니다.`,e===`error`&&`오류가 발생했습니다! 네트워크 연결을 확인하세요.`]}),(0,R.jsxs)(`div`,{style:{display:`flex`,gap:`10px`,marginBottom:`30px`},children:[(0,R.jsx)(T9,{onClick:()=>t(`idle`),variant:e===`idle`?`primary`:`outline`,children:`Idle`}),(0,R.jsx)(T9,{onClick:()=>t(`active`),variant:e===`active`?`primary`:`outline`,children:`Active`}),(0,R.jsx)(T9,{onClick:()=>t(`error`),variant:e===`error`?`primary`:`outline`,children:`Error`})]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Props 기반 스타일링은 React 상태값이 곧 CSS 분기 기준일 때 사용합니다.
+status, variant, selected 같은 값을 props로 넘기면 상태별 스타일을 컴포넌트 안에서 명확하게 표현할 수 있습니다.
+*/
+const StatusBox = styled.div<{ status: 'idle' | 'active' | 'error' }>\`
   padding: 20px;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -13009,7 +13033,11 @@ const Box = styled.div\`
   &:hover {
     transform: translateY(-5px);
   }
-`,n5e=()=>(0,R.jsx)(Kl,{title:`7. 반응형 레이아웃 (Media Queries)`,description:`브라우저 창 크기를 줄여보세요! 기기 해상도(PC, Tablet, Mobile)에 따라 4열 -> 3열 -> 2열 -> 1열로 변하는 반응형 그리드 시스템입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`@media (max-width: 768px)`}),`를 매번 하드코딩하지 않고, `,(0,R.jsx)(`br`,{}),`위 예제처럼 `,(0,R.jsx)(`code`,{children:`media.tablet`}),` 등의 믹스인을 만들어 유지보수성을 극대화합니다.`]}),(0,R.jsxs)(t5e,{children:[(0,R.jsx)(O9,{children:`Item 1`}),(0,R.jsx)(O9,{children:`Item 2`}),(0,R.jsx)(O9,{children:`Item 3`}),(0,R.jsx)(O9,{children:`Item 4`}),(0,R.jsx)(O9,{children:`Item 5`}),(0,R.jsx)(O9,{children:`Item 6`}),(0,R.jsx)(O9,{children:`Item 7`}),(0,R.jsx)(O9,{children:`Item 8`})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`// src/styles/mixins.ts
+`,n5e=()=>(0,R.jsx)(Kl,{title:`7. 반응형 레이아웃 (Media Queries)`,description:`브라우저 창 크기를 줄여보세요! 기기 해상도(PC, Tablet, Mobile)에 따라 4열 -> 3열 -> 2열 -> 1열로 변하는 반응형 그리드 시스템입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`@media (max-width: 768px)`}),`를 매번 하드코딩하지 않고, `,(0,R.jsx)(`br`,{}),`위 예제처럼 `,(0,R.jsx)(`code`,{children:`media.tablet`}),` 등의 믹스인을 만들어 유지보수성을 극대화합니다.`]}),(0,R.jsxs)(t5e,{children:[(0,R.jsx)(O9,{children:`Item 1`}),(0,R.jsx)(O9,{children:`Item 2`}),(0,R.jsx)(O9,{children:`Item 3`}),(0,R.jsx)(O9,{children:`Item 4`}),(0,R.jsx)(O9,{children:`Item 5`}),(0,R.jsx)(O9,{children:`Item 6`}),(0,R.jsx)(O9,{children:`Item 7`}),(0,R.jsx)(O9,{children:`Item 8`})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+반응형 스타일은 breakpoint 값을 한 곳에 모아두고 mixin으로 재사용하면 화면 기준이 프로젝트 전체에서 흔들리지 않습니다.
+카드 그리드, 폼, 사이드바처럼 넓이에 따라 구조가 달라지는 UI에 사용합니다.
+*/
+// src/styles/mixins.ts
 export const media = {
   mobile: (styles: any) => css\`
     @media (max-width: 576px) { \${styles} }
@@ -13051,7 +13079,11 @@ const ResponsiveGrid = styled.div\`
   border-radius: ${({theme:e})=>e.radius.card};
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   margin-top: 20px;
-`,a5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`8. 다크모드 (Dark Mode) 구현 패턴`,description:`ThemeProvider의 theme 객체를 교체하는 것만으로 전체 애플리케이션의 색상을 손쉽게 다크모드로 전환하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`현재 이 박스 내부만 임시로 `,(0,R.jsx)(`code`,{children:`ThemeProvider`}),`로 감싸서, 토글 버튼 클릭 시 하위 컴포넌트들의 테마가 라이트/다크로 전환되도록 구성했습니다.`]}),(0,R.jsx)(el,{theme:e?A9:k9,children:(0,R.jsxs)(r5e,{children:[(0,R.jsxs)(`div`,{style:{display:`flex`,justifyContent:`space-between`,alignItems:`center`},children:[(0,R.jsx)(`h2`,{children:e?`🌙 다크 모드 활성화됨`:`☀️ 라이트 모드 활성화됨`}),(0,R.jsx)(T9,{onClick:()=>t(!e),variant:e?`secondary`:`primary`,children:`테마 전환하기`})]}),(0,R.jsxs)(i5e,{children:[(0,R.jsx)(`h3`,{style:{marginBottom:`10px`},children:`Card Component`}),(0,R.jsx)(`p`,{style:{color:e?A9.colors.textMuted:k9.colors.textMuted},children:`테마가 바뀌면 styled-components가 자동으로 바뀐 theme 객체를 props로 내려주어, 새로고침 없이 실시간으로 CSS가 업데이트 됩니다.`})]})]})}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`// 최상위 App.tsx
+`,a5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`8. 다크모드 (Dark Mode) 구현 패턴`,description:`ThemeProvider의 theme 객체를 교체하는 것만으로 전체 애플리케이션의 색상을 손쉽게 다크모드로 전환하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`현재 이 박스 내부만 임시로 `,(0,R.jsx)(`code`,{children:`ThemeProvider`}),`로 감싸서, 토글 버튼 클릭 시 하위 컴포넌트들의 테마가 라이트/다크로 전환되도록 구성했습니다.`]}),(0,R.jsx)(el,{theme:e?A9:k9,children:(0,R.jsxs)(r5e,{children:[(0,R.jsxs)(`div`,{style:{display:`flex`,justifyContent:`space-between`,alignItems:`center`},children:[(0,R.jsx)(`h2`,{children:e?`🌙 다크 모드 활성화됨`:`☀️ 라이트 모드 활성화됨`}),(0,R.jsx)(T9,{onClick:()=>t(!e),variant:e?`secondary`:`primary`,children:`테마 전환하기`})]}),(0,R.jsxs)(i5e,{children:[(0,R.jsx)(`h3`,{style:{marginBottom:`10px`},children:`Card Component`}),(0,R.jsx)(`p`,{style:{color:e?A9.colors.textMuted:k9.colors.textMuted},children:`테마가 바뀌면 styled-components가 자동으로 바뀐 theme 객체를 props로 내려주어, 새로고침 없이 실시간으로 CSS가 업데이트 됩니다.`})]})]})}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+다크모드는 ThemeProvider에 전달하는 theme 객체를 전환하는 방식으로 구현합니다.
+컴포넌트는 하드코딩 색상 대신 theme.colors를 참조하므로 라이트/다크 테마가 전체 UI에 일관되게 적용됩니다.
+*/
+// 최상위 App.tsx
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/theme';
 
@@ -13084,7 +13116,11 @@ function App() {
   color: white;
   font-size: 1.5rem;
   font-weight: bold;
-`,s5e=()=>(0,R.jsxs)(Kl,{title:`9. Card UI 컴포넌트`,description:`가장 많이 쓰이는 Card UI 컴포넌트입니다. 패딩(padding)과 그림자(shadow)를 props로 제어할 수 있습니다.`,children:[(0,R.jsxs)(o5e,{children:[(0,R.jsxs)(b9,{padding:`30px`,children:[(0,R.jsx)(j9,{children:`A`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Admin User`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`시스템 전체 관리 권한을 가진 유저입니다.`}),(0,R.jsx)(T9,{fullWidth:!0,children:`권한 설정하기`})]}),(0,R.jsxs)(b9,{padding:`30px`,children:[(0,R.jsx)(j9,{style:{backgroundColor:`var(--success)`},children:`E`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Editor`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`콘텐츠 작성 및 수정 권한을 가진 유저입니다.`}),(0,R.jsx)(T9,{fullWidth:!0,variant:`outline`,children:`글쓰기 권한`})]}),(0,R.jsxs)(b9,{noShadow:!0,padding:`30px`,style:{backgroundColor:`var(--background)`},children:[(0,R.jsx)(j9,{style:{backgroundColor:`var(--textMuted)`},children:`G`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Guest User`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`읽기 권한만 있는 임시 유저입니다. (그림자 없음)`}),(0,R.jsx)(T9,{fullWidth:!0,variant:`ghost`,disabled:!0,children:`권한 없음`})]})]}),(0,R.jsx)(b9,{children:(0,R.jsx)(Fx,{rawCode:`<StyledCard padding="30px">
+`,s5e=()=>(0,R.jsxs)(Kl,{title:`9. Card UI 컴포넌트`,description:`가장 많이 쓰이는 Card UI 컴포넌트입니다. 패딩(padding)과 그림자(shadow)를 props로 제어할 수 있습니다.`,children:[(0,R.jsxs)(o5e,{children:[(0,R.jsxs)(b9,{padding:`30px`,children:[(0,R.jsx)(j9,{children:`A`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Admin User`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`시스템 전체 관리 권한을 가진 유저입니다.`}),(0,R.jsx)(T9,{fullWidth:!0,children:`권한 설정하기`})]}),(0,R.jsxs)(b9,{padding:`30px`,children:[(0,R.jsx)(j9,{style:{backgroundColor:`var(--success)`},children:`E`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Editor`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`콘텐츠 작성 및 수정 권한을 가진 유저입니다.`}),(0,R.jsx)(T9,{fullWidth:!0,variant:`outline`,children:`글쓰기 권한`})]}),(0,R.jsxs)(b9,{noShadow:!0,padding:`30px`,style:{backgroundColor:`var(--background)`},children:[(0,R.jsx)(j9,{style:{backgroundColor:`var(--textMuted)`},children:`G`}),(0,R.jsx)(`h3`,{style:{marginBottom:`8px`},children:`Guest User`}),(0,R.jsx)(`p`,{style:{color:`var(--textMuted)`,marginBottom:`20px`},children:`읽기 권한만 있는 임시 유저입니다. (그림자 없음)`}),(0,R.jsx)(T9,{fullWidth:!0,variant:`ghost`,disabled:!0,children:`권한 없음`})]})]}),(0,R.jsx)(b9,{children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+StyledCard는 대시보드, 프로필, 설정 패널처럼 정보를 하나의 표면으로 묶는 공통 컨테이너입니다.
+padding, shadow 같은 반복 스타일을 props로 제어하면 카드마다 여백과 깊이가 제각각 달라지는 문제를 줄일 수 있습니다.
+*/
+<StyledCard padding="30px">
   <ProfileImage>A</ProfileImage>
   <h3>Admin User</h3>
   <p>시스템 관리 권한을 가진 유저입니다.</p>
@@ -13154,7 +13190,11 @@ function App() {
   justify-content: flex-end;
   gap: ${y9.spacing.sm};
   background-color: ${({theme:e})=>e.colors.background};
-`,g5e=({isOpen:e,onClose:t,title:n,children:r,footer:i,width:a})=>((0,S.useEffect)(()=>{let n=e=>{e.key===`Escape`&&t()};return e&&window.addEventListener(`keydown`,n),()=>window.removeEventListener(`keydown`,n)},[e,t]),(0,S.useEffect)(()=>(e?document.body.style.overflow=`hidden`:document.body.style.overflow=`unset`,()=>{document.body.style.overflow=`unset`}),[e]),e?(0,qi.createPortal)((0,R.jsx)(u5e,{onClick:t,children:(0,R.jsxs)(d5e,{width:a,onClick:e=>e.stopPropagation(),children:[n&&(0,R.jsxs)(f5e,{children:[(0,R.jsx)(`h2`,{children:n}),(0,R.jsx)(p5e,{onClick:t,children:`×`})]}),(0,R.jsx)(m5e,{children:r}),i&&(0,R.jsx)(h5e,{children:i})]})}),document.body):null),_5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`10. Modal UI`,description:`createPortal을 사용하여 DOM 최상단에 렌더링되며, 애니메이션과 오버레이 기능을 포함한 모달 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서 모달은 z-index 꼬임을 방지하기 위해 `,(0,R.jsx)(`code`,{children:`React.createPortal`}),`을 사용하여 body 끝에 렌더링하는 패턴을 주로 사용합니다.`]}),(0,R.jsx)(T9,{onClick:()=>t(!0),children:`모달 띄우기`}),(0,R.jsxs)(g5e,{isOpen:e,onClose:()=>t(!1),title:`결제 확인`,width:`400px`,footer:(0,R.jsxs)(R.Fragment,{children:[(0,R.jsx)(T9,{variant:`ghost`,onClick:()=>t(!1),children:`취소`}),(0,R.jsx)(T9,{variant:`primary`,onClick:()=>t(!1),children:`결제하기`})]}),children:[(0,R.jsx)(`p`,{children:`정말 결제를 진행하시겠습니까?`}),(0,R.jsxs)(`ul`,{style:{paddingLeft:`20px`,marginTop:`10px`,lineHeight:`1.8`},children:[(0,R.jsx)(`li`,{children:`상품명: 최고급 마우스`}),(0,R.jsx)(`li`,{children:`결제 금액: 99,000원`})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`// 모달 사용 예시
+`,g5e=({isOpen:e,onClose:t,title:n,children:r,footer:i,width:a})=>((0,S.useEffect)(()=>{let n=e=>{e.key===`Escape`&&t()};return e&&window.addEventListener(`keydown`,n),()=>window.removeEventListener(`keydown`,n)},[e,t]),(0,S.useEffect)(()=>(e?document.body.style.overflow=`hidden`:document.body.style.overflow=`unset`,()=>{document.body.style.overflow=`unset`}),[e]),e?(0,qi.createPortal)((0,R.jsx)(u5e,{onClick:t,children:(0,R.jsxs)(d5e,{width:a,onClick:e=>e.stopPropagation(),children:[n&&(0,R.jsxs)(f5e,{children:[(0,R.jsx)(`h2`,{children:n}),(0,R.jsx)(p5e,{onClick:t,children:`×`})]}),(0,R.jsx)(m5e,{children:r}),i&&(0,R.jsx)(h5e,{children:i})]})}),document.body):null),_5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`10. Modal UI`,description:`createPortal을 사용하여 DOM 최상단에 렌더링되며, 애니메이션과 오버레이 기능을 포함한 모달 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서 모달은 z-index 꼬임을 방지하기 위해 `,(0,R.jsx)(`code`,{children:`React.createPortal`}),`을 사용하여 body 끝에 렌더링하는 패턴을 주로 사용합니다.`]}),(0,R.jsx)(T9,{onClick:()=>t(!0),children:`모달 띄우기`}),(0,R.jsxs)(g5e,{isOpen:e,onClose:()=>t(!1),title:`결제 확인`,width:`400px`,footer:(0,R.jsxs)(R.Fragment,{children:[(0,R.jsx)(T9,{variant:`ghost`,onClick:()=>t(!1),children:`취소`}),(0,R.jsx)(T9,{variant:`primary`,onClick:()=>t(!1),children:`결제하기`})]}),children:[(0,R.jsx)(`p`,{children:`정말 결제를 진행하시겠습니까?`}),(0,R.jsxs)(`ul`,{style:{paddingLeft:`20px`,marginTop:`10px`,lineHeight:`1.8`},children:[(0,R.jsx)(`li`,{children:`상품명: 최고급 마우스`}),(0,R.jsx)(`li`,{children:`결제 금액: 99,000원`})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Modal은 현재 화면 위에 확인, 입력, 상세 정보를 띄우는 오버레이 UI입니다.
+실무에서는 열림 상태, 배경 클릭, ESC 닫기, 포커스 이동, 스크롤 잠금까지 함께 설계하는 것이 좋습니다.
+*/
+// 모달 사용 예시
 <StyledButton onClick={() => setIsModalOpen(true)}>
   모달 열기
 </StyledButton>
@@ -13214,7 +13254,11 @@ function App() {
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
-`,C5e=()=>{let[e,t]=(0,S.useState)({isVisible:!1,message:``,type:`info`}),n=(n,r)=>{t({...e,isVisible:!1}),setTimeout(()=>{t({isVisible:!0,message:n,type:r})},100)};return(0,R.jsx)(Kl,{title:`11. Toast 알림`,description:`우측 하단에서 부드럽게 나타나고 일정 시간 후 자동으로 사라지는 Toast 메시지 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`Toast는 `,(0,R.jsx)(`code`,{children:`@keyframes`}),` 애니메이션과 `,(0,R.jsx)(`code`,{children:`setTimeout`}),`을 결합하여 구현합니다. 보통 Context API나 Zustand와 결합하여 전역 함수로 호출하는 것이 실무 표준입니다.`]}),(0,R.jsxs)(S5e,{children:[(0,R.jsx)(T9,{variant:`primary`,onClick:()=>n(`새로운 메시지가 도착했습니다.`,`info`),children:`Info Toast`}),(0,R.jsx)(T9,{style:{backgroundColor:`var(--success)`},onClick:()=>n(`성공적으로 저장되었습니다!`,`success`),children:`Success Toast`}),(0,R.jsx)(T9,{variant:`danger`,onClick:()=>n(`서버 통신 중 오류가 발생했습니다.`,`error`),children:`Error Toast`})]}),(0,R.jsx)(x5e,{isVisible:e.isVisible,message:e.message,type:e.type,onClose:()=>t({...e,isVisible:!1})}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`// 토스트 상태 관리
+`,C5e=()=>{let[e,t]=(0,S.useState)({isVisible:!1,message:``,type:`info`}),n=(n,r)=>{t({...e,isVisible:!1}),setTimeout(()=>{t({isVisible:!0,message:n,type:r})},100)};return(0,R.jsx)(Kl,{title:`11. Toast 알림`,description:`우측 하단에서 부드럽게 나타나고 일정 시간 후 자동으로 사라지는 Toast 메시지 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`Toast는 `,(0,R.jsx)(`code`,{children:`@keyframes`}),` 애니메이션과 `,(0,R.jsx)(`code`,{children:`setTimeout`}),`을 결합하여 구현합니다. 보통 Context API나 Zustand와 결합하여 전역 함수로 호출하는 것이 실무 표준입니다.`]}),(0,R.jsxs)(S5e,{children:[(0,R.jsx)(T9,{variant:`primary`,onClick:()=>n(`새로운 메시지가 도착했습니다.`,`info`),children:`Info Toast`}),(0,R.jsx)(T9,{style:{backgroundColor:`var(--success)`},onClick:()=>n(`성공적으로 저장되었습니다!`,`success`),children:`Success Toast`}),(0,R.jsx)(T9,{variant:`danger`,onClick:()=>n(`서버 통신 중 오류가 발생했습니다.`,`error`),children:`Error Toast`})]}),(0,R.jsx)(x5e,{isVisible:e.isVisible,message:e.message,type:e.type,onClose:()=>t({...e,isVisible:!1})}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Toast는 저장 완료, 삭제 실패처럼 사용자의 흐름을 막지 않고 짧게 피드백을 주는 알림 UI입니다.
+상태 배열로 여러 알림을 관리하고 일정 시간이 지나면 자동 제거하는 방식이 실무에서 많이 쓰입니다.
+*/
+// 토스트 상태 관리
 const [isVisible, setIsVisible] = useState(false);
 
 <StyledButton onClick={() => setIsVisible(true)}>
@@ -13267,7 +13311,80 @@ const [isVisible, setIsVisible] = useState(false);
   &:last-child {
     border-bottom: none;
   }
-`,D5e=()=>(0,R.jsx)(Kl,{title:`12. Badge / Status UI`,description:`상태값(진행중, 완료 등)이나 태그를 직관적으로 표시하기 위한 뱃지 컴포넌트입니다. CSS 투명도(rgba)를 활용해 세련된 배경색을 만듭니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. 네모난 뱃지 (기본)`}),(0,R.jsxs)(E5e,{children:[(0,R.jsx)(M9,{variant:`default`,children:`대기중`}),(0,R.jsx)(M9,{variant:`primary`,children:`진행중`}),(0,R.jsx)(M9,{variant:`success`,children:`완료됨`}),(0,R.jsx)(M9,{variant:`warning`,children:`승인 대기`}),(0,R.jsx)(M9,{variant:`error`,children:`결제 실패`})]}),(0,R.jsx)(`h3`,{children:`2. 둥근 뱃지 (Pill)`}),(0,R.jsxs)(E5e,{children:[(0,R.jsx)(M9,{variant:`primary`,pill:!0,children:`New`}),(0,R.jsx)(M9,{variant:`error`,pill:!0,children:`99+`}),(0,R.jsx)(M9,{variant:`success`,pill:!0,children:`Beta`})]}),(0,R.jsx)(`h3`,{children:`3. 실무 리스트 예시`}),(0,R.jsxs)(`div`,{style:{maxWidth:`400px`,marginBottom:`30px`},children:[(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`아이폰 15 프로 주문`}),(0,R.jsx)(M9,{variant:`success`,children:`배송완료`})]}),(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`맥북 프로 M3 주문`}),(0,R.jsx)(M9,{variant:`primary`,children:`배송중`})]}),(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`매직 키보드 환불`}),(0,R.jsx)(M9,{variant:`warning`,children:`처리대기`})]})]}),(0,R.jsx)(Fx,{rawCode:`<StyledBadge variant="default">대기중</StyledBadge>
+`,D5e=()=>(0,R.jsx)(Kl,{title:`12. Badge / Status UI`,description:`상태값(진행중, 완료 등)이나 태그를 직관적으로 표시하기 위한 뱃지 컴포넌트입니다. CSS 투명도(rgba)를 활용해 세련된 배경색을 만듭니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. 네모난 뱃지 (기본)`}),(0,R.jsxs)(E5e,{children:[(0,R.jsx)(M9,{variant:`default`,children:`대기중`}),(0,R.jsx)(M9,{variant:`primary`,children:`진행중`}),(0,R.jsx)(M9,{variant:`success`,children:`완료됨`}),(0,R.jsx)(M9,{variant:`warning`,children:`승인 대기`}),(0,R.jsx)(M9,{variant:`error`,children:`결제 실패`})]}),(0,R.jsx)(`h3`,{children:`2. 둥근 뱃지 (Pill)`}),(0,R.jsxs)(E5e,{children:[(0,R.jsx)(M9,{variant:`primary`,pill:!0,children:`New`}),(0,R.jsx)(M9,{variant:`error`,pill:!0,children:`99+`}),(0,R.jsx)(M9,{variant:`success`,pill:!0,children:`Beta`})]}),(0,R.jsx)(`h3`,{children:`3. 실무 리스트 예시`}),(0,R.jsxs)(`div`,{style:{maxWidth:`400px`,marginBottom:`30px`},children:[(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`아이폰 15 프로 주문`}),(0,R.jsx)(M9,{variant:`success`,children:`배송완료`})]}),(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`맥북 프로 M3 주문`}),(0,R.jsx)(M9,{variant:`primary`,children:`배송중`})]}),(0,R.jsxs)(N9,{children:[(0,R.jsx)(`span`,{children:`매직 키보드 환불`}),(0,R.jsx)(M9,{variant:`warning`,children:`처리대기`})]})]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+StyledBadge는 주문 상태, 승인 상태, 알림 수, 태그처럼 짧은 상태값을 일관된 UI로 보여주는 공통 컴포넌트입니다.
+
+- variant 타입을 union으로 제한해서 primary, success, error, warning, default 외의 값을 사용할 수 없게 합니다.
+- variantStyles 객체에 색상별 스타일을 모아두면 상태가 늘어날 때 한 곳만 수정하면 됩니다.
+- pill prop은 둥근 배지와 기본 사각 배지를 같은 컴포넌트에서 제어하기 위한 boolean 옵션입니다.
+- 실무에서는 주문 상태, 사용자 권한, 결제 상태, 게시글 공개 상태처럼 반복되는 상태 라벨에 재사용합니다.
+*/
+// src/components/styled/StyledBadge.tsx
+import React from 'react';
+import styled, { css } from 'styled-components';
+
+export type BadgeVariant = 'primary' | 'success' | 'error' | 'warning' | 'default';
+
+interface StyledBadgeProps {
+  children: React.ReactNode;
+  variant?: BadgeVariant;
+  pill?: boolean;
+}
+
+const variantStyles = {
+  primary: css\`
+    background-color: rgba(49, 106, 255, 0.1);
+    color: \${({ theme }) => theme.colors.primary};
+  \`,
+  success: css\`
+    background-color: rgba(5, 205, 153, 0.1);
+    color: \${({ theme }) => theme.colors.success};
+  \`,
+  error: css\`
+    background-color: rgba(238, 93, 80, 0.1);
+    color: \${({ theme }) => theme.colors.error};
+  \`,
+  warning: css\`
+    background-color: rgba(255, 181, 71, 0.1);
+    color: #ffb547;
+  \`,
+  default: css\`
+    background-color: \${({ theme }) => theme.colors.background};
+    color: \${({ theme }) => theme.colors.textMuted};
+  \`,
+};
+
+const BadgeWrapper = styled.span<{ variant: BadgeVariant; pill?: boolean }>\`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: \${({ pill }) => (pill ? '999px' : '4px')};
+  
+  \${({ variant }) => variantStyles[variant]}
+\`;
+
+export const StyledBadge: React.FC<StyledBadgeProps> = ({
+  children,
+  variant = 'default',
+  pill,
+}) => {
+  return (
+    <BadgeWrapper variant={variant} pill={pill}>
+      {children}
+    </BadgeWrapper>
+  );
+};`,language:`tsx`,filename:`StyledBadge.tsx`}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+StyledBadge는 화면에서 상태 텍스트를 직접 색칠하지 않고 variant만 넘겨 사용합니다.
+
+- default는 일반 대기 상태처럼 강조가 약한 값에 사용합니다.
+- primary는 진행중, 선택됨, 현재 상태처럼 주요 상태에 사용합니다.
+- success, warning, error는 완료/주의/실패처럼 의미가 분명한 상태에 사용합니다.
+- pill은 New, 99+, Beta처럼 작은 태그나 카운터 배지에 적합합니다.
+*/
+<StyledBadge variant="default">대기중</StyledBadge>
 <StyledBadge variant="primary">진행중</StyledBadge>
 <StyledBadge variant="success">완료됨</StyledBadge>
 <StyledBadge variant="error">실패</StyledBadge>
@@ -13314,7 +13431,11 @@ const [isVisible, setIsVisible] = useState(false);
   /* 말줄임 처리 적용 가능 */
   ${C9}
   max-width: 200px; /* textEllipsis 작동을 위해 max-width 필요 */
-`,P5e=({columns:e,data:t})=>(0,R.jsx)(O5e,{children:(0,R.jsxs)(k5e,{children:[(0,R.jsx)(A5e,{children:(0,R.jsx)(M5e,{children:e.map(e=>(0,R.jsx)(j5e,{width:e.width,align:e.align,children:e.header},e.key))})}),(0,R.jsx)(`tbody`,{children:t.map((t,n)=>(0,R.jsx)(M5e,{children:e.map(e=>(0,R.jsx)(N5e,{align:e.align,children:t[e.key]},e.key))},n))})]})}),F5e=[{key:`id`,header:`주문번호`,width:`100px`},{key:`product`,header:`상품명`,width:`250px`},{key:`customer`,header:`고객명`},{key:`status`,header:`상태`,align:`center`},{key:`price`,header:`결제금액`,align:`right`}],I5e=[{id:`ORD-001`,product:`애플 맥북 프로 16인치 M3 Max (SSD 1TB)`,customer:`홍길동`,status:(0,R.jsx)(M9,{variant:`success`,children:`결제완료`}),price:`₩4,500,000`},{id:`ORD-002`,product:`로지텍 MX Master 3S 무선 마우스 (매우 긴 상품명 테스트용 데이터입니다 자동으로 말줄임 처리가 되어야 합니다)`,customer:`김철수`,status:(0,R.jsx)(M9,{variant:`primary`,children:`배송중`}),price:`₩129,000`},{id:`ORD-003`,product:`LG 울트라기어 게이밍 모니터 32인치`,customer:`이영희`,status:(0,R.jsx)(M9,{variant:`warning`,children:`승인대기`}),price:`₩850,000`},{id:`ORD-004`,product:`키크론 K8 Pro 알루미늄 기계식 키보드`,customer:`박민수`,status:(0,R.jsx)(M9,{variant:`error`,children:`취소됨`}),price:`₩180,000`}],L5e=()=>(0,R.jsx)(Kl,{title:`13. Table 스타일링`,description:`말줄임(Ellipsis), 정렬(Align), Hover Effect가 모두 포함된 실무형 데이터 테이블 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`<table>`}),` 요소의 `,(0,R.jsx)(`code`,{children:`border-collapse`}),` 처리와 컴포넌트 내부에 React Node(예: Badge 컴포넌트)를 렌더링하는 패턴이 자주 쓰입니다. 또한 내용이 길어질 경우를 대비해 `,(0,R.jsx)(`code`,{children:`max-width`}),`와 `,(0,R.jsx)(`code`,{children:`text-overflow: ellipsis`}),`를 적용합니다.`]}),(0,R.jsx)(`div`,{style:{marginBottom:`30px`},children:(0,R.jsx)(P5e,{columns:F5e,data:I5e})}),(0,R.jsx)(Fx,{rawCode:`const columns = [
+`,P5e=({columns:e,data:t})=>(0,R.jsx)(O5e,{children:(0,R.jsxs)(k5e,{children:[(0,R.jsx)(A5e,{children:(0,R.jsx)(M5e,{children:e.map(e=>(0,R.jsx)(j5e,{width:e.width,align:e.align,children:e.header},e.key))})}),(0,R.jsx)(`tbody`,{children:t.map((t,n)=>(0,R.jsx)(M5e,{children:e.map(e=>(0,R.jsx)(N5e,{align:e.align,children:t[e.key]},e.key))},n))})]})}),F5e=[{key:`id`,header:`주문번호`,width:`100px`},{key:`product`,header:`상품명`,width:`250px`},{key:`customer`,header:`고객명`},{key:`status`,header:`상태`,align:`center`},{key:`price`,header:`결제금액`,align:`right`}],I5e=[{id:`ORD-001`,product:`애플 맥북 프로 16인치 M3 Max (SSD 1TB)`,customer:`홍길동`,status:(0,R.jsx)(M9,{variant:`success`,children:`결제완료`}),price:`₩4,500,000`},{id:`ORD-002`,product:`로지텍 MX Master 3S 무선 마우스 (매우 긴 상품명 테스트용 데이터입니다 자동으로 말줄임 처리가 되어야 합니다)`,customer:`김철수`,status:(0,R.jsx)(M9,{variant:`primary`,children:`배송중`}),price:`₩129,000`},{id:`ORD-003`,product:`LG 울트라기어 게이밍 모니터 32인치`,customer:`이영희`,status:(0,R.jsx)(M9,{variant:`warning`,children:`승인대기`}),price:`₩850,000`},{id:`ORD-004`,product:`키크론 K8 Pro 알루미늄 기계식 키보드`,customer:`박민수`,status:(0,R.jsx)(M9,{variant:`error`,children:`취소됨`}),price:`₩180,000`}],L5e=()=>(0,R.jsx)(Kl,{title:`13. Table 스타일링`,description:`말줄임(Ellipsis), 정렬(Align), Hover Effect가 모두 포함된 실무형 데이터 테이블 컴포넌트입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(`p`,{style:{marginBottom:`20px`},children:[`실무에서는 `,(0,R.jsx)(`code`,{children:`<table>`}),` 요소의 `,(0,R.jsx)(`code`,{children:`border-collapse`}),` 처리와 컴포넌트 내부에 React Node(예: Badge 컴포넌트)를 렌더링하는 패턴이 자주 쓰입니다. 또한 내용이 길어질 경우를 대비해 `,(0,R.jsx)(`code`,{children:`max-width`}),`와 `,(0,R.jsx)(`code`,{children:`text-overflow: ellipsis`}),`를 적용합니다.`]}),(0,R.jsx)(`div`,{style:{marginBottom:`30px`},children:(0,R.jsx)(P5e,{columns:F5e,data:I5e})}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Table 스타일링은 헤더, 셀 간격, 행 hover, 상태 배지를 조합해 많은 데이터를 빠르게 읽게 만드는 패턴입니다.
+컬럼 정의와 데이터 배열을 분리하면 관리자 목록, 주문 내역, 결제 테이블에 재사용하기 쉽습니다.
+*/
+const columns = [
   { key: 'id', header: '주문번호', width: '100px' },
   { key: 'product', header: '상품명', width: '250px' },
   { key: 'status', header: '상태', align: 'center' },
@@ -13352,7 +13473,11 @@ const data = [
   margin-top: 10px;
   padding-top: 20px;
   border-top: 1px solid ${({theme:e})=>e.colors.border};
-`,V5e=()=>(0,R.jsx)(Kl,{title:`14. Form Layout`,description:`입력 폼 요소들을 Grid나 Flex를 사용하여 정렬하고, 모바일에서는 자동으로 세로 배치되도록 구성하는 실무 폼 레이아웃 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(R5e,{onSubmit:e=>e.preventDefault(),children:[(0,R.jsxs)(z5e,{children:[(0,R.jsx)(D9,{label:`이름 (First Name)`,placeholder:`길동`,fullWidth:!0}),(0,R.jsx)(D9,{label:`성 (Last Name)`,placeholder:`홍`,fullWidth:!0})]}),(0,R.jsx)(D9,{label:`이메일 주소`,type:`email`,placeholder:`hong@example.com`,fullWidth:!0}),(0,R.jsxs)(z5e,{children:[(0,R.jsx)(D9,{label:`비밀번호`,type:`password`,fullWidth:!0}),(0,R.jsx)(D9,{label:`비밀번호 확인`,type:`password`,fullWidth:!0})]}),(0,R.jsx)(D9,{label:`상세 주소`,placeholder:`서울특별시 강남구...`,fullWidth:!0}),(0,R.jsxs)(B5e,{children:[(0,R.jsx)(T9,{variant:`outline`,children:`초기화`}),(0,R.jsx)(T9,{variant:`primary`,type:`submit`,children:`회원가입 완료`})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`const FormRow = styled.div\`
+`,V5e=()=>(0,R.jsx)(Kl,{title:`14. Form Layout`,description:`입력 폼 요소들을 Grid나 Flex를 사용하여 정렬하고, 모바일에서는 자동으로 세로 배치되도록 구성하는 실무 폼 레이아웃 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(R5e,{onSubmit:e=>e.preventDefault(),children:[(0,R.jsxs)(z5e,{children:[(0,R.jsx)(D9,{label:`이름 (First Name)`,placeholder:`길동`,fullWidth:!0}),(0,R.jsx)(D9,{label:`성 (Last Name)`,placeholder:`홍`,fullWidth:!0})]}),(0,R.jsx)(D9,{label:`이메일 주소`,type:`email`,placeholder:`hong@example.com`,fullWidth:!0}),(0,R.jsxs)(z5e,{children:[(0,R.jsx)(D9,{label:`비밀번호`,type:`password`,fullWidth:!0}),(0,R.jsx)(D9,{label:`비밀번호 확인`,type:`password`,fullWidth:!0})]}),(0,R.jsx)(D9,{label:`상세 주소`,placeholder:`서울특별시 강남구...`,fullWidth:!0}),(0,R.jsxs)(B5e,{children:[(0,R.jsx)(T9,{variant:`outline`,children:`초기화`}),(0,R.jsx)(T9,{variant:`primary`,type:`submit`,children:`회원가입 완료`})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Form Layout은 라벨, 입력, 에러 메시지, 버튼 영역의 간격과 정렬을 일정하게 만드는 구조 코드입니다.
+Grid와 Flex를 조합해 데스크톱에서는 2열, 모바일에서는 1열로 자연스럽게 전환합니다.
+*/
+const FormRow = styled.div\`
   display: flex;
   gap: 16px;
 
@@ -13399,7 +13524,11 @@ const data = [
   @media (max-width: 768px) {
     grid-column: span 12;
   }
-`,U5e=()=>(0,R.jsx)(Kl,{title:`15. Dashboard Layout (12-Grid System)`,description:`CSS Grid를 활용하여 실무에서 가장 많이 쓰이는 12-Grid 기반 대시보드 레이아웃을 구성하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(H5e,{children:[(0,R.jsxs)(P9,{span:3,bg:`rgba(49, 106, 255, 0.05)`,children:[`Total Users`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#316AFF`},children:`1,204`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(5, 205, 153, 0.05)`,children:[`Revenue`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#05CD99`},children:`$8,430`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(255, 181, 71, 0.05)`,children:[`Conversion`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#FFB547`},children:`3.2%`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(238, 93, 80, 0.05)`,children:[`Bounce Rate`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#EE5D50`},children:`42.1%`})]}),(0,R.jsxs)(P9,{span:8,rows:2,children:[`Main Activity Chart Area`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 8)`})]}),(0,R.jsxs)(P9,{span:4,rows:2,children:[`Recent Transactions`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 4)`})]}),(0,R.jsxs)(P9,{span:12,children:[`Full Width Data Table`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 12)`})]})]}),(0,R.jsx)(Fx,{rawCode:`const DashboardGrid = styled.div\`
+`,U5e=()=>(0,R.jsx)(Kl,{title:`15. Dashboard Layout (12-Grid System)`,description:`CSS Grid를 활용하여 실무에서 가장 많이 쓰이는 12-Grid 기반 대시보드 레이아웃을 구성하는 방법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(H5e,{children:[(0,R.jsxs)(P9,{span:3,bg:`rgba(49, 106, 255, 0.05)`,children:[`Total Users`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#316AFF`},children:`1,204`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(5, 205, 153, 0.05)`,children:[`Revenue`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#05CD99`},children:`$8,430`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(255, 181, 71, 0.05)`,children:[`Conversion`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#FFB547`},children:`3.2%`})]}),(0,R.jsxs)(P9,{span:3,bg:`rgba(238, 93, 80, 0.05)`,children:[`Bounce Rate`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`span`,{style:{fontSize:`24px`,color:`#EE5D50`},children:`42.1%`})]}),(0,R.jsxs)(P9,{span:8,rows:2,children:[`Main Activity Chart Area`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 8)`})]}),(0,R.jsxs)(P9,{span:4,rows:2,children:[`Recent Transactions`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 4)`})]}),(0,R.jsxs)(P9,{span:12,children:[`Full Width Data Table`,(0,R.jsx)(`div`,{style:{marginTop:`10px`,fontSize:`0.85rem`,fontWeight:`normal`},children:`(grid-column: span 12)`})]})]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+대시보드 레이아웃은 12컬럼 Grid를 사용하면 KPI, 차트, 테이블 영역을 유연하게 배치할 수 있습니다.
+GridCell의 span으로 데스크톱 배치를 조절하고 모바일에서는 한 컬럼으로 접어 겹침을 방지합니다.
+*/
+const DashboardGrid = styled.div\`
   display: grid;
   grid-template-columns: repeat(12, 1fr); // 12그리드 시스템
   gap: 20px;
@@ -13469,7 +13598,11 @@ const GridCell = styled.div<{ span?: number }>\`
   @media (max-width: 768px) {
     display: flex;
   }
-`,Y5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`16. Sidebar Layout`,description:`PC에서는 고정(Fixed)되어 있고, 모바일에서는 토글(Toggle) 애니메이션으로 나타나는 사이드바 레이아웃 패턴입니다. 화면 크기를 줄여보세요.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(J5e,{children:(0,R.jsx)(T9,{size:`small`,onClick:()=>t(!e),children:`☰ 메뉴 토글`})}),(0,R.jsxs)(W5e,{children:[(0,R.jsxs)(G5e,{isOpen:e,children:[(0,R.jsx)(`h3`,{style:{marginBottom:`20px`},children:`Admin Menu`}),(0,R.jsx)(q5e,{children:`Dashboard`}),(0,R.jsx)(`div`,{style:{padding:`10px 15px`,color:`gray`},children:`Users`}),(0,R.jsx)(`div`,{style:{padding:`10px 15px`,color:`gray`},children:`Settings`})]}),(0,R.jsxs)(K5e,{children:[(0,R.jsx)(`h3`,{children:`메인 컨텐츠 영역`}),(0,R.jsxs)(`p`,{style:{marginTop:`10px`,lineHeight:`1.6`,color:`var(--textMuted)`},children:[`flexbox를 활용하여 Sidebar는 고정 너비를 가지고,`,(0,R.jsx)(`br`,{}),`MainContent는 `,(0,R.jsx)(`code`,{children:`flex: 1`}),` 속성을 통해 남은 너비를 모두 차지하게 됩니다.`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`br`,{}),`브라우저 창 크기를 줄여(모바일 뷰) 보시면, 사이드바가 화면 밖으로 숨겨지고, '☰ 메뉴 토글' 버튼을 통해서만 열고 닫을 수 있습니다.`]})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`const Sidebar = styled.aside<{ isOpen: boolean }>\`
+`,Y5e=()=>{let[e,t]=(0,S.useState)(!1);return(0,R.jsx)(Kl,{title:`16. Sidebar Layout`,description:`PC에서는 고정(Fixed)되어 있고, 모바일에서는 토글(Toggle) 애니메이션으로 나타나는 사이드바 레이아웃 패턴입니다. 화면 크기를 줄여보세요.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(J5e,{children:(0,R.jsx)(T9,{size:`small`,onClick:()=>t(!e),children:`☰ 메뉴 토글`})}),(0,R.jsxs)(W5e,{children:[(0,R.jsxs)(G5e,{isOpen:e,children:[(0,R.jsx)(`h3`,{style:{marginBottom:`20px`},children:`Admin Menu`}),(0,R.jsx)(q5e,{children:`Dashboard`}),(0,R.jsx)(`div`,{style:{padding:`10px 15px`,color:`gray`},children:`Users`}),(0,R.jsx)(`div`,{style:{padding:`10px 15px`,color:`gray`},children:`Settings`})]}),(0,R.jsxs)(K5e,{children:[(0,R.jsx)(`h3`,{children:`메인 컨텐츠 영역`}),(0,R.jsxs)(`p`,{style:{marginTop:`10px`,lineHeight:`1.6`,color:`var(--textMuted)`},children:[`flexbox를 활용하여 Sidebar는 고정 너비를 가지고,`,(0,R.jsx)(`br`,{}),`MainContent는 `,(0,R.jsx)(`code`,{children:`flex: 1`}),` 속성을 통해 남은 너비를 모두 차지하게 됩니다.`,(0,R.jsx)(`br`,{}),(0,R.jsx)(`br`,{}),`브라우저 창 크기를 줄여(모바일 뷰) 보시면, 사이드바가 화면 밖으로 숨겨지고, '☰ 메뉴 토글' 버튼을 통해서만 열고 닫을 수 있습니다.`]})]})]}),(0,R.jsx)(`div`,{style:{marginTop:`30px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Sidebar Layout은 데스크톱에서는 고정 내비게이션, 모바일에서는 열고 닫히는 패널로 동작하는 앱 구조입니다.
+isOpen prop으로 위치와 표시 상태를 제어하면 같은 마크업으로 반응형 메뉴를 구현할 수 있습니다.
+*/
+const Sidebar = styled.aside<{ isOpen: boolean }>\`
   width: 240px;
   transition: transform 0.3s ease-in-out;
 
@@ -13504,7 +13637,11 @@ const MainContent = styled.main\`
 
   /* 다중 라인 말줄임 */
   ${({lines:e})=>w8e(e)}
-`,Q5e=()=>(0,R.jsx)(Kl,{title:`17. 말줄임 (Ellipsis) 처리 패턴`,description:`텍스트가 영역을 넘어갈 때 말줄임표(...)로 깔끔하게 처리하는 1줄 및 다중 라인 믹스인 사용법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Single Line Ellipsis (1줄 말줄임)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`너비 250px 고정, 넘치면 자르고 ... 표시`}),(0,R.jsx)(X5e,{children:`이 텍스트는 매우 길어서 한 줄을 넘어가게 됩니다. 그러면 자동으로 CSS 믹스인에 의해 말줄임 처리가 완벽하게 적용됩니다.`}),(0,R.jsx)(`h3`,{children:`2. Multi Line Ellipsis (다중 라인 말줄임)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`너비 300px 고정, 2줄 또는 3줄 이상일 때 자르고 ... 표시`}),(0,R.jsx)(`h5`,{style:{marginTop:`10px`},children:`2줄 세팅`}),(0,R.jsx)(Z5e,{lines:2,children:`이것은 상품의 상세 설명이나 블로그 포스트의 요약을 보여줄 때 아주 유용한 다중 라인 말줄임 처리 기술입니다. 웹킷 전용 속성(-webkit-line-clamp)을 사용하지만, 현재 대부분의 모던 브라우저에서 아주 잘 지원하고 있습니다. 따라서 실무에서 안심하고 사용할 수 있는 표준적인 방법입니다.`}),(0,R.jsx)(`h5`,{style:{marginTop:`20px`},children:`3줄 세팅`}),(0,R.jsx)(Z5e,{lines:3,children:`이것은 상품의 상세 설명이나 블로그 포스트의 요약을 보여줄 때 아주 유용한 다중 라인 말줄임 처리 기술입니다. 웹킷 전용 속성(-webkit-line-clamp)을 사용하지만, 현재 대부분의 모던 브라우저에서 아주 잘 지원하고 있습니다. 따라서 실무에서 안심하고 사용할 수 있는 표준적인 방법입니다.`}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`// src/styles/mixins.ts
+`,Q5e=()=>(0,R.jsx)(Kl,{title:`17. 말줄임 (Ellipsis) 처리 패턴`,description:`텍스트가 영역을 넘어갈 때 말줄임표(...)로 깔끔하게 처리하는 1줄 및 다중 라인 믹스인 사용법입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Single Line Ellipsis (1줄 말줄임)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`너비 250px 고정, 넘치면 자르고 ... 표시`}),(0,R.jsx)(X5e,{children:`이 텍스트는 매우 길어서 한 줄을 넘어가게 됩니다. 그러면 자동으로 CSS 믹스인에 의해 말줄임 처리가 완벽하게 적용됩니다.`}),(0,R.jsx)(`h3`,{children:`2. Multi Line Ellipsis (다중 라인 말줄임)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`너비 300px 고정, 2줄 또는 3줄 이상일 때 자르고 ... 표시`}),(0,R.jsx)(`h5`,{style:{marginTop:`10px`},children:`2줄 세팅`}),(0,R.jsx)(Z5e,{lines:2,children:`이것은 상품의 상세 설명이나 블로그 포스트의 요약을 보여줄 때 아주 유용한 다중 라인 말줄임 처리 기술입니다. 웹킷 전용 속성(-webkit-line-clamp)을 사용하지만, 현재 대부분의 모던 브라우저에서 아주 잘 지원하고 있습니다. 따라서 실무에서 안심하고 사용할 수 있는 표준적인 방법입니다.`}),(0,R.jsx)(`h5`,{style:{marginTop:`20px`},children:`3줄 세팅`}),(0,R.jsx)(Z5e,{lines:3,children:`이것은 상품의 상세 설명이나 블로그 포스트의 요약을 보여줄 때 아주 유용한 다중 라인 말줄임 처리 기술입니다. 웹킷 전용 속성(-webkit-line-clamp)을 사용하지만, 현재 대부분의 모던 브라우저에서 아주 잘 지원하고 있습니다. 따라서 실무에서 안심하고 사용할 수 있는 표준적인 방법입니다.`}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+말줄임 처리는 제목, 설명, 테이블 셀처럼 길이가 예측되지 않는 텍스트가 레이아웃을 깨는 상황을 막습니다.
+한 줄과 여러 줄 처리를 mixin으로 분리해 카드, 리스트, 테이블에서 반복 사용할 수 있습니다.
+*/
+// src/styles/mixins.ts
 export const textEllipsis = css\`
   overflow: hidden;
   text-overflow: ellipsis;
@@ -13551,7 +13688,11 @@ const MultiLine = styled.div\`
   border-radius: 8px;
 
   ${T8e}
-`,t7e=()=>(0,R.jsx)(Kl,{title:`18. 스크롤바 디자인 / 숨김 패턴`,description:`브라우저 기본 투박한 스크롤바를 예쁘게 커스텀하거나, 스크롤 기능은 유지하되 스크롤바만 보이지 않게 숨기는 믹스인입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. 커스텀 스크롤바 (Custom Scrollbar)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`아래 박스를 스크롤 해보세요. 얇고 둥근 커스텀 스크롤바가 적용되어 있습니다.`}),(0,R.jsx)($5e,{children:Array.from({length:10}).map((e,t)=>(0,R.jsxs)(`p`,{style:{marginBottom:`10px`},children:[`내용이 들어가는 줄입니다. (줄 번호: `,t+1,`)`]},t))}),(0,R.jsx)(`h3`,{children:`2. 스크롤바 숨김 (Hidden Scrollbar)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`아래 박스를 스크롤 해보세요. 스크롤은 정상적으로 되지만 스크롤바가 보이지 않습니다. 주로 모바일 가로 스와이프 UI에서 많이 쓰입니다.`}),(0,R.jsx)(e7e,{children:Array.from({length:10}).map((e,t)=>(0,R.jsxs)(`p`,{style:{marginBottom:`10px`},children:[`스크롤바가 없는 컨텐츠 영역입니다. (줄 번호: `,t+1,`)`]},t))}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`// src/styles/mixins.ts
+`,t7e=()=>(0,R.jsx)(Kl,{title:`18. 스크롤바 디자인 / 숨김 패턴`,description:`브라우저 기본 투박한 스크롤바를 예쁘게 커스텀하거나, 스크롤 기능은 유지하되 스크롤바만 보이지 않게 숨기는 믹스인입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. 커스텀 스크롤바 (Custom Scrollbar)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`아래 박스를 스크롤 해보세요. 얇고 둥근 커스텀 스크롤바가 적용되어 있습니다.`}),(0,R.jsx)($5e,{children:Array.from({length:10}).map((e,t)=>(0,R.jsxs)(`p`,{style:{marginBottom:`10px`},children:[`내용이 들어가는 줄입니다. (줄 번호: `,t+1,`)`]},t))}),(0,R.jsx)(`h3`,{children:`2. 스크롤바 숨김 (Hidden Scrollbar)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`10px`},children:`아래 박스를 스크롤 해보세요. 스크롤은 정상적으로 되지만 스크롤바가 보이지 않습니다. 주로 모바일 가로 스와이프 UI에서 많이 쓰입니다.`}),(0,R.jsx)(e7e,{children:Array.from({length:10}).map((e,t)=>(0,R.jsxs)(`p`,{style:{marginBottom:`10px`},children:[`스크롤바가 없는 컨텐츠 영역입니다. (줄 번호: `,t+1,`)`]},t))}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+스크롤바 스타일은 긴 목록, 로그 패널, 테이블 컨테이너처럼 스크롤 영역이 명확한 곳에 제한적으로 적용합니다.
+공통 mixin으로 만들면 브라우저별 스크롤바 CSS를 반복하지 않아도 됩니다.
+*/
+// src/styles/mixins.ts
 export const customScrollbar = css\`
   &::-webkit-scrollbar {
     width: 6px;
@@ -13616,7 +13757,11 @@ export const hideScrollbar = css\`
   &:hover {
     /* 변화 없음 */
   }
-`,i7e=()=>(0,R.jsx)(Kl,{title:`19. 상태 (Hover/Active/Disabled) 처리`,description:`의사 클래스(Pseudo-class)를 활용하여 마우스 인터랙션과 컴포넌트 비활성화 상태를 세련되게 스타일링하는 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Interactive State (Hover & Active)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`20px`},children:`마우스를 올리고 클릭(꾹 누르기)해 보세요. 부드러운 트랜지션과 액션 피드백이 적용되어 있습니다.`}),(0,R.jsx)(n7e,{children:`Hover and Click Me!`}),(0,R.jsx)(`h3`,{style:{marginTop:`40px`},children:`2. Disabled State`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`20px`},children:`인터랙션이 비활성화된 상태입니다. 커서가 금지 표시로 바뀌고 색상이 옅어집니다.`}),(0,R.jsx)(r7e,{children:`Disabled Element`}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`const InteractiveBox = styled.div\`
+`,i7e=()=>(0,R.jsx)(Kl,{title:`19. 상태 (Hover/Active/Disabled) 처리`,description:`의사 클래스(Pseudo-class)를 활용하여 마우스 인터랙션과 컴포넌트 비활성화 상태를 세련되게 스타일링하는 패턴입니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsx)(`h3`,{children:`1. Interactive State (Hover & Active)`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`20px`},children:`마우스를 올리고 클릭(꾹 누르기)해 보세요. 부드러운 트랜지션과 액션 피드백이 적용되어 있습니다.`}),(0,R.jsx)(n7e,{children:`Hover and Click Me!`}),(0,R.jsx)(`h3`,{style:{marginTop:`40px`},children:`2. Disabled State`}),(0,R.jsx)(`p`,{style:{color:`gray`,marginBottom:`20px`},children:`인터랙션이 비활성화된 상태입니다. 커서가 금지 표시로 바뀌고 색상이 옅어집니다.`}),(0,R.jsx)(r7e,{children:`Disabled Element`}),(0,R.jsx)(`div`,{style:{marginTop:`40px`},children:(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Hover, active, focus, disabled 상태는 버튼과 카드의 사용 가능 여부와 현재 상호작용을 알려주는 기본 피드백입니다.
+특히 focus-visible은 키보드 사용자를 위한 접근성 표시이므로 제거하지 않고 디자인에 맞게 조정합니다.
+*/
+const InteractiveBox = styled.div\`
   cursor: pointer;
   transition: all 0.2s ease;
 
@@ -13656,7 +13801,11 @@ const DisabledBox = styled.div\`
     margin-bottom: 16px;
     color: ${({theme:e})=>e.colors.text};
   }
-`,a7e=()=>(0,R.jsx)(Kl,{title:`20. styled-components 실무 팁 및 안티패턴`,description:`실무에서 styled-components를 다룰 때 자주 하는 실수(Anti-patterns)와 이를 해결하기 위한 모범 사례(Best Practices)를 정리했습니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`컴포넌트 렌더링 함수 외부에 선언하기`}),(0,R.jsxs)(`p`,{children:[`가장 흔한 실수 중 하나는 렌더링 함수 내부에 `,(0,R.jsx)(`code`,{children:`styled`}),` 컴포넌트를 선언하는 것입니다. 이렇게 하면 상태가 변경되어 리렌더링 될 때마다 완전히 새로운 컴포넌트로 인식되어 DOM에서 unmount 후 다시 mount 되기 때문에`,(0,R.jsx)(`strong`,{children:`성능 저하`}),`와 `,(0,R.jsx)(`strong`,{children:`인풋 포커스 잃음(Focus loss)`}),` 현상이 발생합니다.`]}),(0,R.jsx)(Fx,{rawCode:`// ❌ 잘못된 패턴 (컴포넌트 내부에 styled 선언)
+`,a7e=()=>(0,R.jsx)(Kl,{title:`20. styled-components 실무 팁 및 안티패턴`,description:`실무에서 styled-components를 다룰 때 자주 하는 실수(Anti-patterns)와 이를 해결하기 위한 모범 사례(Best Practices)를 정리했습니다.`,children:(0,R.jsxs)(b9,{children:[(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`컴포넌트 렌더링 함수 외부에 선언하기`}),(0,R.jsxs)(`p`,{children:[`가장 흔한 실수 중 하나는 렌더링 함수 내부에 `,(0,R.jsx)(`code`,{children:`styled`}),` 컴포넌트를 선언하는 것입니다. 이렇게 하면 상태가 변경되어 리렌더링 될 때마다 완전히 새로운 컴포넌트로 인식되어 DOM에서 unmount 후 다시 mount 되기 때문에`,(0,R.jsx)(`strong`,{children:`성능 저하`}),`와 `,(0,R.jsx)(`strong`,{children:`인풋 포커스 잃음(Focus loss)`}),` 현상이 발생합니다.`]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+styled 컴포넌트는 렌더링 함수 밖에 선언해야 합니다.
+컴포넌트 내부에서 매 렌더마다 새 styled 컴포넌트를 만들면 성능 저하와 input focus loss 같은 문제가 생길 수 있습니다.
+*/
+// ❌ 잘못된 패턴 (컴포넌트 내부에 styled 선언)
 const MyComponent = () => {
   // 렌더링 될 때마다 새로운 클래스가 생성되어 성능 저하 및 포커스 잃음 현상 발생
   const BadButton = styled.button\`color: red;\`;
@@ -13669,7 +13818,11 @@ const GoodButton = styled.button\`color: red;\`;
 
 const MyComponent = () => {
   return <GoodButton>클릭</GoodButton>;
-};`,language:`tsx`,filename:`Anti-pattern 1`})]}),(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`Transient Props ($ 기호) 사용하기`}),(0,R.jsxs)(`p`,{children:[`스타일링 목적으로만 사용하는 props가 HTML DOM의 표준 속성이 아닐 경우 (예: `,(0,R.jsx)(`code`,{children:`isError`}),`, `,(0,R.jsx)(`code`,{children:`active`}),` 등), React는 브라우저 콘솔에 `,(0,R.jsx)(`code`,{children:`Unknown prop warning`}),` 경고를 출력합니다. styled-components v5.1부터 지원하는 `,(0,R.jsxs)(`strong`,{children:[`Transient props (`,(0,R.jsx)(`code`,{children:`$`}),`)`]}),`를 사용하면 DOM으로 속성이 전달되는 것을 막을 수 있습니다.`]}),(0,R.jsx)(Fx,{rawCode:`// ❌ DOM에 불필요한 props가 전달되어 React Warning 발생
+};`,language:`tsx`,filename:`Anti-pattern 1`})]}),(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`Transient Props ($ 기호) 사용하기`}),(0,R.jsxs)(`p`,{children:[`스타일링 목적으로만 사용하는 props가 HTML DOM의 표준 속성이 아닐 경우 (예: `,(0,R.jsx)(`code`,{children:`isError`}),`, `,(0,R.jsx)(`code`,{children:`active`}),` 등), React는 브라우저 콘솔에 `,(0,R.jsx)(`code`,{children:`Unknown prop warning`}),` 경고를 출력합니다. styled-components v5.1부터 지원하는 `,(0,R.jsxs)(`strong`,{children:[`Transient props (`,(0,R.jsx)(`code`,{children:`$`}),`)`]}),`를 사용하면 DOM으로 속성이 전달되는 것을 막을 수 있습니다.`]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+Transient props는 스타일 계산에만 쓰는 props가 실제 DOM 속성으로 내려가지 않게 막는 styled-components 문법입니다.
+$ prefix를 붙이면 React unknown prop warning을 피하면서 타입 기반 스타일링을 유지할 수 있습니다.
+*/
+// ❌ DOM에 불필요한 props가 전달되어 React Warning 발생
 const CustomBox = styled.div<{ isError: boolean }>\`
   color: \${({ isError }) => isError ? 'red' : 'black'};
 \`;
@@ -13680,7 +13833,11 @@ const CustomBox = styled.div<{ $isError: boolean }>\`
   color: \${({ $isError }) => $isError ? 'red' : 'black'};
 \`;
 
-<CustomBox $isError={true}>에러 박스</CustomBox>`,language:`tsx`,filename:`Transient Props`})]}),(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`기존 컴포넌트 확장 (Extending Styles)`}),(0,R.jsxs)(`p`,{children:[`React Router의 `,(0,R.jsx)(`code`,{children:`Link`}),`나 외부 라이브러리 컴포넌트(UI 프레임워크 등)에 커스텀 스타일을 입히고 싶을 때는`,(0,R.jsx)(`code`,{children:`styled(Component)`}),` 문법을 사용합니다. 단, 해당 컴포넌트가 내부적으로 `,(0,R.jsx)(`code`,{children:`className`}),` prop을 루트 DOM 엘리먼트에 전달하도록 구현되어 있어야 스타일이 정상적으로 적용됩니다.`]}),(0,R.jsx)(Fx,{rawCode:`// 기존 컴포넌트나 서드파티 라이브러리 컴포넌트 스타일 오버라이딩
+<CustomBox $isError={true}>에러 박스</CustomBox>`,language:`tsx`,filename:`Transient Props`})]}),(0,R.jsxs)(F9,{children:[(0,R.jsx)(`h3`,{children:`기존 컴포넌트 확장 (Extending Styles)`}),(0,R.jsxs)(`p`,{children:[`React Router의 `,(0,R.jsx)(`code`,{children:`Link`}),`나 외부 라이브러리 컴포넌트(UI 프레임워크 등)에 커스텀 스타일을 입히고 싶을 때는`,(0,R.jsx)(`code`,{children:`styled(Component)`}),` 문법을 사용합니다. 단, 해당 컴포넌트가 내부적으로 `,(0,R.jsx)(`code`,{children:`className`}),` prop을 루트 DOM 엘리먼트에 전달하도록 구현되어 있어야 스타일이 정상적으로 적용됩니다.`]}),(0,R.jsx)(Fx,{rawCode:`/* [설명]
+styled(Component)는 React Router Link나 외부 UI 컴포넌트를 기존 기능은 유지한 채 스타일만 확장할 때 사용합니다.
+단, 대상 컴포넌트가 className을 루트 DOM에 전달해야 styled-components 스타일이 적용됩니다.
+*/
+// 기존 컴포넌트나 서드파티 라이브러리 컴포넌트 스타일 오버라이딩
 import { Link } from 'react-router-dom';
 
 // 컴포넌트를 styled() 함수로 감싸기
