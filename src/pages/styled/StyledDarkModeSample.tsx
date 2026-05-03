@@ -28,7 +28,11 @@ export const StyledDarkModeSample: React.FC = () => {
   // 샘플 내부에서만 토글하기 위한 지역 state
   const [isDark, setIsDark] = useState(false);
 
-  const codeString = `// 최상위 App.tsx
+  const codeString = `/* [설명]
+다크모드는 ThemeProvider에 전달하는 theme 객체를 전환하는 방식으로 구현합니다.
+컴포넌트는 하드코딩 색상 대신 theme.colors를 참조하므로 라이트/다크 테마가 전체 UI에 일관되게 적용됩니다.
+*/
+// 최상위 App.tsx
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './styles/theme';
 

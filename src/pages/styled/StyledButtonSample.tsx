@@ -22,7 +22,11 @@ export const StyledButtonSample: React.FC = () => {
     setTimeout(() => setLoading(false), 2000);
   };
 
-  const codeString = `<StyledButton variant="primary">Primary</StyledButton>
+  const codeString = `/* [설명]
+StyledButton은 variant, size, loading, disabled 같은 버튼 상태를 props로 제어하는 공통 버튼 패턴입니다.
+화면마다 버튼 CSS를 새로 만들지 않고 제한된 옵션으로 재사용하면 UI 일관성과 유지보수성이 좋아집니다.
+*/
+<StyledButton variant="primary">Primary</StyledButton>
 <StyledButton variant="secondary">Secondary</StyledButton>
 <StyledButton variant="danger">Danger</StyledButton>
 <StyledButton variant="outline">Outline</StyledButton>

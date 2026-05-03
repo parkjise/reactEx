@@ -41,7 +41,11 @@ const ScrollBox = styled.div`
 `;
 
 export const StyledMixinsSample: React.FC = () => {
-  const codeString = `// src/styles/mixins.ts
+  const codeString = `/* [설명]
+mixins는 반복되는 CSS 조각을 함수처럼 재사용하기 위한 styled-components helper입니다.
+flexCenter, textEllipsis, media query처럼 자주 쓰는 규칙을 모아두면 스타일 중복과 오타를 줄일 수 있습니다.
+*/
+// src/styles/mixins.ts
 import { css } from 'styled-components';
 
 export const flexCenter = css\`

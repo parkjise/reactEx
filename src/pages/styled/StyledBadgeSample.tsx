@@ -25,7 +25,82 @@ const ListItem = styled.div`
 `;
 
 export const StyledBadgeSample: React.FC = () => {
-  const codeString = `<StyledBadge variant="default">대기중</StyledBadge>
+  const componentCode = `/* [설명]
+StyledBadge는 주문 상태, 승인 상태, 알림 수, 태그처럼 짧은 상태값을 일관된 UI로 보여주는 공통 컴포넌트입니다.
+
+- variant 타입을 union으로 제한해서 primary, success, error, warning, default 외의 값을 사용할 수 없게 합니다.
+- variantStyles 객체에 색상별 스타일을 모아두면 상태가 늘어날 때 한 곳만 수정하면 됩니다.
+- pill prop은 둥근 배지와 기본 사각 배지를 같은 컴포넌트에서 제어하기 위한 boolean 옵션입니다.
+- 실무에서는 주문 상태, 사용자 권한, 결제 상태, 게시글 공개 상태처럼 반복되는 상태 라벨에 재사용합니다.
+*/
+// src/components/styled/StyledBadge.tsx
+import React from 'react';
+import styled, { css } from 'styled-components';
+
+export type BadgeVariant = 'primary' | 'success' | 'error' | 'warning' | 'default';
+
+interface StyledBadgeProps {
+  children: React.ReactNode;
+  variant?: BadgeVariant;
+  pill?: boolean;
+}
+
+const variantStyles = {
+  primary: css\`
+    background-color: rgba(49, 106, 255, 0.1);
+    color: \${({ theme }) => theme.colors.primary};
+  \`,
+  success: css\`
+    background-color: rgba(5, 205, 153, 0.1);
+    color: \${({ theme }) => theme.colors.success};
+  \`,
+  error: css\`
+    background-color: rgba(238, 93, 80, 0.1);
+    color: \${({ theme }) => theme.colors.error};
+  \`,
+  warning: css\`
+    background-color: rgba(255, 181, 71, 0.1);
+    color: #ffb547;
+  \`,
+  default: css\`
+    background-color: \${({ theme }) => theme.colors.background};
+    color: \${({ theme }) => theme.colors.textMuted};
+  \`,
+};
+
+const BadgeWrapper = styled.span<{ variant: BadgeVariant; pill?: boolean }>\`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: \${({ pill }) => (pill ? '999px' : '4px')};
+  
+  \${({ variant }) => variantStyles[variant]}
+\`;
+
+export const StyledBadge: React.FC<StyledBadgeProps> = ({
+  children,
+  variant = 'default',
+  pill,
+}) => {
+  return (
+    <BadgeWrapper variant={variant} pill={pill}>
+      {children}
+    </BadgeWrapper>
+  );
+};`;
+
+  const usageCode = `/* [설명]
+StyledBadge는 화면에서 상태 텍스트를 직접 색칠하지 않고 variant만 넘겨 사용합니다.
+
+- default는 일반 대기 상태처럼 강조가 약한 값에 사용합니다.
+- primary는 진행중, 선택됨, 현재 상태처럼 주요 상태에 사용합니다.
+- success, warning, error는 완료/주의/실패처럼 의미가 분명한 상태에 사용합니다.
+- pill은 New, 99+, Beta처럼 작은 태그나 카운터 배지에 적합합니다.
+*/
+<StyledBadge variant="default">대기중</StyledBadge>
 <StyledBadge variant="primary">진행중</StyledBadge>
 <StyledBadge variant="success">완료됨</StyledBadge>
 <StyledBadge variant="error">실패</StyledBadge>
@@ -72,7 +147,8 @@ export const StyledBadgeSample: React.FC = () => {
           </ListItem>
         </div>
 
-        <CodeViewer rawCode={codeString} language="tsx" filename="Badge Usage" />
+        <CodeViewer rawCode={componentCode} language="tsx" filename="StyledBadge.tsx" />
+        <CodeViewer rawCode={usageCode} language="tsx" filename="Badge Usage" />
       </StyledCard>
     </SamplePageLayout>
   );

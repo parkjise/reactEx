@@ -22,7 +22,11 @@ const FormGrid = styled.div`
 export const StyledInputSample: React.FC = () => {
   const [agree, setAgree] = useState(false);
 
-  const codeString = `// 1. 기본 Input
+  const codeString = `/* [설명]
+입력 컴포넌트는 label, error, disabled 상태를 함께 다뤄야 실무 폼에서 재사용하기 좋습니다.
+공통 Input, Select, Checkbox를 분리하면 회원가입, 검색 필터, 관리자 설정 폼에서 같은 UX를 유지할 수 있습니다.
+*/
+// 1. 기본 Input
 <StyledInput label="이름" placeholder="이름을 입력하세요" fullWidth />
 
 // 2. 에러 상태 Input

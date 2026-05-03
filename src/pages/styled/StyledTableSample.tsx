@@ -46,7 +46,11 @@ const tableData = [
 ];
 
 export const StyledTableSample: React.FC = () => {
-  const codeString = `const columns = [
+  const codeString = `/* [설명]
+Table 스타일링은 헤더, 셀 간격, 행 hover, 상태 배지를 조합해 많은 데이터를 빠르게 읽게 만드는 패턴입니다.
+컬럼 정의와 데이터 배열을 분리하면 관리자 목록, 주문 내역, 결제 테이블에 재사용하기 쉽습니다.
+*/
+const columns = [
   { key: 'id', header: '주문번호', width: '100px' },
   { key: 'product', header: '상품명', width: '250px' },
   { key: 'status', header: '상태', align: 'center' },

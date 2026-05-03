@@ -36,7 +36,11 @@ const GridCell = styled.div<{ span?: number; rows?: number; bg?: string }>`
 `;
 
 export const StyledDashboardLayoutSample: React.FC = () => {
-  const codeString = `const DashboardGrid = styled.div\`
+  const codeString = `/* [설명]
+대시보드 레이아웃은 12컬럼 Grid를 사용하면 KPI, 차트, 테이블 영역을 유연하게 배치할 수 있습니다.
+GridCell의 span으로 데스크톱 배치를 조절하고 모바일에서는 한 컬럼으로 접어 겹침을 방지합니다.
+*/
+const DashboardGrid = styled.div\`
   display: grid;
   grid-template-columns: repeat(12, 1fr); // 12그리드 시스템
   gap: 20px;

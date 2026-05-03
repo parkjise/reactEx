@@ -20,7 +20,11 @@ const ThemeBox = styled.div<{ bg: string; color: string }>`
 export const StyledThemeSample: React.FC = () => {
   const theme = useTheme(); // JS 레벨에서 테마 값 접근
 
-  const themeCode = `// src/styles/theme.ts
+  const themeCode = `/* [설명]
+theme.ts는 색상, radius, spacing 같은 디자인 토큰을 한 곳에 모아 컴포넌트가 같은 기준을 쓰게 만드는 파일입니다.
+ThemeProvider와 함께 사용하면 하드코딩 색상을 줄이고 브랜드 변경이나 다크모드 대응이 쉬워집니다.
+*/
+// src/styles/theme.ts
 export const lightTheme = {
   colors: {
     primary: '#316AFF',

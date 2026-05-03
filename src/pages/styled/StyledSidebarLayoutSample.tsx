@@ -66,7 +66,11 @@ const MobileHeader = styled.div`
 export const StyledSidebarLayoutSample: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const codeString = `const Sidebar = styled.aside<{ isOpen: boolean }>\`
+  const codeString = `/* [설명]
+Sidebar Layout은 데스크톱에서는 고정 내비게이션, 모바일에서는 열고 닫히는 패널로 동작하는 앱 구조입니다.
+isOpen prop으로 위치와 표시 상태를 제어하면 같은 마크업으로 반응형 메뉴를 구현할 수 있습니다.
+*/
+const Sidebar = styled.aside<{ isOpen: boolean }>\`
   width: 240px;
   transition: transform 0.3s ease-in-out;
 

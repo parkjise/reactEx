@@ -35,7 +35,11 @@ const HiddenScrollBox = styled.div`
 `;
 
 export const StyledScrollbarSample: React.FC = () => {
-  const codeString = `// src/styles/mixins.ts
+  const codeString = `/* [설명]
+스크롤바 스타일은 긴 목록, 로그 패널, 테이블 컨테이너처럼 스크롤 영역이 명확한 곳에 제한적으로 적용합니다.
+공통 mixin으로 만들면 브라우저별 스크롤바 CSS를 반복하지 않아도 됩니다.
+*/
+// src/styles/mixins.ts
 export const customScrollbar = css\`
   &::-webkit-scrollbar {
     width: 6px;

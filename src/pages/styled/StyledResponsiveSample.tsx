@@ -40,7 +40,11 @@ const GridItem = styled.div`
 `;
 
 export const StyledResponsiveSample: React.FC = () => {
-  const codeString = `// src/styles/mixins.ts
+  const codeString = `/* [설명]
+반응형 스타일은 breakpoint 값을 한 곳에 모아두고 mixin으로 재사용하면 화면 기준이 프로젝트 전체에서 흔들리지 않습니다.
+카드 그리드, 폼, 사이드바처럼 넓이에 따라 구조가 달라지는 UI에 사용합니다.
+*/
+// src/styles/mixins.ts
 export const media = {
   mobile: (styles: any) => css\`
     @media (max-width: 576px) { \${styles} }

@@ -28,7 +28,11 @@ const ProfileImage = styled.div`
 `;
 
 export const StyledCardSample: React.FC = () => {
-  const codeString = `<StyledCard padding="30px">
+  const codeString = `/* [설명]
+StyledCard는 대시보드, 프로필, 설정 패널처럼 정보를 하나의 표면으로 묶는 공통 컨테이너입니다.
+padding, shadow 같은 반복 스타일을 props로 제어하면 카드마다 여백과 깊이가 제각각 달라지는 문제를 줄일 수 있습니다.
+*/
+<StyledCard padding="30px">
   <ProfileImage>A</ProfileImage>
   <h3>Admin User</h3>
   <p>시스템 관리 권한을 가진 유저입니다.</p>

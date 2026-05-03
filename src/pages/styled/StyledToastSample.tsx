@@ -28,7 +28,11 @@ export const StyledToastSample: React.FC = () => {
     }, 100);
   };
 
-  const codeString = `// 토스트 상태 관리
+  const codeString = `/* [설명]
+Toast는 저장 완료, 삭제 실패처럼 사용자의 흐름을 막지 않고 짧게 피드백을 주는 알림 UI입니다.
+상태 배열로 여러 알림을 관리하고 일정 시간이 지나면 자동 제거하는 방식이 실무에서 많이 쓰입니다.
+*/
+// 토스트 상태 관리
 const [isVisible, setIsVisible] = useState(false);
 
 <StyledButton onClick={() => setIsVisible(true)}>

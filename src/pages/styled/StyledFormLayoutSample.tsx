@@ -36,7 +36,11 @@ const FormFooter = styled.div`
 `;
 
 export const StyledFormLayoutSample: React.FC = () => {
-  const codeString = `const FormRow = styled.div\`
+  const codeString = `/* [설명]
+Form Layout은 라벨, 입력, 에러 메시지, 버튼 영역의 간격과 정렬을 일정하게 만드는 구조 코드입니다.
+Grid와 Flex를 조합해 데스크톱에서는 2열, 모바일에서는 1열로 자연스럽게 전환합니다.
+*/
+const FormRow = styled.div\`
   display: flex;
   gap: 16px;
 

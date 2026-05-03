@@ -54,7 +54,11 @@ const DisabledBox = styled.div`
 `;
 
 export const StyledStatesSample: React.FC = () => {
-  const codeString = `const InteractiveBox = styled.div\`
+  const codeString = `/* [설명]
+Hover, active, focus, disabled 상태는 버튼과 카드의 사용 가능 여부와 현재 상호작용을 알려주는 기본 피드백입니다.
+특히 focus-visible은 키보드 사용자를 위한 접근성 표시이므로 제거하지 않고 디자인에 맞게 조정합니다.
+*/
+const InteractiveBox = styled.div\`
   cursor: pointer;
   transition: all 0.2s ease;
 

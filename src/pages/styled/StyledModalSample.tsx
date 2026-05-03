@@ -10,7 +10,11 @@ import { CodeViewer } from '../../components/CodeViewer';
 export const StyledModalSample: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const codeString = `// 모달 사용 예시
+  const codeString = `/* [설명]
+Modal은 현재 화면 위에 확인, 입력, 상세 정보를 띄우는 오버레이 UI입니다.
+실무에서는 열림 상태, 배경 클릭, ESC 닫기, 포커스 이동, 스크롤 잠금까지 함께 설계하는 것이 좋습니다.
+*/
+// 모달 사용 예시
 <StyledButton onClick={() => setIsModalOpen(true)}>
   모달 열기
 </StyledButton>

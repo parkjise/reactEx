@@ -32,7 +32,11 @@ const MultiLine = styled.div<{ lines: number }>`
 `;
 
 export const StyledEllipsisSample: React.FC = () => {
-  const codeString = `// src/styles/mixins.ts
+  const codeString = `/* [설명]
+말줄임 처리는 제목, 설명, 테이블 셀처럼 길이가 예측되지 않는 텍스트가 레이아웃을 깨는 상황을 막습니다.
+한 줄과 여러 줄 처리를 mixin으로 분리해 카드, 리스트, 테이블에서 반복 사용할 수 있습니다.
+*/
+// src/styles/mixins.ts
 export const textEllipsis = css\`
   overflow: hidden;
   text-overflow: ellipsis;

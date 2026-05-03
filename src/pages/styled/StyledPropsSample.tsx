@@ -43,7 +43,11 @@ const StatusBox = styled.div<{ status: 'idle' | 'active' | 'error' }>`
 export const StyledPropsSample: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'active' | 'error'>('idle');
 
-  const codeString = `const StatusBox = styled.div<{ status: 'idle' | 'active' | 'error' }>\`
+  const codeString = `/* [설명]
+Props 기반 스타일링은 React 상태값이 곧 CSS 분기 기준일 때 사용합니다.
+status, variant, selected 같은 값을 props로 넘기면 상태별 스타일을 컴포넌트 안에서 명확하게 표현할 수 있습니다.
+*/
+const StatusBox = styled.div<{ status: 'idle' | 'active' | 'error' }>\`
   padding: 20px;
   border-radius: 8px;
   transition: all 0.3s ease;

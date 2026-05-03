@@ -13,7 +13,11 @@ const SampleContainer = styled.div`
 `;
 
 export const StyledGlobalSample: React.FC = () => {
-  const globalStyleCode = `import { createGlobalStyle } from 'styled-components';
+  const globalStyleCode = `/* [설명]
+GlobalStyle은 앱 전체에 한 번 적용되는 reset, body 기본값, 스크롤바, CSS 변수 같은 전역 스타일을 관리합니다.
+컴포넌트 스타일과 전역 스타일의 책임을 분리하면 예상하지 못한 CSS 충돌을 줄일 수 있습니다.
+*/
+import { createGlobalStyle } from 'styled-components';
 import { variables } from './variables';
 
 export const GlobalStyle = createGlobalStyle\`

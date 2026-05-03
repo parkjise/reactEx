@@ -28,7 +28,11 @@ const TipSection = styled.div`
 `;
 
 export const StyledTipsSample: React.FC = () => {
-  const codeTip1 = `// ❌ 잘못된 패턴 (컴포넌트 내부에 styled 선언)
+  const codeTip1 = `/* [설명]
+styled 컴포넌트는 렌더링 함수 밖에 선언해야 합니다.
+컴포넌트 내부에서 매 렌더마다 새 styled 컴포넌트를 만들면 성능 저하와 input focus loss 같은 문제가 생길 수 있습니다.
+*/
+// ❌ 잘못된 패턴 (컴포넌트 내부에 styled 선언)
 const MyComponent = () => {
   // 렌더링 될 때마다 새로운 클래스가 생성되어 성능 저하 및 포커스 잃음 현상 발생
   const BadButton = styled.button\`color: red;\`;
@@ -43,7 +47,11 @@ const MyComponent = () => {
   return <GoodButton>클릭</GoodButton>;
 };`;
 
-  const codeTip2 = `// ❌ DOM에 불필요한 props가 전달되어 React Warning 발생
+  const codeTip2 = `/* [설명]
+Transient props는 스타일 계산에만 쓰는 props가 실제 DOM 속성으로 내려가지 않게 막는 styled-components 문법입니다.
+$ prefix를 붙이면 React unknown prop warning을 피하면서 타입 기반 스타일링을 유지할 수 있습니다.
+*/
+// ❌ DOM에 불필요한 props가 전달되어 React Warning 발생
 const CustomBox = styled.div<{ isError: boolean }>\`
   color: \${({ isError }) => isError ? 'red' : 'black'};
 \`;
@@ -56,7 +64,11 @@ const CustomBox = styled.div<{ $isError: boolean }>\`
 
 <CustomBox $isError={true}>에러 박스</CustomBox>`;
 
-  const codeTip3 = `// 기존 컴포넌트나 서드파티 라이브러리 컴포넌트 스타일 오버라이딩
+  const codeTip3 = `/* [설명]
+styled(Component)는 React Router Link나 외부 UI 컴포넌트를 기존 기능은 유지한 채 스타일만 확장할 때 사용합니다.
+단, 대상 컴포넌트가 className을 루트 DOM에 전달해야 styled-components 스타일이 적용됩니다.
+*/
+// 기존 컴포넌트나 서드파티 라이브러리 컴포넌트 스타일 오버라이딩
 import { Link } from 'react-router-dom';
 
 // 컴포넌트를 styled() 함수로 감싸기
