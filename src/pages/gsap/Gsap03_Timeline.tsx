@@ -127,7 +127,7 @@ export const Gsap03_Timeline: React.FC = () => {
             <Subtitle className="hero-subtitle">Make your UI alive with just a few lines of code.</Subtitle>
             
             <div style={{ marginBottom: '40px' }}>
-              <StyledButton className="hero-btn" variant="success">Get Started</StyledButton>
+              <StyledButton className="hero-btn" variant="primary">Get Started</StyledButton>
             </div>
 
             <FeatureGrid>

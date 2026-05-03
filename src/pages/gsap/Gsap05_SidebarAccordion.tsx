@@ -53,7 +53,7 @@ export const Gsap05_SidebarAccordion: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   // useRef를 사용하여 타임라인 인스턴스 자체를 보관 (리렌더링 시 재생성 방지)
-  const tl = useRef<gsap.core.Timeline>();
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
   useGSAP(() => {
     // 마운트 시 초기 타임라인을 한 번만 생성해둡니다.

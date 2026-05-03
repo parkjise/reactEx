@@ -115,8 +115,8 @@ export const GsapBasics = () => {
       <StyledCard>
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <StyledButton onClick={runToAnim} variant="primary">Run to()</StyledButton>
-          <StyledButton onClick={runFromAnim} variant="success">Run from()</StyledButton>
-          <StyledButton onClick={runFromToAnim} variant="error">Run fromTo()</StyledButton>
+          <StyledButton onClick={runFromAnim} variant="secondary">Run from()</StyledButton>
+          <StyledButton onClick={runFromToAnim} variant="danger">Run fromTo()</StyledButton>
           <StyledButton onClick={runReset} variant="outline">Reset All</StyledButton>
         </div>
 

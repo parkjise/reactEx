@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { createPortal } from 'react-dom';
+
 import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { StyledButton } from '../../components/styled/StyledButton';
