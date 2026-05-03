@@ -437,7 +437,7 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/gsap-optimization', label: '12. 성능 최적화 팁', icon: 'ri-speed-up-line', file: 'Gsap12_OptimizationTips.tsx', component: Gsap12_OptimizationTips, summary: 'GPU 활용 속성 및 Layout Thrashing 방지' },
       { path: '/gsap-adv-parallax', label: '13. 다중 레이어 패럴랙스', icon: 'ri-stack-line', file: 'Gsap13_AdvancedParallax.tsx', component: Gsap13_AdvancedParallax, summary: '스크롤 깊이에 따른 다중 속도 3D 착시' },
       { path: '/gsap-adv-textsplit', label: '14. 고급 텍스트 리빌', icon: 'ri-text', file: 'Gsap14_TextSplitReveal.tsx', component: Gsap14_TextSplitReveal, summary: '단어 단위로 마스크를 뚫고 나오는 스태거 효과' },
-      { path: '/gsap-adv-magnetic', label: '15. 물리 기반 자석 버튼', icon: 'ri-magnet-line', file: 'Gsap15_MagneticButton.tsx', component: Gsap15_MagneticButton, 일상: '커서 방향으로 끌려오는 엘라스틱 모션', summary: '커서 방향으로 끌려오는 엘라스틱 모션' },
+      { path: '/gsap-adv-magnetic', label: '15. 물리 기반 자석 버튼', icon: 'ri-magnet-line', file: 'Gsap15_MagneticButton.tsx', component: Gsap15_MagneticButton, summary: '커서 방향으로 끌려오는 엘라스틱 모션' },
       { path: '/gsap-adv-cursor', label: '16. 커스텀 마우스 커서', icon: 'ri-cursor-line', file: 'Gsap16_CustomCursor.tsx', component: Gsap16_CustomCursor, summary: '물리 궤적을 쫓는 점과 링 커스텀 커서' },
       { path: '/gsap-adv-marquee', label: '17. 무한 롤링 티커', icon: 'ri-repeat-line', file: 'Gsap17_EndlessMarquee.tsx', component: Gsap17_EndlessMarquee, summary: '스크롤 방향에 반응하는 무한 반복 텍스트' },
       { path: '/gsap-adv-flip', label: '18. FLIP 트랜지션', icon: 'ri-picture-in-picture-exit-line', file: 'Gsap18_FlipTransition.tsx', component: Gsap18_FlipTransition, summary: '레이아웃 전이를 부드럽게 잇는 마법의 기법' },

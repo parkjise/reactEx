@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { CodeViewer } from '../../components/CodeViewer';
-import { gsap, Flip } from '../../utils/gsapPlugins';
+import { Flip } from '../../utils/gsapPlugins';
 import { useGSAP } from '@gsap/react';
 
 const GalleryContainer = styled.div`
