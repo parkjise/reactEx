@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { CodeViewer } from '../../components/CodeViewer';
-import { gsap } from '../../utils/gsapPlugins';
+import { gsap, ScrollTrigger } from '../../utils/gsapPlugins';
 import { useGSAP } from '@gsap/react';
 
 const LocalScroller = styled.div`
