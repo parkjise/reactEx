@@ -117,6 +117,20 @@ import {
   TypescriptUtilitySample,
 } from '../pages/typescript/TypescriptGuidePage';
 
+// GSAP Guide
+import { Gsap01_Basics } from '../pages/gsap/Gsap01_Basics';
+import { Gsap02_UseGsapHook } from '../pages/gsap/Gsap02_UseGsapHook';
+import { Gsap03_Timeline } from '../pages/gsap/Gsap03_Timeline';
+import { Gsap04_ModalToast } from '../pages/gsap/Gsap04_ModalToast';
+import { Gsap05_SidebarAccordion } from '../pages/gsap/Gsap05_SidebarAccordion';
+import { Gsap06_ScrollFadeUp } from '../pages/gsap/Gsap06_ScrollFadeUp';
+import { Gsap07_ScrollProgressBar } from '../pages/gsap/Gsap07_ScrollProgressBar';
+import { Gsap08_ScrollHorizontal } from '../pages/gsap/Gsap08_ScrollHorizontal';
+import { Gsap09_NumberCounter } from '../pages/gsap/Gsap09_NumberCounter';
+import { Gsap10_ImageReveal } from '../pages/gsap/Gsap10_ImageReveal';
+import { Gsap11_HoverInteractions } from '../pages/gsap/Gsap11_HoverInteractions';
+import { Gsap12_OptimizationTips } from '../pages/gsap/Gsap12_OptimizationTips';
+
 export interface ExampleItem {
   path: string;
   label: string;
@@ -393,6 +407,26 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/ts-react-props-state', label: '10. React Props / State 타입', icon: 'ri-reactjs-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactSample, summary: 'props, state, event 타입 작성' },
       { path: '/ts-custom-hook', label: '11. Custom Hook 타입', icon: 'ri-links-line', file: 'TypescriptGuidePage.tsx', component: TypescriptHookSample, summary: '비동기 훅 반환 타입 설계' },
       { path: '/ts-advanced-patterns', label: '12. 고급 패턴과 Exhaustive Check', icon: 'ri-shield-check-line', file: 'TypescriptGuidePage.tsx', component: TypescriptAdvancedSample, summary: 'mapped type과 never 체크' },
+    ],
+  },
+  {
+    key: 'gsap-guide',
+    title: '16. GSAP 애니메이션',
+    icon: 'ri-film-line',
+    description: 'React 환경에서 최적화된 GSAP 실무 애니메이션 패턴',
+    items: [
+      { path: '/gsap-basics', label: '1. GSAP 기본 사용법', icon: 'ri-cursor-line', file: 'Gsap01_Basics.tsx', component: Gsap01_Basics, summary: 'to, from, fromTo 기초' },
+      { path: '/gsap-usegsap', label: '2. useGSAP Hook', icon: 'ri-reactjs-line', file: 'Gsap02_UseGsapHook.tsx', component: Gsap02_UseGsapHook, summary: 'React StrictMode 대응 및 scope 설정' },
+      { path: '/gsap-timeline', label: '3. Timeline 순차 제어', icon: 'ri-time-line', file: 'Gsap03_Timeline.tsx', component: Gsap03_Timeline, summary: 'Stagger 및 체이닝 애니메이션' },
+      { path: '/gsap-modal-reverse', label: '4. 모달 역재생 제어', icon: 'ri-window-line', file: 'Gsap04_ModalToast.tsx', component: Gsap04_ModalToast, summary: 'onReverseComplete를 활용한 안전한 언마운트' },
+      { path: '/gsap-sidebar-toggle', label: '5. 사이드바 애니메이션', icon: 'ri-layout-left-2-line', file: 'Gsap05_SidebarAccordion.tsx', component: Gsap05_SidebarAccordion, summary: '내부 요소와 컨테이너의 유기적 토글' },
+      { path: '/gsap-scroll-fadeup', label: '6. 스크롤 Fade-up', icon: 'ri-arrow-up-circle-line', file: 'Gsap06_ScrollFadeUp.tsx', component: Gsap06_ScrollFadeUp, summary: 'ScrollTrigger 기초 적용' },
+      { path: '/gsap-scroll-progress', label: '7. 스크롤 진행도 바', icon: 'ri-bar-chart-horizontal-line', file: 'Gsap07_ScrollProgressBar.tsx', component: Gsap07_ScrollProgressBar, summary: 'Scrub 기능으로 스크롤과 진행률 동기화' },
+      { path: '/gsap-scroll-horizontal', label: '8. 가로 스크롤 (Pin)', icon: 'ri-arrow-right-circle-line', file: 'Gsap08_ScrollHorizontal.tsx', component: Gsap08_ScrollHorizontal, summary: 'Pin 속성을 이용한 화면 고정 및 슬라이드' },
+      { path: '/gsap-number-counter', label: '9. 숫자 카운터', icon: 'ri-number-3', file: 'Gsap09_NumberCounter.tsx', component: Gsap09_NumberCounter, summary: '객체 값 애니메이션 기반 수치 카운팅' },
+      { path: '/gsap-image-reveal', label: '10. 이미지 Reveal', icon: 'ri-image-edit-line', file: 'Gsap10_ImageReveal.tsx', component: Gsap10_ImageReveal, summary: '마스크와 스케일을 이용한 세련된 사진 노출' },
+      { path: '/gsap-hover', label: '11. Hover UI 동작', icon: 'ri-mouse-line', file: 'Gsap11_HoverInteractions.tsx', component: Gsap11_HoverInteractions, summary: '마우스 오버 이벤트 시 동적 효과 부여' },
+      { path: '/gsap-optimization', label: '12. 성능 최적화 팁', icon: 'ri-speed-up-line', file: 'Gsap12_OptimizationTips.tsx', component: Gsap12_OptimizationTips, summary: 'GPU 활용 속성 및 Layout Thrashing 방지' },
     ],
   },
 ];

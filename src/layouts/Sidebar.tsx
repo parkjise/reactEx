@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { EXAMPLE_CATEGORIES } from '../constants/exampleCatalog';
@@ -50,19 +50,48 @@ const CategoryBlock = styled.section`
   padding-bottom: 18px;
 `;
 
-const CategoryTitle = styled.div`
+const CategoryTitle = styled.div<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 16px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  padding: 10px 16px;
+  margin-bottom: 4px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 0.9rem;
   font-weight: 700;
   white-space: nowrap;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
 
-  i {
-    color: ${({ theme }) => theme.colors.primary};
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+
+  .title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    i {
+      color: ${({ theme }) => theme.colors.primary};
+    }
+  }
+
+  .chevron {
+    color: ${({ theme }) => theme.colors.textMuted};
+    transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0)')};
+    transition: transform 0.3s ease;
+  }
+`;
+
+const MenuListWrapper = styled.div<{ $isOpen: boolean }>`
+  display: grid;
+  grid-template-rows: ${({ $isOpen }) => ($isOpen ? '1fr' : '0fr')};
+  transition: grid-template-rows 0.3s ease;
+
+  > ul {
+    overflow: hidden;
   }
 `;
 
@@ -96,33 +125,59 @@ export const Sidebar: React.FC = () => {
   const { isSidebarOpen } = useStore();
   const location = useLocation();
 
+  const findCurrentCategory = () => {
+    const category = EXAMPLE_CATEGORIES.find(c => c.items.some(i => i.path === location.pathname));
+    return category ? category.key : EXAMPLE_CATEGORIES[0]?.key;
+  };
+
+  const [openCategory, setOpenCategory] = useState<string | null>(findCurrentCategory());
+
+  useEffect(() => {
+    const currentKey = findCurrentCategory();
+    if (currentKey && currentKey !== openCategory) {
+      setOpenCategory(currentKey);
+    }
+  }, [location.pathname]);
+
+  const toggleCategory = (key: string) => {
+    setOpenCategory(prev => (prev === key ? null : key));
+  };
+
   return (
     <SidebarContainer $isOpen={isSidebarOpen}>
       <SidebarTitle>
         <i className="ri-dashboard-3-fill"></i>
         GXON Pro
       </SidebarTitle>
-      {EXAMPLE_CATEGORIES.map((category) => (
-        <CategoryBlock key={category.key}>
-          <CategoryTitle>
-            <i className={category.icon}></i>
-            <span>{category.title}</span>
-          </CategoryTitle>
-          <MenuList>
-            {category.items.map((menu) => (
-              <MenuItem
-                key={menu.path}
-                $active={location.pathname === menu.path}
-              >
-                <Link to={menu.path}>
-                  <i className={menu.icon}></i>
-                  <span>{menu.label}</span>
-                </Link>
-              </MenuItem>
-            ))}
-          </MenuList>
-        </CategoryBlock>
-      ))}
+      {EXAMPLE_CATEGORIES.map((category) => {
+        const isOpen = openCategory === category.key;
+        return (
+          <CategoryBlock key={category.key}>
+            <CategoryTitle $isOpen={isOpen} onClick={() => toggleCategory(category.key)}>
+              <div className="title-left">
+                <i className={category.icon}></i>
+                <span>{category.title}</span>
+              </div>
+              <i className="ri-arrow-down-s-line chevron"></i>
+            </CategoryTitle>
+            <MenuListWrapper $isOpen={isOpen}>
+              <MenuList>
+                {category.items.map((menu) => (
+                  <MenuItem
+                    key={menu.path}
+                    $active={location.pathname === menu.path}
+                  >
+                    <Link to={menu.path}>
+                      <i className={menu.icon}></i>
+                      <span>{menu.label}</span>
+                    </Link>
+                  </MenuItem>
+                ))}
+              </MenuList>
+            </MenuListWrapper>
+          </CategoryBlock>
+        );
+      })}
     </SidebarContainer>
   );
 };
