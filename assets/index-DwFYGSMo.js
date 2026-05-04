@@ -15835,6 +15835,7 @@ const toggleExpand = contextSafe((id: number) => {
     background-color: ${({theme:e,$active:t})=>t?e.colors.primary:`transparent`};
     border-radius: ${({theme:e})=>e.radius.button};
     font-weight: ${({$active:e})=>e?`600`:`500`};
+    font-size: 14px;
     transition: all 0.2s ease;
     white-space: nowrap;
 
