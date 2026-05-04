@@ -102,6 +102,11 @@ import {
   ScssThemeMixinSample,
   ScssTipsSample,
   ScssMinSizeSample,
+  ScssHasSample,
+  ScssContainerQuerySample,
+  ScssViewportSample,
+  ScssClampSample,
+  ScssAspectRatioSample,
 } from '../pages/scss/ScssGuidePage';
 import {
   TypescriptAdvancedSample,
@@ -397,6 +402,11 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/scss-layout', label: '15. Layout 스타일링', icon: 'ri-layout-2-line', file: 'ScssGuidePage.tsx', component: ScssLayoutSample, summary: 'Grid/Flex 반응형 레이아웃' },
       { path: '/scss-tips', label: '16. 실무 팁 정리', icon: 'ri-lightbulb-flash-line', file: 'ScssGuidePage.tsx', component: ScssTipsSample, summary: '안티패턴과 운영 체크리스트' },
       { path: '/scss-minsize', label: '17. flex/grid 자식의 min-width: 0', icon: 'ri-text-wrap', file: 'ScssGuidePage.tsx', component: ScssMinSizeSample, summary: '말줄임 적용 시 레이아웃 팽창 방지' },
+      { path: '/scss-has', label: '18. 최신 CSS: :has()', icon: 'ri-parent-line', file: 'ScssGuidePage.tsx', component: ScssHasSample, summary: '부모/형제 선택자 완벽 활용' },
+      { path: '/scss-container', label: '19. 최신 CSS: @container', icon: 'ri-layout-right-line', file: 'ScssGuidePage.tsx', component: ScssContainerQuerySample, summary: '부모 너비 기반 반응형 레이아웃' },
+      { path: '/scss-viewport', label: '20. 최신 CSS: dvh, svh', icon: 'ri-smartphone-line', file: 'ScssGuidePage.tsx', component: ScssViewportSample, summary: '모바일 100vh 스크롤 문제 해결' },
+      { path: '/scss-clamp', label: '21. 최신 CSS: clamp()', icon: 'ri-font-size', file: 'ScssGuidePage.tsx', component: ScssClampSample, summary: '미디어 쿼리 없는 반응형 텍스트' },
+      { path: '/scss-aspect-ratio', label: '22. 최신 CSS: aspect-ratio', icon: 'ri-image-edit-line', file: 'ScssGuidePage.tsx', component: ScssAspectRatioSample, summary: '비율 고정 썸네일과 영상' },
     ],
   },
   {
