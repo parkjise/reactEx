@@ -4,7 +4,7 @@ import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { CodeViewer } from '../../components/CodeViewer';
 
-type PreviewType = 'compare' | 'nested' | 'states' | 'pseudo' | 'responsive' | 'helpers' | 'props' | 'className' | 'selector' | 'form' | 'table' | 'card' | 'layout' | 'tips' | 'minSize';
+type PreviewType = 'compare' | 'nested' | 'states' | 'pseudo' | 'responsive' | 'helpers' | 'props' | 'className' | 'selector' | 'form' | 'table' | 'card' | 'layout' | 'tips' | 'minSize' | 'hasSelector' | 'containerQuery' | 'clamp' | 'aspectRatio';
 
 interface ScssGuide {
   title: string;
@@ -31,6 +31,8 @@ const PageGrid = styled.div`
 `;
 
 const Section = styled.section`
+  min-width: 0; /* Flex/Grid 컨테이너 내에서 자식(CodeViewer 등)이 영역을 넘치지 않도록 방지 */
+  
   h3 {
     margin-bottom: 10px;
     color: ${({ theme }) => theme.colors.primary};
@@ -134,8 +136,16 @@ const FormPreview = styled.div`
   }
 `;
 
+const TablePreviewWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 8px;
+`;
+
 const TablePreview = styled.table`
   width: 100%;
+  min-width: 450px;
   border-collapse: collapse;
   overflow: hidden;
   border-radius: 8px;
@@ -173,7 +183,7 @@ const LayoutPreview = styled.div`
     padding: 16px;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     grid-template-columns: 1fr;
   }
 `;
@@ -214,13 +224,113 @@ const MinSizePreview = styled.div`
   }
 `;
 
+const HasPreview = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:has(input:checked) {
+    border-color: ${({ theme }) => theme.colors.primary};
+    background: rgba(49, 106, 255, 0.05);
+  }
+
+  span {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.4;
+    word-break: keep-all;
+  }
+
+  input {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+const ContainerQueryPreview = styled.div`
+  container-type: inline-size;
+  container-name: card;
+  resize: horizontal;
+  overflow: auto;
+  border: 1px dashed ${({ theme }) => theme.colors.border};
+  padding: 16px;
+  border-radius: 8px;
+
+  .cq-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: ${({ theme }) => theme.colors.surface};
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+  }
+
+  .cq-thumb {
+    height: 80px;
+    background: ${({ theme }) => theme.colors.border};
+    border-radius: 4px;
+  }
+
+  @container card (min-width: 320px) {
+    .cq-card {
+      flex-direction: row;
+      align-items: center;
+    }
+    .cq-thumb {
+      flex: 0 0 100px;
+      height: 100px;
+    }
+  }
+`;
+
+const ClampPreview = styled.div`
+  resize: horizontal;
+  overflow: hidden;
+  border: 1px dashed ${({ theme }) => theme.colors.border};
+  padding: 24px;
+  border-radius: 8px;
+  min-width: 200px;
+
+  h4 {
+    /* Container Query 단위를 쓰면 리사이즈에 반응함 (cqi) */
+    font-size: clamp(1.1rem, 8cqi, 2.5rem);
+    margin: 0;
+    white-space: normal;
+    word-break: keep-all;
+    line-height: 1.3;
+  }
+  
+  container-type: inline-size;
+`;
+
+const AspectRatioPreview = styled.div`
+  width: 50%;
+  min-width: 200px;
+  aspect-ratio: 16 / 9;
+  background: ${({ theme }) => theme.colors.primary};
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 700;
+`;
+
 const renderPreview = (type: PreviewType) => {
   if (type === 'table') {
     return (
-      <TablePreview>
-        <thead><tr><th>이름</th><th>상태</th><th>역할</th></tr></thead>
-        <tbody><tr><td>김민수</td><td>Active</td><td>Admin</td></tr><tr><td>이지연</td><td>Pending</td><td>Editor</td></tr></tbody>
-      </TablePreview>
+      <TablePreviewWrapper>
+        <TablePreview>
+          <thead><tr><th>이름</th><th>상태</th><th>역할</th></tr></thead>
+          <tbody><tr><td>김민수</td><td>Active</td><td>Admin</td></tr><tr><td>이지연</td><td>Pending</td><td>Editor</td></tr></tbody>
+        </TablePreview>
+      </TablePreviewWrapper>
     );
   }
 
@@ -256,6 +366,48 @@ const renderPreview = (type: PreviewType) => {
         </div>
       </MinSizePreview>
     );
+  }
+
+  if (type === 'hasSelector') {
+    return (
+      <div style={{ display: 'grid', gap: '12px' }}>
+        <HasPreview>
+          <input type="checkbox" />
+          <span>선택 가능한 카드 (클릭해보세요)</span>
+        </HasPreview>
+        <HasPreview>
+          <input type="checkbox" defaultChecked />
+          <span>선택된 상태의 부모 컨테이너</span>
+        </HasPreview>
+      </div>
+    );
+  }
+
+  if (type === 'containerQuery') {
+    return (
+      <ContainerQueryPreview>
+        <div className="cq-card">
+          <div className="cq-thumb" />
+          <div>
+            <h4 style={{ margin: '0 0 4px' }}>우측 하단을 드래그해서 늘려보세요</h4>
+            <p style={{ margin: 0, color: '#64748b', fontSize: '0.9rem' }}>400px 이상이 되면 가로 배치로 스스로 변경됩니다.</p>
+          </div>
+        </div>
+      </ContainerQueryPreview>
+    );
+  }
+
+  if (type === 'clamp') {
+    return (
+      <ClampPreview>
+        <h4>Clamp Dynamic Text</h4>
+        <p style={{ margin: '8px 0 0', color: '#64748b' }}>우측 하단을 드래그해 컨테이너 크기를 조절하세요.</p>
+      </ClampPreview>
+    );
+  }
+
+  if (type === 'aspectRatio') {
+    return <AspectRatioPreview>16:9 비율 유지</AspectRatioPreview>;
   }
 
   if (type === 'pseudo') {
@@ -887,6 +1039,71 @@ const guides: ScssGuide[] = [
     mistake: '말줄임이 안 될 때 말줄임이 적용된 텍스트 요소 자체에만 width: 100%나 overflow: hidden을 계속 추가해 봅니다.',
     solution: '문제가 발생하는 텍스트 요소의 "부모(Flex/Grid item)"에게 min-width: 0을 부여해야 합니다.',
   },
+  {
+    title: '18. 최신 CSS: :has() 부모 선택자',
+    description: '자식 요소의 상태에 따라 부모나 형제 요소의 스타일을 변경하는 강력한 선택자입니다.',
+    concept: ':has()는 괄호 안의 선택자가 매칭되는 요소를 자식으로 "가지고 있는" 부모를 선택합니다. JS 없이 상태에 따른 부모 스타일 변경이 가능해졌습니다.',
+    usage: '체크박스가 선택된 카드 컨테이너 강조, 에러 아이콘이 있는 입력창 라벨 색상 변경, 자식이 없는 빈 리스트 숨김 처리 등에 사용합니다.',
+    preview: 'hasSelector',
+    exampleTitle: ':has() 선택자 예제',
+    exampleCode: lines(['.card {', '  border: 1px solid var(--border);', '  transition: all 0.2s;', '}', '', '/* 내부의 input[type="checkbox"]가 :checked 상태일 때만 부모인 .card에 스타일 적용 */', '.card:has(input[type="checkbox"]:checked) {', '  border-color: var(--primary);', '  background: rgba(49, 106, 255, 0.05);', '}']),
+    goodCode: lines(['.form-group:has(.error-message) label {', '  color: var(--error);', '}']),
+    badCode: lines(['// 기존 방식: JS에서 상태를 부모의 className으로 매번 전달해야 했음', '<div className={`card ${isChecked ? "is-checked" : ""}`}>', '  <input type="checkbox" onChange={...} />', '</div>']),
+    mistake: ':has()는 브라우저 지원율이 매우 높지만(Chrome 105+), 구형 브라우저 대응이 필수인 곳에서는 사용 전 Can I use를 확인해야 합니다.',
+    solution: '모던 웹 환경이나 사내 어드민에서는 적극 도입하여 JS 상태 코드를 대폭 줄일 수 있습니다.',
+  },
+  {
+    title: '19. 최신 CSS: @container (컨테이너 쿼리)',
+    description: '화면(Viewport) 크기가 아닌, 자신이 속한 부모 컨테이너의 크기에 따라 반응형 레이아웃을 만듭니다.',
+    concept: '미디어 쿼리(@media)가 브라우저 창 크기를 기준으로 한다면, 컨테이너 쿼리(@container)는 지정된 부모 요소의 너비를 기준으로 내부 레이아웃을 변경합니다.',
+    usage: '동일한 카드 컴포넌트가 사이드바에 들어갈 때(좁음)와 메인 영역에 들어갈 때(넓음) 각각 다르게 렌더링되게 할 때 사용합니다.',
+    preview: 'containerQuery',
+    exampleTitle: 'Container Query 예제',
+    exampleCode: lines(['/* 1. 컨테이너 등록 */', '.card-container {', '  container-type: inline-size;', '  container-name: card;', '}', '', '/* 2. 기본 모바일/좁은 영역 스타일 (세로 배치) */', '.card-content {', '  display: flex;', '  flex-direction: column;', '}', '', '/* 3. 컨테이너가 400px 이상일 때 스타일 (가로 배치) */', '@container card (min-width: 400px) {', '  .card-content {', '    flex-direction: row;', '  }', '}']),
+    goodCode: lines(['@container sidebar (max-width: 250px) {', '  .profile-name { display: none; }', '}']),
+    badCode: lines(['/* 뷰포트 기준으로 컴포넌트를 분기하면 배치되는 위치가 달라질 때마다 클래스를 추가해야 함 */', '@media (max-width: 768px) {', '  .card-in-sidebar { ... }', '  .card-in-main { ... }', '}']),
+    mistake: '컨테이너 쿼리를 쓰려면 반드시 부모 중 하나에 container-type이 선언되어 있어야 합니다.',
+    solution: 'container-type: inline-size; 를 래퍼에 추가하고 자식 요소에서 @container를 사용합니다.',
+  },
+  {
+    title: '20. 최신 CSS: 동적 뷰포트 (dvh, svh, lvh)',
+    description: '모바일 브라우저의 상하단 주소창이 나타나고 사라짐에 따른 100vh 스크롤 버그를 해결합니다.',
+    concept: 'vh는 주소창을 무시한 전체 높이를 잡아 하단이 잘리는 문제가 있습니다. dvh(Dynamic), svh(Small), lvh(Large)는 브라우저 UI 변화를 실시간으로 반영합니다.',
+    usage: '모바일 화면에 꽉 차는 풀스크린 모달, 바텀시트, 100% 높이의 사이드바 레이아웃에 필수로 사용합니다.',
+    preview: 'layout',
+    exampleTitle: '동적 뷰포트 단위',
+    exampleCode: lines(['.fullscreen-modal {', '  /* 모바일 주소창이 보일 때는 svh 크기로, 사라지면 lvh 크기로 부드럽게 변함 */', '  height: 100dvh;', '}', '', '.bottom-sheet {', '  /* 주소창이 떠있을 때의 가장 좁은 높이 기준 (하단 짤림 완전 방지) */', '  max-height: 90svh;', '}']),
+    goodCode: lines(['.app-layout {', '  min-height: 100dvh;', '}']),
+    badCode: lines(['.app-layout {', '  /* 모바일 Safari/Chrome에서 하단이 주소창에 가려져 스크롤이 생김 */', '  min-height: 100vh;', '}']),
+    mistake: '100vh를 사용하고 JS로 window.innerHeight를 구해 --vh 변수를 계속 업데이트하는 옛날 해킹을 아직도 사용합니다.',
+    solution: '최신 브라우저에서는 그냥 100dvh를 쓰면 완벽하게 해결됩니다.',
+  },
+  {
+    title: '21. 최신 CSS: clamp() 반응형 값',
+    description: '미디어 쿼리 없이 최소값, 권장 반응형 값, 최대값을 한 줄로 설정합니다.',
+    concept: 'clamp(MIN, VAL, MAX) 함수는 VAL(주로 vw, % 등 가변 단위)을 사용하되, 화면이 너무 좁으면 MIN, 너무 넓으면 MAX에서 성장을 멈춥니다.',
+    usage: '반응형 폰트 크기(Fluid Typography), 모바일~데스크톱 사이를 자연스럽게 채우는 컨테이너 여백(padding/gap)에 사용합니다.',
+    preview: 'clamp',
+    exampleTitle: 'clamp() 반응형 타이포그래피',
+    exampleCode: lines(['.fluid-title {', '  /* 최소 16px, 화면 너비의 5%로 변동, 최대 32px */', '  font-size: clamp(1rem, 5vw, 2rem);', '}', '', '.fluid-padding {', '  /* 화면이 작을 땐 16px, 클 땐 40px 유지 */', '  padding: clamp(16px, 4vw, 40px);', '}']),
+    goodCode: lines(['.heading {', '  font-size: clamp(24px, 4vw, 48px);', '}']),
+    badCode: lines(['.heading { font-size: 24px; }', '@media(min-width: 768px) { .heading { font-size: 32px; } }', '@media(min-width: 1024px) { .heading { font-size: 48px; } }', '/* 브레이크포인트마다 뚝뚝 끊김 */']),
+    mistake: '모든 폰트에 무분별하게 vw나 clamp를 적용하면 사용자가 브라우저 폰트 크기를 키워도 반응하지 않아 접근성이 떨어집니다.',
+    solution: '본문 텍스트는 rem을 쓰고, clamp 내부에도 rem을 활용하여 기본 접근성을 해치지 않게 주의합니다.',
+  },
+  {
+    title: '22. 최신 CSS: aspect-ratio',
+    description: '요소의 가로세로 종횡비를 고정합니다.',
+    concept: '이전에는 padding-bottom: 56.25% 같은 해킹을 사용해야 16:9 비율을 만들 수 있었지만, 이제는 명시적인 비율 속성을 제공합니다.',
+    usage: '유튜브 썸네일, 반응형 갤러리 이미지, 비디오 플레이어 컨테이너 등 비율 유지가 필수적인 곳에 사용합니다.',
+    preview: 'aspectRatio',
+    exampleTitle: 'aspect-ratio 적용',
+    exampleCode: lines(['.thumbnail {', '  width: 100%;', '  aspect-ratio: 16 / 9;', '  object-fit: cover;', '}', '', '.profile-avatar {', '  width: 100%;', '  aspect-ratio: 1 / 1;', '  border-radius: 50%;', '}']),
+    goodCode: lines(['.video-wrap {', '  aspect-ratio: 16 / 9;', '}']),
+    badCode: lines(['.video-wrap {', '  width: 100%;', '  padding-top: 56.25%; /* 16:9 Hack */', '  position: relative;', '}']),
+    mistake: '요소 안에 절대 포지션(absolute) 컨텐츠를 넣지 않아 내용물이 길어지면 비율이 깨지거나 넘칩니다.',
+    solution: '이미지 태그 자체에 적용하거나, 컨테이너에 overflow: hidden 등을 함께 고려합니다.',
+  },
 ];
 
 const getCodeLanguage = (code: string) => {
@@ -971,3 +1188,8 @@ export const ScssCardSample = createScssGuidePage(13);
 export const ScssLayoutSample = createScssGuidePage(14);
 export const ScssTipsSample = createScssGuidePage(15);
 export const ScssMinSizeSample = createScssGuidePage(16);
+export const ScssHasSample = createScssGuidePage(17);
+export const ScssContainerQuerySample = createScssGuidePage(18);
+export const ScssViewportSample = createScssGuidePage(19);
+export const ScssClampSample = createScssGuidePage(20);
+export const ScssAspectRatioSample = createScssGuidePage(21);
