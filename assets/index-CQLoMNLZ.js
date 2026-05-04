@@ -2695,24 +2695,42 @@ const DashboardContainer = styled.div\`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 \`;
 
 const PageTitle = styled.h1\`
   font-size: 1.8rem;
   font-weight: 700;
   color: \${({ theme }) => theme.colors.text};
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 \`;
 
 const StatsGrid = styled.div\`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 \`;
 
 const CategoryGrid = styled.div\`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 \`;
 
 const CategoryCard = styled.div\`
@@ -2720,6 +2738,10 @@ const CategoryCard = styled.div\`
   border: 1px solid \${({ theme }) => theme.colors.border};
   border-radius: \${({ theme }) => theme.radius.card};
   padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 
   .header {
     display: flex;
@@ -2794,6 +2816,11 @@ const StatCard = styled.div\`
   gap: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03); /* 은은한 섀도우 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 15px;
+  }
 
   &:hover {
     transform: translateY(-3px);
@@ -9133,16 +9160,25 @@ export const UserList: React.FC = () => {
   justify-content: space-between;
   padding: 0 30px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+    height: 60px;
+  }
 `,ol=V.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `,sl=V.div`
   display: flex;
   align-items: center;
   background-color: ${({theme:e})=>e.colors.background};
   padding: 10px 16px;
-  border-radius: 30px; /* 둥근 검색창 패턴 */
+  border-radius: 30px;
   gap: 10px;
   width: 250px;
 
@@ -9162,6 +9198,14 @@ export const UserList: React.FC = () => {
       color: ${({theme:e})=>e.colors.textMuted};
     }
   }
+
+  @media (max-width: 1024px) {
+    width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    display: none; /* Mobile search box typically hidden or in separate menu */
+  }
 `,cl=V.button`
   font-size: 1.5rem;
   color: ${({theme:e})=>e.colors.textMuted};
@@ -9175,6 +9219,11 @@ export const UserList: React.FC = () => {
   &:hover {
     color: ${({theme:e})=>e.colors.primary};
     background-color: ${({theme:e})=>e.colors.background};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 8px;
   }
 `,ll=V.div`
   display: flex;
@@ -9210,27 +9259,67 @@ export const UserList: React.FC = () => {
       color: ${({theme:e})=>e.colors.textMuted};
     }
   }
+
+  i.ri-arrow-down-s-line {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    .info {
+      display: none;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+    }
+  }
 `,ul=()=>{let{toggleSidebar:e,isDarkMode:t,toggleDarkMode:n}=rl();return(0,H.jsxs)(al,{children:[(0,H.jsxs)(ol,{children:[(0,H.jsx)(cl,{onClick:e,"aria-label":`Toggle Sidebar`,children:(0,H.jsx)(`i`,{className:`ri-menu-2-line`})}),(0,H.jsxs)(sl,{children:[(0,H.jsx)(`i`,{className:`ri-search-line`}),(0,H.jsx)(`input`,{type:`text`,placeholder:`Search here...`})]})]}),(0,H.jsxs)(`div`,{style:{display:`flex`,alignItems:`center`,gap:`8px`},children:[(0,H.jsx)(cl,{onClick:n,"aria-label":`Toggle Dark Mode`,children:(0,H.jsx)(`i`,{className:t?`ri-sun-line`:`ri-moon-clear-line`})}),(0,H.jsx)(cl,{"aria-label":`Notifications`,children:(0,H.jsx)(`i`,{className:`ri-notification-3-line`})}),(0,H.jsxs)(ll,{children:[(0,H.jsx)(`div`,{className:`avatar`,children:`A`}),(0,H.jsxs)(`div`,{className:`info`,children:[(0,H.jsx)(`span`,{className:`name`,children:`Admin User`}),(0,H.jsx)(`span`,{className:`role`,children:`Super Admin`})]}),(0,H.jsx)(`i`,{className:`ri-arrow-down-s-line`,style:{color:`#94A3B8`}})]})]})]})},dl=V.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 `,fl=V.h1`
   font-size: 1.8rem;
   font-weight: 700;
   color: ${({theme:e})=>e.colors.text};
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `,pl=V.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 `,ml=V.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 `,hl=V.div`
   background-color: ${({theme:e})=>e.colors.surface};
   border: 1px solid ${({theme:e})=>e.colors.border};
   border-radius: ${({theme:e})=>e.radius.card};
   padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 
   .header {
     display: flex;
@@ -9299,6 +9388,11 @@ export const UserList: React.FC = () => {
   gap: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03); /* 은은한 섀도우 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 15px;
+  }
 
   &:hover {
     transform: translateY(-3px);
@@ -10420,6 +10514,10 @@ export const UserList: React.FC = () => {
 `,ene=V.div`
   padding: ${({$padding:e})=>e};
   flex: 1;
+
+  @media (max-width: 768px) {
+    padding: ${({$padding:e})=>e===`20px`?`12px`:e};
+  }
 `,im=({title:e,extra:t,children:n,padding:r=`20px`,className:i})=>(0,H.jsxs)(Xte,{className:i,children:[(e||t)&&(0,H.jsxs)(Zte,{children:[e&&(0,H.jsx)(Qte,{children:e}),t&&(0,H.jsx)($te,{children:t})]}),(0,H.jsx)(ene,{$padding:r,children:n})]}),tne=V.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -15334,10 +15432,11 @@ const toggleExpand = contextSafe((id: number) => {
   border-right: 1px solid ${({theme:e})=>e.colors.border};
   height: 100vh;
   overflow-y: auto;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -15346,7 +15445,31 @@ const toggleExpand = contextSafe((id: number) => {
     background-color: ${({theme:e})=>e.colors.border};
     border-radius: 4px;
   }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    transform: ${({$isOpen:e})=>e?`translateX(0)`:`translateX(-100%)`};
+    visibility: ${({$isOpen:e})=>e?`visible`:`hidden`};
+    box-shadow: ${({$isOpen:e})=>e?`10px 0 30px rgba(0,0,0,0.1)`:`none`};
+  }
 `,gdt=V.div`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: ${({$isOpen:e})=>e?`block`:`none`};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+  }
+`,_dt=V.div`
   padding: 30px 24px;
   font-size: 1.5rem;
   font-weight: 800;
@@ -15359,14 +15482,14 @@ const toggleExpand = contextSafe((id: number) => {
   i {
     font-size: 1.8rem;
   }
-`,_dt=V.ul`
+`,vdt=V.ul`
   padding: 0 16px;
   display: flex;
   flex-direction: column;
   gap: 4px;
-`,vdt=V.section`
+`,ydt=V.section`
   padding-bottom: 18px;
-`,ydt=V.div`
+`,bdt=V.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15399,7 +15522,7 @@ const toggleExpand = contextSafe((id: number) => {
     transform: ${({$isOpen:e})=>e?`rotate(180deg)`:`rotate(0)`};
     transition: transform 0.3s ease;
   }
-`,bdt=V.div`
+`,xdt=V.div`
   display: grid;
   grid-template-rows: ${({$isOpen:e})=>e?`1fr`:`0fr`};
   transition: grid-template-rows 0.3s ease;
@@ -15407,7 +15530,7 @@ const toggleExpand = contextSafe((id: number) => {
   > ul {
     overflow: hidden;
   }
-`,xdt=V.li`
+`,Sdt=V.li`
   a {
     display: flex;
     align-items: center;
@@ -15431,7 +15554,7 @@ const toggleExpand = contextSafe((id: number) => {
       color: ${({theme:e,$active:t})=>t?`#ffffff`:e.colors.textMuted};
     }
   }
-`,Sdt=()=>{let{isSidebarOpen:e}=rl(),t=Wn(),n=()=>{let e=Q9.find(e=>e.items.some(e=>e.path===t.pathname));return e?e.key:Q9[0]?.key},[r,i]=(0,S.useState)(n());(0,S.useEffect)(()=>{let e=n();e&&e!==r&&i(e)},[t.pathname]);let a=e=>{i(t=>t===e?null:e)};return(0,H.jsxs)(hdt,{$isOpen:e,children:[(0,H.jsxs)(gdt,{children:[(0,H.jsx)(`i`,{className:`ri-dashboard-3-fill`}),`GXON Pro`]}),Q9.map(e=>{let n=r===e.key;return(0,H.jsxs)(vdt,{children:[(0,H.jsxs)(ydt,{$isOpen:n,onClick:()=>a(e.key),children:[(0,H.jsxs)(`div`,{className:`title-left`,children:[(0,H.jsx)(`i`,{className:e.icon}),(0,H.jsx)(`span`,{children:e.title})]}),(0,H.jsx)(`i`,{className:`ri-arrow-down-s-line chevron`})]}),(0,H.jsx)(bdt,{$isOpen:n,children:(0,H.jsx)(_dt,{children:e.items.map(e=>(0,H.jsx)(xdt,{$active:t.pathname===e.path,children:(0,H.jsxs)(hi,{to:e.path,children:[(0,H.jsx)(`i`,{className:e.icon}),(0,H.jsx)(`span`,{children:e.label})]})},e.path))})})]},e.key)})]})},Cdt=qc`
+`,Cdt=()=>{let{isSidebarOpen:e,toggleSidebar:t}=rl(),n=Wn(),r=()=>{let e=Q9.find(e=>e.items.some(e=>e.path===n.pathname));return e?e.key:Q9[0]?.key},[i,a]=(0,S.useState)(r());(0,S.useEffect)(()=>{let e=r();e&&e!==i&&a(e)},[n.pathname]);let o=e=>{a(t=>t===e?null:e)};return(0,H.jsxs)(H.Fragment,{children:[(0,H.jsx)(gdt,{$isOpen:e,onClick:t}),(0,H.jsxs)(hdt,{$isOpen:e,children:[(0,H.jsxs)(_dt,{children:[(0,H.jsx)(`i`,{className:`ri-dashboard-3-fill`}),`GXON Pro`]}),Q9.map(e=>{let t=i===e.key;return(0,H.jsxs)(ydt,{children:[(0,H.jsxs)(bdt,{$isOpen:t,onClick:()=>o(e.key),children:[(0,H.jsxs)(`div`,{className:`title-left`,children:[(0,H.jsx)(`i`,{className:e.icon}),(0,H.jsx)(`span`,{children:e.title})]}),(0,H.jsx)(`i`,{className:`ri-arrow-down-s-line chevron`})]}),(0,H.jsx)(xdt,{$isOpen:t,children:(0,H.jsx)(vdt,{children:e.items.map(e=>(0,H.jsx)(Sdt,{$active:n.pathname===e.path,children:(0,H.jsxs)(hi,{to:e.path,children:[(0,H.jsx)(`i`,{className:e.icon}),(0,H.jsx)(`span`,{children:e.label})]})},e.path))})})]},e.key)})]})]})},wdt=qc`
   * {
     box-sizing: border-box;
     margin: 0;
@@ -15472,35 +15595,39 @@ const toggleExpand = contextSafe((id: number) => {
   input, textarea, select {
     font-family: inherit;
   }
-`,wdt=V.div`
+`,Tdt=V.div`
   display: flex;
   height: 100vh;
   overflow: hidden;
-`,Tdt=V.div`
+`,Edt=V.div`
   display: flex;
   flex-direction: column;
   flex: 1;
   min-width: 0; 
-`,Edt=V.main`
+`,Ddt=V.main`
   flex: 1;
   padding: 30px;
   overflow-y: auto;
   background-color: ${({theme:e})=>e.colors.background};
-`,Ddt=Object.assign({"../pages/AccordionFaq.tsx":Ii,"../pages/AdminControlInteractions.tsx":Li,"../pages/AdminDashboardCard.tsx":Ri,"../pages/AdminNoticeList.tsx":zi,"../pages/AdminRecentActivity.tsx":Bi,"../pages/AdminSearchAction.tsx":Vi,"../pages/AdminStatusSummary.tsx":Hi,"../pages/AdminUserManagement.tsx":Ui,"../pages/AdvancedModalInteraction.tsx":Wi,"../pages/AdvancedPanelMediaInteractions.tsx":fee,"../pages/ApiFetchSample.tsx":pee,"../pages/ApprovalWorkflow.tsx":mee,"../pages/BulkActionTable.tsx":Gi,"../pages/CartQuantity.tsx":Ki,"../pages/CheckboxSelect.tsx":qi,"../pages/ComponentShowcase.tsx":Ji,"../pages/DarkModeSample.tsx":Yi,"../pages/Dashboard.tsx":Xi,"../pages/DateRangeFilter.tsx":Zi,"../pages/DebouncedSearch.tsx":Qi,"../pages/DragDropList.tsx":$i,"../pages/DropdownSample.tsx":ea,"../pages/DynamicPieChart.tsx":ta,"../pages/EchartsAdvanced.tsx":na,"../pages/EchartsBasic.tsx":ra,"../pages/EchartsCompare.tsx":ia,"../pages/EchartsDashboard.tsx":aa,"../pages/EchartsHeatmap.tsx":oa,"../pages/EchartsMixed.tsx":sa,"../pages/EchartsRadar.tsx":ca,"../pages/EditableProfileForm.tsx":la,"../pages/FileUpload.tsx":ua,"../pages/FilterReset.tsx":da,"../pages/FloatingInteractions.tsx":fa,"../pages/FormInteractionShowcase.tsx":pa,"../pages/FormValidation.tsx":ma,"../pages/GlobalCartSample.tsx":ha,"../pages/InfiniteScrollFeed.tsx":ga,"../pages/InteractiveTable.tsx":_a,"../pages/KpiGaugeChart.tsx":va,"../pages/LayoutInteractions.tsx":ya,"../pages/ListTableFilterInteractions.tsx":ba,"../pages/LiveChartDashboard.tsx":xa,"../pages/LoadingFeedbackInteractions.tsx":Sa,"../pages/LoginForm.tsx":Ca,"../pages/ModalSample.tsx":wa,"../pages/MultiStepCheckout.tsx":Ta,"../pages/MultiStepWizard.tsx":Ea,"../pages/NotFound.tsx":Da,"../pages/OptimisticLike.tsx":Oa,"../pages/PaginationSample.tsx":ka,"../pages/PermissionMenu.tsx":Aa,"../pages/SearchForm.tsx":ja,"../pages/SelectionToggleInteractions.tsx":Ma,"../pages/SignupForm.tsx":Na,"../pages/SkeletonList.tsx":Pa,"../pages/SortTable.tsx":Fa,"../pages/TabMenu.tsx":Ia,"../pages/TagInputField.tsx":La,"../pages/ToastAlert.tsx":Ra,"../pages/TodoList.tsx":za,"../pages/UndoRedoHistory.tsx":Ba,"../pages/UserList.tsx":Va}),Odt=()=>{let{isDarkMode:e}=rl(),t=e?T4:w4,n=Wn(),r=$9.find(e=>e.path===n.pathname),i=(0,S.useMemo)(()=>!r||!r.file?null:Ddt[`../pages/${r.file}`]||null,[r]);return(0,H.jsxs)(Fc,{theme:t,children:[(0,H.jsx)(Cdt,{}),(0,H.jsxs)(wdt,{children:[(0,H.jsx)(Sdt,{}),(0,H.jsxs)(Tdt,{children:[(0,H.jsx)(ul,{}),(0,H.jsxs)(Edt,{children:[(0,H.jsx)(Cr,{}),r&&i&&(0,H.jsx)(Ub,{rawCode:i,filename:r.file})]})]})]})]})},kdt=V.div`
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
+`,Odt=Object.assign({"../pages/AccordionFaq.tsx":Ii,"../pages/AdminControlInteractions.tsx":Li,"../pages/AdminDashboardCard.tsx":Ri,"../pages/AdminNoticeList.tsx":zi,"../pages/AdminRecentActivity.tsx":Bi,"../pages/AdminSearchAction.tsx":Vi,"../pages/AdminStatusSummary.tsx":Hi,"../pages/AdminUserManagement.tsx":Ui,"../pages/AdvancedModalInteraction.tsx":Wi,"../pages/AdvancedPanelMediaInteractions.tsx":fee,"../pages/ApiFetchSample.tsx":pee,"../pages/ApprovalWorkflow.tsx":mee,"../pages/BulkActionTable.tsx":Gi,"../pages/CartQuantity.tsx":Ki,"../pages/CheckboxSelect.tsx":qi,"../pages/ComponentShowcase.tsx":Ji,"../pages/DarkModeSample.tsx":Yi,"../pages/Dashboard.tsx":Xi,"../pages/DateRangeFilter.tsx":Zi,"../pages/DebouncedSearch.tsx":Qi,"../pages/DragDropList.tsx":$i,"../pages/DropdownSample.tsx":ea,"../pages/DynamicPieChart.tsx":ta,"../pages/EchartsAdvanced.tsx":na,"../pages/EchartsBasic.tsx":ra,"../pages/EchartsCompare.tsx":ia,"../pages/EchartsDashboard.tsx":aa,"../pages/EchartsHeatmap.tsx":oa,"../pages/EchartsMixed.tsx":sa,"../pages/EchartsRadar.tsx":ca,"../pages/EditableProfileForm.tsx":la,"../pages/FileUpload.tsx":ua,"../pages/FilterReset.tsx":da,"../pages/FloatingInteractions.tsx":fa,"../pages/FormInteractionShowcase.tsx":pa,"../pages/FormValidation.tsx":ma,"../pages/GlobalCartSample.tsx":ha,"../pages/InfiniteScrollFeed.tsx":ga,"../pages/InteractiveTable.tsx":_a,"../pages/KpiGaugeChart.tsx":va,"../pages/LayoutInteractions.tsx":ya,"../pages/ListTableFilterInteractions.tsx":ba,"../pages/LiveChartDashboard.tsx":xa,"../pages/LoadingFeedbackInteractions.tsx":Sa,"../pages/LoginForm.tsx":Ca,"../pages/ModalSample.tsx":wa,"../pages/MultiStepCheckout.tsx":Ta,"../pages/MultiStepWizard.tsx":Ea,"../pages/NotFound.tsx":Da,"../pages/OptimisticLike.tsx":Oa,"../pages/PaginationSample.tsx":ka,"../pages/PermissionMenu.tsx":Aa,"../pages/SearchForm.tsx":ja,"../pages/SelectionToggleInteractions.tsx":Ma,"../pages/SignupForm.tsx":Na,"../pages/SkeletonList.tsx":Pa,"../pages/SortTable.tsx":Fa,"../pages/TabMenu.tsx":Ia,"../pages/TagInputField.tsx":La,"../pages/ToastAlert.tsx":Ra,"../pages/TodoList.tsx":za,"../pages/UndoRedoHistory.tsx":Ba,"../pages/UserList.tsx":Va}),kdt=()=>{let{isDarkMode:e}=rl(),t=e?T4:w4,n=Wn(),r=$9.find(e=>e.path===n.pathname),i=(0,S.useMemo)(()=>!r||!r.file?null:Odt[`../pages/${r.file}`]||null,[r]);return(0,H.jsxs)(Fc,{theme:t,children:[(0,H.jsx)(wdt,{}),(0,H.jsxs)(Tdt,{children:[(0,H.jsx)(Cdt,{}),(0,H.jsxs)(Edt,{children:[(0,H.jsx)(ul,{}),(0,H.jsxs)(Ddt,{children:[(0,H.jsx)(Cr,{}),r&&i&&(0,H.jsx)(Ub,{rawCode:i,filename:r.file})]})]})]})]})},Adt=V.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 60vh;
   text-align: center;
-`,Adt=V.h1`
+`,jdt=V.h1`
   font-size: 6rem;
   color: ${({theme:e})=>e.colors.primary};
   margin: 0;
-`,jdt=V.h2`
+`,Mdt=V.h2`
   font-size: 1.5rem;
   margin: 10px 0 30px;
-`,Mdt=V(hi)`
+`,Ndt=V(hi)`
   padding: 12px 24px;
   background-color: ${({theme:e})=>e.colors.primary};
   color: white;
@@ -15511,4 +15638,4 @@ const toggleExpand = contextSafe((id: number) => {
   &:hover {
     opacity: 0.9;
   }
-`,Ndt=()=>(0,H.jsxs)(kdt,{children:[(0,H.jsx)(Adt,{children:`404`}),(0,H.jsx)(jdt,{children:`원하시는 페이지를 찾을 수 없습니다.`}),(0,H.jsx)(`p`,{style:{marginBottom:`30px`,color:`#666`},children:`클릭하신 링크가 잘못되었거나, 페이지가 삭제되었을 수 있습니다.`}),(0,H.jsx)(Mdt,{to:`/`,children:`대시보드로 돌아가기`})]}),Pdt=$9[0].component,Fdt=$9.filter(e=>e.path!==`/`).map(e=>{let t=e.component;return{path:e.path.slice(1),element:(0,H.jsx)(t,{})}}),Idt=ui([{path:`/`,element:(0,H.jsx)(Odt,{}),children:[{index:!0,element:(0,H.jsx)(Pdt,{})},...Fdt,{path:`404`,element:(0,H.jsx)(Ndt,{})},{path:`*`,element:(0,H.jsx)(Ndt,{})}]}]);function Ldt(){return(0,H.jsx)(Pi,{router:Idt})}Fi.createRoot(document.getElementById(`root`)).render((0,H.jsx)(S.StrictMode,{children:(0,H.jsx)(Ldt,{})}));
+`,Pdt=()=>(0,H.jsxs)(Adt,{children:[(0,H.jsx)(jdt,{children:`404`}),(0,H.jsx)(Mdt,{children:`원하시는 페이지를 찾을 수 없습니다.`}),(0,H.jsx)(`p`,{style:{marginBottom:`30px`,color:`#666`},children:`클릭하신 링크가 잘못되었거나, 페이지가 삭제되었을 수 있습니다.`}),(0,H.jsx)(Ndt,{to:`/`,children:`대시보드로 돌아가기`})]}),Fdt=$9[0].component,Idt=$9.filter(e=>e.path!==`/`).map(e=>{let t=e.component;return{path:e.path.slice(1),element:(0,H.jsx)(t,{})}}),Ldt=ui([{path:`/`,element:(0,H.jsx)(kdt,{}),children:[{index:!0,element:(0,H.jsx)(Fdt,{})},...Idt,{path:`404`,element:(0,H.jsx)(Pdt,{})},{path:`*`,element:(0,H.jsx)(Pdt,{})}]}]);function Rdt(){return(0,H.jsx)(Pi,{router:Ldt})}Fi.createRoot(document.getElementById(`root`)).render((0,H.jsx)(S.StrictMode,{children:(0,H.jsx)(Rdt,{})}));
