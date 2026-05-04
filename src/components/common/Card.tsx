@@ -42,6 +42,10 @@ const CardExtra = styled.div`
 const CardBody = styled.div<{ $padding: string }>`
   padding: ${({ $padding }) => $padding};
   flex: 1;
+
+  @media (max-width: 768px) {
+    padding: ${({ $padding }) => $padding === '20px' ? '12px' : $padding};
+  }
 `;
 
 export const Card: React.FC<CardProps> = ({ title, extra, children, padding = '20px', className }) => {

@@ -7,24 +7,42 @@ const DashboardContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
 `;
 
 const PageTitle = styled.h1`
   font-size: 1.8rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const StatsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 `;
 
 const CategoryGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 `;
 
 const CategoryCard = styled.div`
@@ -32,6 +50,10 @@ const CategoryCard = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.radius.card};
   padding: 24px;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 
   .header {
     display: flex;
@@ -106,6 +128,11 @@ const StatCard = styled.div`
   gap: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03); /* 은은한 섀도우 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 15px;
+  }
 
   &:hover {
     transform: translateY(-3px);

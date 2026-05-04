@@ -11,12 +11,21 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   padding: 0 30px;
   flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+    height: 60px;
+  }
 `;
 
 const LeftSection = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 const SearchBox = styled.div`
@@ -24,7 +33,7 @@ const SearchBox = styled.div`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.background};
   padding: 10px 16px;
-  border-radius: 30px; /* 둥근 검색창 패턴 */
+  border-radius: 30px;
   gap: 10px;
   width: 250px;
 
@@ -44,6 +53,14 @@ const SearchBox = styled.div`
       color: ${({ theme }) => theme.colors.textMuted};
     }
   }
+
+  @media (max-width: 1024px) {
+    width: 200px;
+  }
+
+  @media (max-width: 768px) {
+    display: none; /* Mobile search box typically hidden or in separate menu */
+  }
 `;
 
 const IconButton = styled.button`
@@ -59,6 +76,11 @@ const IconButton = styled.button`
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
     background-color: ${({ theme }) => theme.colors.background};
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+    padding: 8px;
   }
 `;
 
@@ -94,6 +116,24 @@ const ProfileSection = styled.div`
     .role {
       font-size: 0.8rem;
       color: ${({ theme }) => theme.colors.textMuted};
+    }
+  }
+
+  i.ri-arrow-down-s-line {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    gap: 8px;
+    .info {
+      display: none;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
     }
   }
 `;

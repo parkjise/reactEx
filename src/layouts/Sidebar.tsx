@@ -10,10 +10,11 @@ const SidebarContainer = styled.aside<{ $isOpen: boolean }>`
   border-right: 1px solid ${({ theme }) => theme.colors.border};
   height: 100vh;
   overflow-y: auto;
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  z-index: 1000;
 
   &::-webkit-scrollbar {
     width: 6px;
@@ -21,6 +22,32 @@ const SidebarContainer = styled.aside<{ $isOpen: boolean }>`
   &::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.colors.border};
     border-radius: 4px;
+  }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(-100%)')};
+    visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
+    box-shadow: ${({ $isOpen }) => ($isOpen ? '10px 0 30px rgba(0,0,0,0.1)' : 'none')};
+  }
+`;
+
+const Backdrop = styled.div<{ $isOpen: boolean }>`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
   }
 `;
 
@@ -122,7 +149,7 @@ const MenuItem = styled.li<{ $active: boolean }>`
 `;
 
 export const Sidebar: React.FC = () => {
-  const { isSidebarOpen } = useStore();
+  const { isSidebarOpen, toggleSidebar } = useStore();
   const location = useLocation();
 
   const findCurrentCategory = () => {
@@ -144,41 +171,44 @@ export const Sidebar: React.FC = () => {
   };
 
   return (
-    <SidebarContainer $isOpen={isSidebarOpen}>
-      <SidebarTitle>
-        <i className="ri-dashboard-3-fill"></i>
-        GXON Pro
-      </SidebarTitle>
-      {EXAMPLE_CATEGORIES.map((category) => {
-        const isOpen = openCategory === category.key;
-        return (
-          <CategoryBlock key={category.key}>
-            <CategoryTitle $isOpen={isOpen} onClick={() => toggleCategory(category.key)}>
-              <div className="title-left">
-                <i className={category.icon}></i>
-                <span>{category.title}</span>
-              </div>
-              <i className="ri-arrow-down-s-line chevron"></i>
-            </CategoryTitle>
-            <MenuListWrapper $isOpen={isOpen}>
-              <MenuList>
-                {category.items.map((menu) => (
-                  <MenuItem
-                    key={menu.path}
-                    $active={location.pathname === menu.path}
-                  >
-                    <Link to={menu.path}>
-                      <i className={menu.icon}></i>
-                      <span>{menu.label}</span>
-                    </Link>
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </MenuListWrapper>
-          </CategoryBlock>
-        );
-      })}
-    </SidebarContainer>
+    <>
+      <Backdrop $isOpen={isSidebarOpen} onClick={toggleSidebar} />
+      <SidebarContainer $isOpen={isSidebarOpen}>
+        <SidebarTitle>
+          <i className="ri-dashboard-3-fill"></i>
+          GXON Pro
+        </SidebarTitle>
+        {EXAMPLE_CATEGORIES.map((category) => {
+          const isOpen = openCategory === category.key;
+          return (
+            <CategoryBlock key={category.key}>
+              <CategoryTitle $isOpen={isOpen} onClick={() => toggleCategory(category.key)}>
+                <div className="title-left">
+                  <i className={category.icon}></i>
+                  <span>{category.title}</span>
+                </div>
+                <i className="ri-arrow-down-s-line chevron"></i>
+              </CategoryTitle>
+              <MenuListWrapper $isOpen={isOpen}>
+                <MenuList>
+                  {category.items.map((menu) => (
+                    <MenuItem
+                      key={menu.path}
+                      $active={location.pathname === menu.path}
+                    >
+                      <Link to={menu.path}>
+                        <i className={menu.icon}></i>
+                        <span>{menu.label}</span>
+                      </Link>
+                    </MenuItem>
+                  ))}
+                </MenuList>
+              </MenuListWrapper>
+            </CategoryBlock>
+          );
+        })}
+      </SidebarContainer>
+    </>
   );
 };
 

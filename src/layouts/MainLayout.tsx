@@ -28,6 +28,10 @@ const ContentArea = styled.main`
   padding: 30px;
   overflow-y: auto;
   background-color: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: 768px) {
+    padding: 15px;
+  }
 `;
 
 // Vite의 기능인 import.meta.glob을 사용하여 src/pages 폴더의 원본(.tsx 파일들)을 모두 텍스트(string) 형태로 불러옵니다.
