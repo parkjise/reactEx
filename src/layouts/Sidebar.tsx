@@ -131,6 +131,7 @@ const MenuItem = styled.li<{ $active: boolean }>`
     background-color: ${({ theme, $active }) => ($active ? theme.colors.primary : 'transparent')};
     border-radius: ${({ theme }) => theme.radius.button};
     font-weight: ${({ $active }) => ($active ? '600' : '500')};
+    font-size: 14px;
     transition: all 0.2s ease;
     white-space: nowrap;
 
