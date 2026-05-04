@@ -28,9 +28,15 @@ const withExplanation = (explanation: string, items: string[]) =>
 const PageGrid = styled.div`
   display: grid;
   gap: 24px;
+
+  @media (max-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 const Section = styled.section`
+  min-width: 0; /* 중요: Grid 자식이 내부 컨텐츠(CodeViewer 등)에 의해 늘어나는 것을 방지 */
+
   h3 {
     margin-bottom: 10px;
     color: ${({ theme }) => theme.colors.primary};
@@ -50,12 +56,22 @@ const PreviewPanel = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: 10px;
   background: ${({ theme }) => theme.colors.background};
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    gap: 12px;
+  }
 `;
 
 const PreviewGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+  }
 `;
 
 const PreviewCard = styled.div<{ $tone?: 'primary' | 'success' | 'warning' | 'danger' }>`

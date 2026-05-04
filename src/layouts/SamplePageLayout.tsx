@@ -5,6 +5,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0; /* 컨테이너 자체가 자식 요소의 크기에 의해 늘어나지 않도록 방지 */
 `;
 
 const HeaderSection = styled.section`
@@ -13,6 +14,10 @@ const HeaderSection = styled.section`
   border-radius: ${({ theme }) => theme.radius.card};
   padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 `;
 
 const Title = styled.h1`
@@ -24,6 +29,10 @@ const Title = styled.h1`
   align-items: center;
   gap: 8px;
 
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
   i {
     color: ${({ theme }) => theme.colors.primary};
   }
@@ -34,6 +43,11 @@ const Description = styled.p`
   color: ${({ theme }) => theme.colors.textMuted};
   line-height: 1.5;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
 `;
 
 const InfoGrid = styled.div`
@@ -43,6 +57,7 @@ const InfoGrid = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 `;
 
@@ -52,6 +67,10 @@ const InfoBox = styled.div<{ $type?: 'highlight' }>`
   border-radius: 8px;
   padding: 16px;
 
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+
   h3 {
     font-size: 0.95rem;
     font-weight: 700;
@@ -60,6 +79,10 @@ const InfoBox = styled.div<{ $type?: 'highlight' }>`
     display: flex;
     align-items: center;
     gap: 6px;
+
+    @media (max-width: 768px) {
+      margin-bottom: 8px;
+    }
   }
 
   ul {
@@ -87,6 +110,11 @@ const ContentSection = styled.section`
   border-radius: ${({ theme }) => theme.radius.card};
   padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Flex 자식으로서 내부 컨텐츠가 넓어져도 부모를 뚫고 나가지 않게 함 */
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 `;
 
 interface SamplePageLayoutProps {

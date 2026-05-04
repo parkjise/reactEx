@@ -8,6 +8,14 @@ const ViewerContainer = styled.div`
   border-top: 2px dashed ${({ theme }) => theme.colors.border};
   padding-top: 40px;
   padding-bottom: 40px;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  @media (max-width: 768px) {
+    margin-top: 40px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
 `;
 
 const SectionTitle = styled.h3`
@@ -33,6 +41,13 @@ const ExplanationBox = styled.div`
   margin-bottom: 30px;
   color: ${({ theme }) => theme.colors.text};
   font-size: 0.95rem;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    font-size: 0.9rem;
+  }
 `;
 
 const ExplanationParagraph = styled.p`
@@ -65,6 +80,16 @@ const CodeHeader = styled.div`
   border-radius: 10px 10px 0 0;
   font-family: monospace;
   font-size: 0.9rem;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 `;
 
 const CopyButton = styled.button`
@@ -78,6 +103,7 @@ const CopyButton = styled.button`
   align-items: center;
   gap: 6px;
   font-size: 0.85rem;
+  flex-shrink: 0;
 
   &:hover {
     background-color: #444;
@@ -85,6 +111,9 @@ const CopyButton = styled.button`
 `;
 
 const HighlighterWrapper = styled.div`
+  max-width: 100%;
+  overflow-x: auto;
+
   pre {
     margin: 0 !important;
     border-radius: 0 0 10px 10px !important;
@@ -96,6 +125,12 @@ const HighlighterWrapper = styled.div`
     &::-webkit-scrollbar-thumb {
       background-color: #666;
       border-radius: 4px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    pre {
+      font-size: 0.8rem !important;
     }
   }
 `;

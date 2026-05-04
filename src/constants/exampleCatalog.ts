@@ -108,6 +108,8 @@ import {
   ScssClampSample,
   ScssAspectRatioSample,
 } from '../pages/scss/ScssGuidePage';
+import { ScssGridGenerator } from '../pages/scss/ScssGridGenerator';
+
 import {
   TypescriptAdvancedSample,
   TypescriptApiSample,
@@ -385,6 +387,7 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
     icon: 'ri-braces-line',
     description: 'SCSS와 styled-components를 함께 이해하는 실무 스타일링 핵심 패턴',
     items: [
+      { path: '/scss-grid-generator', label: '0. SCSS Grid 제너레이터', icon: 'ri-layout-grid-fill', file: 'ScssGridGenerator.tsx', component: ScssGridGenerator, summary: '실무 Grid 패턴 샘플 및 인터랙티브 생성기' },
       { path: '/scss-compare', label: '1. styled-components와 SCSS 차이', icon: 'ri-scales-3-line', file: 'ScssGuidePage.tsx', component: ScssCompareSample, summary: 'SCSS와 CSS-in-JS의 역할 분리' },
       { path: '/scss-nested', label: '2. 중첩 선택자', icon: 'ri-node-tree', file: 'ScssGuidePage.tsx', component: ScssNestedSample, summary: 'Card 구조 기반 안전한 중첩' },
       { path: '/scss-ampersand', label: '3. & 선택자', icon: 'ri-links-line', file: 'ScssGuidePage.tsx', component: ScssAmpersandSample, summary: '현재 선택자와 상태 패턴' },
