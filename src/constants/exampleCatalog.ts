@@ -101,6 +101,7 @@ import {
   ScssTableSample,
   ScssThemeMixinSample,
   ScssTipsSample,
+  ScssMinSizeSample,
 } from '../pages/scss/ScssGuidePage';
 import {
   TypescriptAdvancedSample,
@@ -395,6 +396,7 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/scss-card', label: '14. Card UI 스타일링', icon: 'ri-layout-masonry-line', file: 'ScssGuidePage.tsx', component: ScssCardSample, summary: '카드 구조와 상태 스타일' },
       { path: '/scss-layout', label: '15. Layout 스타일링', icon: 'ri-layout-2-line', file: 'ScssGuidePage.tsx', component: ScssLayoutSample, summary: 'Grid/Flex 반응형 레이아웃' },
       { path: '/scss-tips', label: '16. 실무 팁 정리', icon: 'ri-lightbulb-flash-line', file: 'ScssGuidePage.tsx', component: ScssTipsSample, summary: '안티패턴과 운영 체크리스트' },
+      { path: '/scss-minsize', label: '17. flex/grid 자식의 min-width: 0', icon: 'ri-text-wrap', file: 'ScssGuidePage.tsx', component: ScssMinSizeSample, summary: '말줄임 적용 시 레이아웃 팽창 방지' },
     ],
   },
   {

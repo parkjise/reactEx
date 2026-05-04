@@ -4,7 +4,7 @@ import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { CodeViewer } from '../../components/CodeViewer';
 
-type PreviewType = 'compare' | 'nested' | 'states' | 'pseudo' | 'responsive' | 'helpers' | 'props' | 'className' | 'selector' | 'form' | 'table' | 'card' | 'layout' | 'tips';
+type PreviewType = 'compare' | 'nested' | 'states' | 'pseudo' | 'responsive' | 'helpers' | 'props' | 'className' | 'selector' | 'form' | 'table' | 'card' | 'layout' | 'tips' | 'minSize';
 
 interface ScssGuide {
   title: string;
@@ -178,6 +178,42 @@ const LayoutPreview = styled.div`
   }
 `;
 
+const MinSizePreview = styled.div`
+  display: flex;
+  gap: 12px;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 8px;
+  padding: 16px;
+
+  .thumbnail {
+    flex: 0 0 60px;
+    height: 60px;
+    background: ${({ theme }) => theme.colors.border};
+    border-radius: 8px;
+  }
+
+  .content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h4, p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  p {
+    margin-top: 4px;
+    color: ${({ theme }) => theme.colors.textMuted};
+    font-size: 0.9rem;
+  }
+`;
+
 const renderPreview = (type: PreviewType) => {
   if (type === 'table') {
     return (
@@ -207,6 +243,18 @@ const renderPreview = (type: PreviewType) => {
           <PreviewCard $selected><h4>Selected panel</h4><p>상태 클래스와 mixin을 조합합니다.</p></PreviewCard>
         </main>
       </LayoutPreview>
+    );
+  }
+
+  if (type === 'minSize') {
+    return (
+      <MinSizePreview>
+        <div className="thumbnail" />
+        <div className="content">
+          <h4>Flex 자식에서 긴 텍스트가 컨테이너를 뚫고 나가는 문제</h4>
+          <p>min-width: 0을 지정하면 flex item이 컨텐츠 크기보다 작아질 수 있어 말줄임이 정상 작동합니다.</p>
+        </div>
+      </MinSizePreview>
     );
   }
 
@@ -826,6 +874,19 @@ const guides: ScssGuide[] = [
     mistake: '눈앞의 화면만 맞추려고 !important와 깊은 선택자를 계속 추가합니다.',
     solution: '토큰, helper, 상태 네이밍, 컴포넌트 경계를 먼저 정하고 화면별 예외는 최소화합니다.',
   },
+  {
+    title: '17. flex/grid 자식의 min-width: 0',
+    description: 'Flex나 Grid 자식 요소에서 말줄임(ellipsis)이 작동하지 않고 부모를 뚫고 나갈 때의 해결 방법입니다.',
+    concept: 'Flex item과 Grid item은 기본적으로 min-width: auto 속성을 가집니다. 이는 자식 요소가 자신의 내부 컨텐츠 크기보다 작아지지 않으려는 성질입니다.',
+    usage: 'Flex나 Grid 레이아웃 안에서 텍스트 말줄임(text-overflow: ellipsis)을 적용했는데, 부모 영역이 무한히 늘어나며 레이아웃이 깨질 때 사용합니다.',
+    preview: 'minSize',
+    exampleTitle: 'min-width: 0 적용 예시',
+    exampleCode: withExplanation('말줄임이 필요한 컨텐츠를 감싸는 flex item(자식 요소)에 min-width: 0을 추가하여, 컨텐츠 크기보다 작아질 수 있도록 허용합니다. (세로 방향이면 min-height: 0)', ['.flex-container {', '  display: flex;', '  gap: 12px;', '}', '', '.flex-item-text {', '  flex: 1;', '  min-width: 0; /* 핵심: 컨텐츠보다 작아질 수 있게 허용 */', '}', '', '.ellipsis {', '  overflow: hidden;', '  white-space: nowrap;', '  text-overflow: ellipsis;', '}']),
+    goodCode: lines(['.item {', '  flex: 1;', '  min-width: 0;', '}', '', '.text {', '  @include ellipsis;', '}']),
+    badCode: lines(['.item {', '  flex: 1;', '  /* min-width: 0이 없으면 텍스트 길이에 맞춰 무한히 늘어남 */', '}', '', '.text {', '  @include ellipsis;', '}']),
+    mistake: '말줄임이 안 될 때 말줄임이 적용된 텍스트 요소 자체에만 width: 100%나 overflow: hidden을 계속 추가해 봅니다.',
+    solution: '문제가 발생하는 텍스트 요소의 "부모(Flex/Grid item)"에게 min-width: 0을 부여해야 합니다.',
+  },
 ];
 
 const getCodeLanguage = (code: string) => {
@@ -909,3 +970,4 @@ export const ScssTableSample = createScssGuidePage(12);
 export const ScssCardSample = createScssGuidePage(13);
 export const ScssLayoutSample = createScssGuidePage(14);
 export const ScssTipsSample = createScssGuidePage(15);
+export const ScssMinSizeSample = createScssGuidePage(16);
