@@ -113,6 +113,7 @@ const CopyButton = styled.button`
 const HighlighterWrapper = styled.div`
   max-width: 100%;
   overflow-x: auto;
+  min-width: 0; /* 중요: 부모가 Flex/Grid일 때 오버플로우 제어를 가능케 함 */
 
   pre {
     margin: 0 !important;

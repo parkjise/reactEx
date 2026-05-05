@@ -7,6 +7,7 @@ const SectionGrid = styled.div`
   display: grid;
   gap: 24px;
   min-width: 0; /* Grid 자식이 내부 컨텐츠(CodeOutput 등)에 의해 늘어나는 것을 방지 */
+  overflow: hidden; /* 영역 밖으로 나가는 것을 물리적으로 차단 */
 `;
 
 const GuidePanel = styled.div`
@@ -20,8 +21,8 @@ const GuidePanel = styled.div`
 
   .bem-definition {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
 
     .def-card {
       padding: 16px;
@@ -78,6 +79,7 @@ const InputPanel = styled.div`
   padding: 20px;
   border-radius: 8px;
   border: 1px solid ${({ theme }) => theme.colors.border};
+  min-width: 0; /* 중요 */
 `;
 
 const InputGroup = styled.div`
@@ -140,6 +142,13 @@ const PresetButton = styled.button`
     background-color: ${({ theme }) => theme.colors.primary};
     color: white;
   }
+`;
+
+const OutputColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0; /* 중요: 자식인 CodeOutput의 오버플로우가 부모를 키우지 못하게 함 */
 `;
 
 const OutputPanel = styled.div`
@@ -416,7 +425,7 @@ export const ScssBemGenerator: React.FC = () => {
             </InputGroup>
           </InputPanel>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <OutputColumn>
             <OutputPanel>
               <OutputHeader>
                 <h4><i className="ri-braces-line"></i> 생성된 SCSS 코드</h4>
@@ -429,7 +438,7 @@ export const ScssBemGenerator: React.FC = () => {
                 {generatedScss}
               </CodeOutput>
             </OutputPanel>
-
+ 
             <OutputPanel>
               <OutputHeader>
                 <h4><i className="ri-html5-line"></i> 생성된 HTML 템플릿</h4>
@@ -442,7 +451,7 @@ export const ScssBemGenerator: React.FC = () => {
                 {generatedHtml}
               </CodeOutput>
             </OutputPanel>
-          </div>
+          </OutputColumn>
         </GeneratorSection>
       </SectionGrid>
     </SamplePageLayout>
