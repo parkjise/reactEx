@@ -359,6 +359,24 @@ export const ScssBemGenerator: React.FC = () => {
                 <PresetButton onClick={() => applyPreset('dialog', 'overlay, content, header, title, body, footer, close-btn', 'open, full-screen')}>
                   <i className="ri-window-line"></i> 모달 (Modal)
                 </PresetButton>
+                <PresetButton onClick={() => applyPreset('data-list', 'item, avatar, info, title, desc, action', 'striped, hoverable, compact')}>
+                  <i className="ri-list-check-2"></i> 리스트 (List)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('accordion', 'item, header, title, icon, body, content', 'flush, bordered')}>
+                  <i className="ri-question-answer-line"></i> 아코디언 (Accordion)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('tab-menu', 'list, item, link, content, pane', 'vertical, pills, centered')}>
+                  <i className="ri-folder-add-line"></i> 탭 (Tabs)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('pagination', 'list, item, link, icon', 'rounded, lg, sm')}>
+                  <i className="ri-pages-line"></i> 페이지네이션 (Pagination)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('btn', 'icon, text, spinner', 'primary, outline, ghost, lg, sm, block')}>
+                  <i className="ri-mouse-line"></i> 버튼 (Button)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('status-badge', 'icon, text, close', 'success, warning, error, rounded, soft')}>
+                  <i className="ri-price-tag-3-line"></i> 뱃지 (Badge)
+                </PresetButton>
               </PresetRow>
             </div>
 
