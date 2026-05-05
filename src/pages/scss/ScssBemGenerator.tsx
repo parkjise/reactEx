@@ -114,6 +114,32 @@ const InputGroup = styled.div`
   }
 `;
 
+const PresetRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+`;
+
+const PresetButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.primary}10;
+  color: ${({ theme }) => theme.colors.primary};
+  border: 1px solid ${({ theme }) => theme.colors.primary}30;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: white;
+  }
+`;
+
 const OutputPanel = styled.div`
   display: flex;
   flex-direction: column;
@@ -269,6 +295,12 @@ export const ScssBemGenerator: React.FC = () => {
     }
   };
 
+  const applyPreset = (b: string, e: string, m: string) => {
+    setBlockName(b);
+    setElements(e);
+    setModifiers(m);
+  };
+
   return (
     <SamplePageLayout
       title="BEM 가이드 & SCSS 제너레이터"
@@ -306,10 +338,30 @@ export const ScssBemGenerator: React.FC = () => {
         <h2 style={{ fontSize: '1.4rem', marginTop: '20px', paddingTop: '20px', borderTop: '1px solid #E2E8F0' }}>
           2. 실무 BEM + SCSS 보일러플레이트 생성기
         </h2>
-        <p style={{ color: '#64748B', marginBottom: '8px' }}>컴포넌트의 구성 요소를 입력하면 SCSS 뼈대와 시맨틱 HTML 마크업을 자동으로 생성합니다.</p>
+        <p style={{ color: '#64748B', marginBottom: '8px' }}>자동 완성 템플릿을 선택하거나, 직접 컴포넌트의 구성 요소를 입력하여 SCSS 뼈대와 시맨틱 HTML 마크업을 생성해보세요.</p>
         
         <GeneratorSection>
           <InputPanel>
+            <div>
+              <label style={{ fontSize: '0.9rem', fontWeight: 600, color: '#1e293b', marginBottom: '8px', display: 'block' }}>
+                <i className="ri-magic-line"></i> 추천 자동 완성 템플릿 (클릭 시 자동 입력)
+              </label>
+              <PresetRow>
+                <PresetButton onClick={() => applyPreset('product-card', 'image, title, price, desc, button', 'featured, sold-out')}>
+                  <i className="ri-layout-masonry-line"></i> 카드 (Card)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('navbar', 'logo, menu, item, link, action', 'fixed, dark')}>
+                  <i className="ri-layout-top-line"></i> 네비게이션 (Navbar)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('login-form', 'group, label, input, submit, error-msg', 'loading, error')}>
+                  <i className="ri-keyboard-line"></i> 폼 (Form)
+                </PresetButton>
+                <PresetButton onClick={() => applyPreset('dialog', 'overlay, content, header, title, body, footer, close-btn', 'open, full-screen')}>
+                  <i className="ri-window-line"></i> 모달 (Modal)
+                </PresetButton>
+              </PresetRow>
+            </div>
+
             <InputGroup>
               <label><i className="ri-box-3-line"></i> Block Name (블록 이름)</label>
               <input 
