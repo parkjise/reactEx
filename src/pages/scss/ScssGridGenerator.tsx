@@ -9,6 +9,7 @@ const SampleGrid = styled.div`
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-bottom: 40px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -92,12 +93,14 @@ const GeneratorSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0; /* 중요: 자식(CodeOutput 등)이 넘쳐도 부모를 뚫지 않게 함 */
 `;
 
 const Controls = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;

@@ -6,6 +6,7 @@ import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 const SectionGrid = styled.div`
   display: grid;
   gap: 24px;
+  min-width: 0; /* Grid 자식이 내부 컨텐츠(CodeOutput 등)에 의해 늘어나는 것을 방지 */
 `;
 
 const GuidePanel = styled.div`
@@ -62,6 +63,7 @@ const GeneratorSection = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
