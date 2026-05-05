@@ -14281,6 +14281,7 @@ const StyledLink = styled(Link)\`
   gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin-bottom: 40px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -14353,10 +14354,12 @@ const StyledLink = styled(Link)\`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0; /* 중요: 자식(CodeOutput 등)이 넘쳐도 부모를 뚫지 않게 함 */
 `,cat=V.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -14496,6 +14499,7 @@ gap: 8px;`})]})]}),(0,H.jsx)(`h2`,{style:{fontSize:`1.4rem`,marginBottom:`20px`,
 `]},e))]})]})]})})]})},mat=V.div`
   display: grid;
   gap: 24px;
+  min-width: 0; /* Grid 자식이 내부 컨텐츠(CodeOutput 등)에 의해 늘어나는 것을 방지 */
 `,hat=V.div`
   background-color: ${({theme:e})=>e.colors.surface};
   border: 1px solid ${({theme:e})=>e.colors.border};
@@ -14548,6 +14552,7 @@ gap: 8px;`})]})]}),(0,H.jsx)(`h2`,{style:{fontSize:`1.4rem`,marginBottom:`20px`,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
+  min-width: 0; /* 중요 */
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
