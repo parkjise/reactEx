@@ -38,17 +38,13 @@ export const EchartsDashboard: React.FC = () => {
           useCase="일일 방문자 수 증감, 실시간 서버 CPU 사용량 요약 박스"
           option={options.getKpiMiniChartOption()}
           height="150px"
-          codeSnippet={`{
-  // 눈금과 라벨을 모두 숨깁니다
-  xAxis: { show: false, type: 'category' },
-  yAxis: { show: false, type: 'value' },
-  // 여백을 0으로 만들어 영역을 꽉 채웁니다
+          codeSnippet={`export const getKpiMiniChartOption = () => ({
+  tooltip: { trigger: 'axis' },
+  xAxis: { type: 'category', show: false, data: ['1', '2', '3', '4', '5', '6', '7'] },
+  yAxis: { type: 'value', show: false },
   grid: { left: 0, right: 0, top: 0, bottom: 0 },
-  series: [{ 
-    type: 'line', smooth: true, showSymbol: false,
-    areaStyle: { opacity: 0.2, color: '#05CD99' }
-  }]
-}`}
+  series: [{ data: [10, 22, 15, 35, 20, 45, 30], type: 'line', smooth: true, showSymbol: false, itemStyle: { color: '#05CD99' }, areaStyle: { opacity: 0.2, color: '#05CD99' } }]
+});`}
         />
 
         <ChartCard
@@ -56,14 +52,12 @@ export const EchartsDashboard: React.FC = () => {
           description="월별 매출이나 핵심 성과를 깔끔한 막대로 보여줍니다."
           useCase="연간 부서별 실적 요약, MAU(월간 활성 사용자) 추세"
           option={options.getMonthlySalesChartOption()}
-          codeSnippet={`// 막대의 상단 모서리만 둥글게 처리하는 실무 팁
-series: [{
-  type: 'bar',
-  itemStyle: {
-    color: '#316AFF',
-    borderRadius: [4, 4, 0, 0] // [좌상, 우상, 우하, 좌하]
-  }
-}]`}
+          codeSnippet={`export const getMonthlySalesChartOption = () => ({
+  tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+  xAxis: { type: 'category', data: ECHARTS_DATA.dashboard.monthlySales.map(i => i[0]) },
+  yAxis: { type: 'value' },
+  series: [{ data: ECHARTS_DATA.dashboard.monthlySales.map(i => i[1]), type: 'bar', itemStyle: { color: '#316AFF', borderRadius: [4, 4, 0, 0] } }]
+});`}
         />
 
         <ChartCard
@@ -71,14 +65,12 @@ series: [{
           description="부드러운 곡선과 굵은 선으로 성장 추이를 강력하게 강조합니다."
           useCase="누적 가입자 수, 분기별 매출 성장률"
           option={options.getUserGrowthChartOption()}
-          codeSnippet={`{
-  series: [{
-    type: 'line',
-    smooth: true,
-    lineStyle: { width: 4 }, // 선을 일반 차트보다 두껍게 강조
-    itemStyle: { color: '#EE5D50' }
-  }]
-}`}
+          codeSnippet={`export const getUserGrowthChartOption = () => ({
+  tooltip: { trigger: 'axis' },
+  xAxis: { type: 'category', data: ['Q1', 'Q2', 'Q3', 'Q4'] },
+  yAxis: { type: 'value' },
+  series: [{ data: [1500, 2300, 3400, 5600], type: 'line', smooth: true, lineStyle: { width: 4 }, itemStyle: { color: '#EE5D50' } }]
+});`}
         />
 
         <ChartCard
@@ -86,15 +78,14 @@ series: [{
           description="여러 상태값의 비중을 한눈에 볼 수 있는 도넛형 범례 차트입니다."
           useCase="결제 완료/취소/환불 비율, 서버 인스턴스 Running/Stopped 상태"
           option={options.getOrderStatusChartOption()}
-          codeSnippet={`{
-  legend: { bottom: '0%' }, // 범례를 차트 하단에 깔끔하게 배치
+          codeSnippet={`export const getOrderStatusChartOption = () => ({
+  tooltip: { trigger: 'item' },
+  legend: { bottom: '0%' },
   series: [{
-    type: 'pie',
-    radius: ['40%', '70%'],
-    center: ['50%', '40%'], // 범례 공간 확보를 위해 차트를 위로 살짝 올림
-    data: [...]
+    name: 'Status', type: 'pie', radius: ['40%', '70%'], center: ['50%', '40%'],
+    data: ECHARTS_DATA.dashboard.orderStatus
   }]
-}`}
+});`}
         />
 
         <ChartCard
@@ -102,22 +93,45 @@ series: [{
           description="Recharts의 반원 KPI 게이지와 완벽히 동일한 형태를 ECharts의 게이지 속성으로 구현한 차트입니다."
           useCase="부서별 영업 목표 달성률, 펀딩 모금액 진행률"
           option={options.getKpiGaugeChartOption()}
-          codeSnippet={`// 바늘(pointer)과 눈금(tick)을 모두 숨기고, 배경 선의 색상 비율만 조정합니다.
-series: [{
-  type: 'gauge',
-  startAngle: 180, endAngle: 0, // 반원 만들기
-  pointer: { show: false }, // 바늘 지우기
-  axisLine: {
-    lineStyle: {
-      width: 35,
-      color: [
-        [0.785, '#316AFF'], // 78.5% 지점까지 파란색
-        [1, '#e2e8f0']      // 나머지 끝(100%)까지 회색
-      ]
-    }
-  },
-  detail: { formatter: '79%', offsetCenter: [0, '-10%'] } // 중앙 텍스트
-}]`}
+          codeSnippet={`export const getKpiGaugeChartOption = () => {
+  const current = 785;
+  const target = 1000;
+  const percentage = current / target; // 0.785
+
+  return {
+    series: [{
+      type: 'gauge',
+      startAngle: 180,
+      endAngle: 0,
+      min: 0,
+      max: target,
+      radius: '100%',
+      center: ['50%', '75%'], // 차트 위치 조정 (하단 중앙)
+      pointer: { show: false }, // 바늘 숨김
+      axisTick: { show: false }, // 작은 눈금 숨김
+      splitLine: { show: false }, // 큰 눈금 숨김
+      axisLabel: { show: false }, // 숫자 라벨 숨김
+      axisLine: {
+        lineStyle: {
+          width: 35, // 반원의 두께
+          color: [
+            [percentage, '#316AFF'], // 달성률까지 파란색
+            [1, '#e2e8f0']           // 나머지는 회색
+          ]
+        }
+      },
+      detail: {
+        valueAnimation: true,
+        formatter: Math.round(percentage * 100) + '%',
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: '#333',
+        offsetCenter: [0, '-10%'] // 퍼센트 텍스트 위치
+      },
+      data: [{ value: current }]
+    }]
+  };
+};`}
         />
 
         <ChartCard
@@ -125,16 +139,14 @@ series: [{
           description="목표 달성률이나 현재의 강도를 직관적인 계기판 형태로 보여줍니다."
           useCase="영업 목표 달성률, 디스크 사용률 위험 경고, 만족도 점수"
           option={options.getGaugeChartOption()}
-          codeSnippet={`{
+          codeSnippet={`export const getGaugeChartOption = () => ({
+  tooltip: { formatter: '{a} <br/>{b} : {c}%' },
   series: [{
-    type: 'gauge',
-    detail: { 
-      formatter: '{value}%', // 중앙에 % 텍스트 추가
-      fontSize: 20 
-    },
-    data: [{ value: 65, name: 'SCORE' }]
+    name: 'Pressure', type: 'gauge',
+    detail: { formatter: '{value}%', fontSize: 20 },
+    data: [{ value: ECHARTS_DATA.dashboard.gaugeValue, name: 'SCORE' }]
   }]
-}`}
+});`}
         />
       </Grid>
     </SamplePageLayout>

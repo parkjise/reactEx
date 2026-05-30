@@ -1,5 +1,4 @@
-// src/components/common/ChartCard.tsx
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components';
 import ReactECharts from 'echarts-for-react';
 import { Card } from './Card';
@@ -13,6 +12,7 @@ interface ChartCardProps {
   option: any;
   codeSnippet: string;
   height?: string;
+  onEvents?: Record<string, Function>;
 }
 
 const ChartWrapper = styled.div<{ height: string }>`
@@ -44,9 +44,26 @@ export const ChartCard: React.FC<ChartCardProps> = ({
   useCase,
   option,
   codeSnippet,
-  height = '350px'
+  height = '350px',
+  onEvents
 }) => {
   const [showCode, setShowCode] = useState(false);
+
+  const formattedCodeSnippet = useMemo(() => {
+    let code = codeSnippet.trim();
+    
+    // 이미 주석으로 시작하는 수동 설정이 아니라면 파일명 헤더 추가
+    if (!code.startsWith('// 1. echartsOptions.ts') && !code.startsWith('//')) {
+      code = `// 1. echartsOptions.ts\n${code}`;
+    }
+
+    // React 컴포넌트 마크업이 포함되어 있지 않다면 자동으로 추가
+    if (!code.includes('<ReactECharts')) {
+      code += `\n\n// 2. React Component\n<ReactECharts \n  option={option} \n  style={{ height: '100%', width: '100%' }}\n  opts={{ renderer: 'svg' }}\n/>`;
+    }
+
+    return code;
+  }, [codeSnippet]);
 
   return (
     <Card>
@@ -77,14 +94,15 @@ export const ChartCard: React.FC<ChartCardProps> = ({
           opts={{ renderer: 'svg' }}
           notMerge={true}
           lazyUpdate={true}
+          onEvents={onEvents}
         />
       </ChartWrapper>
 
       {showCode && (
         <div style={{ marginTop: '20px', animation: 'fadeIn 0.3s ease' }}>
           <CodeViewer 
-            rawCode={codeSnippet} 
-            filename="ECharts Option Object" 
+            rawCode={formattedCodeSnippet} 
+            filename="ECharts Implementation" 
           />
         </div>
       )}

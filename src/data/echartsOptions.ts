@@ -262,3 +262,18 @@ export const getRealtimeUpdateOption = (dataArr: number[]) => ({
   yAxis: { type: 'value', min: 0, max: 100 },
   series: [{ type: 'line', data: dataArr, smooth: true, animationDuration: 300 }]
 });
+
+export const getClickModalOption = () => ({
+  tooltip: { trigger: 'item' },
+  xAxis: { type: 'category', data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] },
+  yAxis: { type: 'value' },
+  series: [{
+    name: '방문자 수',
+    data: [820, 932, 901, 934, 1290, 1330, 1320],
+    type: 'line',
+    symbolSize: 10,
+    itemStyle: { color: '#316AFF' },
+    lineStyle: { width: 3 },
+    emphasis: { focus: 'series', itemStyle: { shadowBlur: 10, shadowColor: 'rgba(0,0,0,0.3)' } }
+  }]
+});
