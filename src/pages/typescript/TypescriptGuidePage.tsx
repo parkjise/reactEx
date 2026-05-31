@@ -4,7 +4,7 @@ import { CodeViewer } from '../../components/CodeViewer';
 import { StyledCard } from '../../components/styled/StyledCard';
 import { SamplePageLayout } from '../../layouts/SamplePageLayout';
 
-type PreviewType = 'setup' | 'types' | 'object' | 'union' | 'function' | 'model' | 'generic' | 'utility' | 'api' | 'react' | 'hook' | 'advanced';
+type PreviewType = 'setup' | 'types' | 'object' | 'union' | 'function' | 'model' | 'generic' | 'utility' | 'api' | 'react' | 'hook' | 'advanced' | 'reactEvent' | 'reactState' | 'reactProps' | 'reactRef' | 'reactHoverTip';
 
 interface TypescriptGuide {
   title: string;
@@ -147,12 +147,12 @@ const renderPreview = (type: PreviewType) => {
     );
   }
 
-  if (type === 'api' || type === 'react' || type === 'hook') {
+  if (type === 'api' || type === 'react' || type === 'hook' || type === 'reactEvent' || type === 'reactState' || type === 'reactProps' || type === 'reactRef' || type === 'reactHoverTip') {
     return (
       <PreviewGrid>
-        <PreviewCard><strong>Server DTO</strong><span>서버 응답 모양을 명시합니다.</span></PreviewCard>
-        <PreviewCard $tone="success"><strong>UI Model</strong><span>화면에서 쓰기 좋은 타입으로 변환합니다.</span></PreviewCard>
-        <PreviewCard $tone="warning"><strong>State</strong><span>로딩, 성공, 실패를 분리합니다.</span></PreviewCard>
+        <PreviewCard><strong>React Types</strong><span>React 전용 제네릭과 타입을 활용합니다.</span></PreviewCard>
+        <PreviewCard $tone="success"><strong>Type Inference</strong><span>컴파일러의 자동 추론을 최대한 믿습니다.</span></PreviewCard>
+        <PreviewCard $tone="warning"><strong>Safety</strong><span>컴포넌트 간 데이터 전달 사고를 막습니다.</span></PreviewCard>
       </PreviewGrid>
     );
   }
@@ -384,6 +384,130 @@ const examples = {
     '  throw new Error(`처리하지 않은 상태: ${value}`);',
     '};',
   ]),
+  reactEvent: withExplanation('이벤트 핸들러를 인라인으로 작성하면 타입이 추론되지만, 별도 함수로 분리하려면 정확한 이벤트 타입과 HTML 제네릭을 넘겨야 합니다.', [
+    'import React, { useState } from "react";',
+    '',
+    'export const EventExample = () => {',
+    '  const [text, setText] = useState("");',
+    '',
+    '  // 1. input onChange 이벤트 (ChangeEvent)',
+    '  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {',
+    '    setText(e.target.value);',
+    '  };',
+    '',
+    '  // 2. button onClick 이벤트 (MouseEvent)',
+    '  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {',
+    '    console.log("버튼 클릭 좌표:", e.clientX, e.clientY);',
+    '  };',
+    '',
+    '  // 3. form onSubmit 이벤트 (FormEvent)',
+    '  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {',
+    '    e.preventDefault(); // 기본 새로고침 방지',
+    '    console.log("제출된 텍스트:", text);',
+    '  };',
+    '',
+    '  return (',
+    '    <form onSubmit={handleSubmit}>',
+    '      <input type="text" value={text} onChange={handleChange} />',
+    '      <button type="button" onClick={handleClick}>그냥 버튼</button>',
+    '      <button type="submit">제출 버튼</button>',
+    '    </form>',
+    '  );',
+    '};',
+  ]),
+  reactState: withExplanation('초기값이 빈 배열이나 null일 때, 또는 복잡한 객체 배열일 때는 제네릭을 사용해 상태의 모양을 알려줘야 합니다.', [
+    'import { useState } from "react";',
+    '',
+    'interface User {',
+    '  id: number;',
+    '  name: string;',
+    '}',
+    '',
+    'export const StateExample = () => {',
+    '  // 1. 원시 타입: 제네릭 생략 (자동 추론됨)',
+    '  const [count, setCount] = useState(0);',
+    '  const [isOpen, setIsOpen] = useState(false);',
+    '',
+    '  // 2. 빈 배열, null 초기값: 제네릭 필수',
+    '  const [users, setUsers] = useState<User[]>([]); // 안 하면 never[] 됨',
+    '  const [selectedUser, setSelectedUser] = useState<User | null>(null);',
+    '',
+    '  // 3. 유니온 타입을 활용한 상태',
+    '  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");',
+    '',
+    '  return <div>{count}</div>;',
+    '};',
+  ]),
+  reactProps: withExplanation('컴포넌트가 받는 데이터, 이벤트 콜백, 자식 요소(children), 그리고 스타일(style) 타입을 지정합니다.', [
+    'import React from "react";',
+    '',
+    'interface ButtonProps {',
+    '  // 1. 일반적인 데이터',
+    '  variant?: "primary" | "secondary";',
+    '  size?: "sm" | "md" | "lg";',
+    '  ',
+    '  // 2. 이벤트 콜백 함수 (반환값이 없으므로 void)',
+    '  onClick: () => void;',
+    '  ',
+    '  // 3. 자식 요소 (모든 렌더링 가능한 React 요소)',
+    '  children: React.ReactNode;',
+    '  ',
+    '  // 4. 인라인 스타일',
+    '  style?: React.CSSProperties;',
+    '}',
+    '',
+    'export const CustomButton = ({ variant = "primary", size = "md", onClick, children, style }: ButtonProps) => {',
+    '  return (',
+    '    <button className={`btn-\${variant} btn-\${size}`} onClick={onClick} style={style}>',
+    '      {children}',
+    '    </button>',
+    '  );',
+    '};',
+  ]),
+  reactRef: withExplanation('useRef는 DOM에 접근할 때와 값을 기억할 때 타입 작성법이 다릅니다. DOM 접근 시에는 반드시 초기값 null을 넣어야 합니다.', [
+    'import { useRef, useEffect } from "react";',
+    '',
+    'export const RefExample = () => {',
+    '  // 1. DOM 요소 접근: 구체적인 HTML 요소 타입 명시 + 초기값 null 필수!',
+    '  const inputRef = useRef<HTMLInputElement>(null);',
+    '  ',
+    '  // 2. 렌더링과 무관한 값 기억: 변경 가능한 MutableRef',
+    '  const timerId = useRef<number | null>(null);',
+    '',
+    '  useEffect(() => {',
+    '    // inputRef.current가 null인지 확인 후 접근 (Optional Chaining 권장)',
+    '    inputRef.current?.focus();',
+    '',
+    '    timerId.current = window.setInterval(() => console.log("tick"), 1000);',
+    '    return () => clearInterval(timerId.current!);',
+    '  }, []);',
+    '',
+    '  return <input ref={inputRef} placeholder="자동 포커스" />;',
+    '};',
+  ]),
+  reactHoverTip: withExplanation('가장 빠르고 확실한 팁: 이벤트 타입이 기억나지 않으면 일단 인라인(JSX 내부)으로 함수를 쓰고, 매개변수 e에 마우스를 올리세요. TS가 친절하게 타입을 알려줍니다.', [
+    '// 💡 이벤트 타입(React.ChangeEvent<HTMLInputElement> 등)을 모두 외울 필요가 없습니다!',
+    '// 1. 먼저 HTML 태그 안에서 인라인 함수를 작성합니다.',
+    '// 2. (e) => {} 에서 e 위에 마우스 커서를 올립니다.',
+    '// 3. 툴팁으로 뜨는 타입을 복사해서 외부 함수로 빼냅니다.',
+    '',
+    'export const HoverTipExample = () => {',
+    '  // 복사해온 타입 적용!',
+    '  const handleDrag = (e: React.DragEvent<HTMLDivElement>) => {',
+    '     console.log("드래그 중!");',
+    '  };',
+    '',
+    '  return (',
+    '    <div',
+    '      // 여기에 먼저 적고 e에 마우스 올리기!',
+    '      onDrag={(e) => {}}',
+    '      onDragStart={handleDrag}',
+    '    >',
+    '      Drag Me',
+    '    </div>',
+    '  );',
+    '};',
+  ]),
 };
 
 const guides: TypescriptGuide[] = [
@@ -543,6 +667,71 @@ const guides: TypescriptGuide[] = [
     mistake: '상태가 추가됐는데 label, color, reducer 분기를 일부 파일에서 빠뜨립니다.',
     solution: 'Record, mapped type, assertNever로 모든 상태를 반드시 처리하게 만듭니다.',
   },
+  {
+    title: '13. 이벤트 객체와 핸들러 타입',
+    description: 'React에서 가장 자주 쓰이는 이벤트 객체의 타입을 지정하는 방법입니다.',
+    concept: '마우스, 키보드, 폼 이벤트 등 각 DOM 이벤트에 맞는 React 고유의 합성 이벤트(SyntheticEvent) 타입을 사용합니다.',
+    usage: 'onClick, onChange, onSubmit 등의 이벤트 핸들러를 별도 함수로 분리할 때 필수적으로 사용합니다.',
+    preview: 'reactEvent',
+    exampleTitle: 'Event Handler Types',
+    exampleCode: examples.reactEvent,
+    goodCode: examples.reactEvent,
+    badCode: withExplanation('이벤트 객체를 any로 지정하면 자동완성이 되지 않고 오타로 인한 런타임 오류가 발생할 수 있습니다.', ['const handleChange = (e: any) => {', '  console.log(e.taget.value); // target 오타를 못 잡음', '}']),
+    mistake: '이벤트 객체 타입을 e: any 나 e: Event (순수 JS 이벤트)로 잘못 지정합니다.',
+    solution: 'React.ChangeEvent<HTMLInputElement> 처럼 React.가 붙은 구체적인 제네릭 타입을 사용합니다.',
+  },
+  {
+    title: '14. 상태 관리 (useState) 타입 지정',
+    description: '초기값이 없거나 배열/객체일 때 useState의 타입을 명시적으로 지정합니다.',
+    concept: 'useState에 제네릭을 넘겨주면 상태 변수가 가질 수 있는 값의 형태를 컴파일러에게 명확히 알려줄 수 있습니다.',
+    usage: 'API에서 받아올 데이터 배열 초기화, 모달에서 선택된 아이템 상태, Union 타입을 활용한 상태 관리에 씁니다.',
+    preview: 'reactState',
+    exampleTitle: 'useState Generics',
+    exampleCode: examples.reactState,
+    goodCode: examples.reactState,
+    badCode: withExplanation('빈 배열로 초기화하면 never[] 타입이 되어 나중에 값을 넣을 수 없습니다.', ['const [users, setUsers] = useState([]);', 'setUsers([{ id: 1 }]); // 에러 발생']),
+    mistake: '초기값만 넘겨주고 제네릭을 생략하여 빈 배열이나 null이 영원히 never 타입으로 굳어집니다.',
+    solution: 'useState<User[]>([]) 처럼 제네릭 괄호 안에 명확한 모델 타입을 적어줍니다.',
+  },
+  {
+    title: '15. 컴포넌트 프롭스 (Props) 타입 지정',
+    description: 'React 컴포넌트가 부모로부터 전달받는 데이터와 함수의 계약을 정의합니다.',
+    concept: 'Props는 컴포넌트의 API입니다. 일반 데이터, 이벤트 콜백, React 노드 등을 명시하여 오용을 막습니다.',
+    usage: '모든 커스텀 컴포넌트 제작 시 (특히 Button, Modal, Card 등 공통 컴포넌트) 사용합니다.',
+    preview: 'reactProps',
+    exampleTitle: 'Component Props',
+    exampleCode: examples.reactProps,
+    goodCode: examples.reactProps,
+    badCode: withExplanation('props를 통째로 any로 처리하면 부모에서 실수로 오타를 내거나 잘못된 값을 넘겨도 오류를 뿜지 않습니다.', ['const CustomButton = (props: any) => <button onClick={props.onClcik}>{props.child}</button>;']),
+    mistake: 'children의 타입을 any나 JSX.Element 등으로 협소하게 적어 문자열이나 배열을 넣지 못하게 만듭니다.',
+    solution: 'Props 전용 인터페이스를 만들고, 자식 요소는 React.ReactNode 타입을 사용합니다.',
+  },
+  {
+    title: '16. DOM 요소 직접 접근 (useRef) 타입 지정',
+    description: '특정 HTML 요소에 포커스를 주거나 스크롤을 이동할 때 사용하는 useRef의 타입입니다.',
+    concept: 'DOM 요소 접근용 ref는 컴포넌트 마운트 전까지 null이므로 반드시 초기값 null과 함께 엘리먼트 타입을 지정해야 합니다.',
+    usage: 'input 자동 포커스, 스크롤 위치 계산, 외부 라이브러리(ECharts 등) 렌더링 컨테이너 지정에 사용합니다.',
+    preview: 'reactRef',
+    exampleTitle: 'useRef for DOM Elements',
+    exampleCode: examples.reactRef,
+    goodCode: examples.reactRef,
+    badCode: withExplanation('제네릭과 초기값을 생략하면 DOM 요소 대신 일반 값을 저장하는 MutableRef로 인식되어 ref 속성에 넣을 수 없습니다.', ['const inputRef = useRef(); // MutableRefObject<undefined>', '<input ref={inputRef} /> // 타입 에러']),
+    mistake: 'useRef() 안에 null을 넣지 않거나, <HTMLDivElement> 제네릭을 빼먹습니다.',
+    solution: 'useRef<HTMLInputElement>(null) 처럼 제네릭과 null을 세트로 명시하고, 접근 시 옵셔널 체이닝(?.)을 사용합니다.',
+  },
+  {
+    title: '17. 꿀팁: 기억 안 날 땐 "마우스 올리기"',
+    description: '어려운 React 이벤트 타입을 외우지 않고 IDE의 타입 추론을 빌려오는 실무 요령입니다.',
+    concept: 'TypeScript 컴파일러는 JSX 요소 내부의 인라인 콜백에 어떤 타입이 들어와야 하는지 이미 완벽하게 알고 있습니다.',
+    usage: 'onDrag, onScroll, onWheel 등 자주 쓰지 않아 이벤트 타입이 헷갈리는 모든 상황에서 사용합니다.',
+    preview: 'reactHoverTip',
+    exampleTitle: 'Infer Type via Hover',
+    exampleCode: examples.reactHoverTip,
+    goodCode: examples.reactHoverTip,
+    badCode: withExplanation('구글이나 스택오버플로우에서 구버전이나 잘못된 타입을 복사해와서 억지로 타입 캐스팅을 합니다.', ['const handleDrag = (e: any) => {};']),
+    mistake: '모든 이벤트 타입을 달달 외우려다 지쳐서 any를 남발합니다.',
+    solution: '인라인 함수 (e) => {} 를 임시로 작성하고, 매개변수 e에 마우스를 올려 타입을 컨닝(?)한 뒤 복사해 씁니다.',
+  },
 ];
 
 const createTypescriptGuidePage = (index: number) => {
@@ -617,3 +806,8 @@ export const TypescriptApiSample = createTypescriptGuidePage(8);
 export const TypescriptReactSample = createTypescriptGuidePage(9);
 export const TypescriptHookSample = createTypescriptGuidePage(10);
 export const TypescriptAdvancedSample = createTypescriptGuidePage(11);
+export const TypescriptReactEventSample = createTypescriptGuidePage(12);
+export const TypescriptReactStateSample = createTypescriptGuidePage(13);
+export const TypescriptReactPropsSample = createTypescriptGuidePage(14);
+export const TypescriptReactRefSample = createTypescriptGuidePage(15);
+export const TypescriptReactHoverTipSample = createTypescriptGuidePage(16);

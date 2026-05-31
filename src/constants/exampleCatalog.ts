@@ -124,6 +124,11 @@ import {
   TypescriptSetupSample,
   TypescriptUnionSample,
   TypescriptUtilitySample,
+  TypescriptReactEventSample,
+  TypescriptReactStateSample,
+  TypescriptReactPropsSample,
+  TypescriptReactRefSample,
+  TypescriptReactHoverTipSample,
 } from '../pages/typescript/TypescriptGuidePage';
 
 // GSAP Guide
@@ -429,9 +434,14 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/ts-generics', label: '7. Generics', icon: 'ri-recycle-line', file: 'TypescriptGuidePage.tsx', component: TypescriptGenericSample, summary: '공통 API와 컴포넌트 재사용' },
       { path: '/ts-utility-types', label: '8. Utility Types', icon: 'ri-tools-line', file: 'TypescriptGuidePage.tsx', component: TypescriptUtilitySample, summary: 'Pick, Omit, Partial, Record' },
       { path: '/ts-api-dto', label: '9. API DTO와 화면 모델', icon: 'ri-exchange-funds-line', file: 'TypescriptGuidePage.tsx', component: TypescriptApiSample, summary: '서버 응답과 UI 모델 분리' },
-      { path: '/ts-react-props-state', label: '10. React Props / State 타입', icon: 'ri-reactjs-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactSample, summary: 'props, state, event 타입 작성' },
+      { path: '/ts-react-props-state', label: '10. React Props / State 기본', icon: 'ri-reactjs-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactSample, summary: 'props, state 기본' },
       { path: '/ts-custom-hook', label: '11. Custom Hook 타입', icon: 'ri-links-line', file: 'TypescriptGuidePage.tsx', component: TypescriptHookSample, summary: '비동기 훅 반환 타입 설계' },
       { path: '/ts-advanced-patterns', label: '12. 고급 패턴과 Exhaustive Check', icon: 'ri-shield-check-line', file: 'TypescriptGuidePage.tsx', component: TypescriptAdvancedSample, summary: 'mapped type과 never 체크' },
+      { path: '/ts-react-event', label: '13. 이벤트 객체와 핸들러 타입', icon: 'ri-mouse-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactEventSample, summary: '가장 자주 쓰는 이벤트 타입 지정' },
+      { path: '/ts-react-state', label: '14. 상태 관리 (useState) 타입', icon: 'ri-database-2-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactStateSample, summary: '빈 배열, null 초기값 처리' },
+      { path: '/ts-react-props', label: '15. 컴포넌트 프롭스 (Props) 타입', icon: 'ri-puzzle-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactPropsSample, summary: 'children, style, 이벤트 콜백' },
+      { path: '/ts-react-ref', label: '16. DOM 요소 접근 (useRef) 타입', icon: 'ri-cursor-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactRefSample, summary: 'DOM 타입 명시 및 초기값 null' },
+      { path: '/ts-react-hover-tip', label: '17. 꿀팁: 기억 안 날 땐 "마우스 올리기"', icon: 'ri-lightbulb-flash-line', file: 'TypescriptGuidePage.tsx', component: TypescriptReactHoverTipSample, summary: '인라인 핸들러에서 타입 훔쳐오기' },
     ],
   },
   {
