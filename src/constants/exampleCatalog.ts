@@ -50,6 +50,8 @@ import { ComponentShowcase } from '../pages/ComponentShowcase';
 import { MultiStepWizard } from '../pages/MultiStepWizard';
 import { GlobalCartSample } from '../pages/GlobalCartSample';
 import { UndoRedoHistory } from '../pages/UndoRedoHistory';
+import ComplexProfileForm from '../pages/ComplexProfileForm';
+import DynamicArrayState from '../pages/DynamicArrayState';
 import { LiveChartDashboard } from '../pages/LiveChartDashboard';
 import { KpiGaugeChart } from '../pages/KpiGaugeChart';
 import { DynamicPieChart } from '../pages/DynamicPieChart';
@@ -274,6 +276,8 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
     description: '복잡한 데이터를 유지하고 제어하는 패턴',
     items: [
       { path: '/todo', label: 'CRUD 상태관리', icon: 'ri-list-check-2', file: 'TodoList.tsx', component: TodoList, summary: '아이템 추가/수정/삭제 로직 처리' },
+      { path: '/complex-profile', label: '복잡한 객체 상태', icon: 'ri-profile-line', file: 'ComplexProfileForm.tsx', component: ComplexProfileForm, summary: '중첩된 객체 업데이트 패턴' },
+      { path: '/dynamic-array', label: '동적 배열 상태', icon: 'ri-list-ordered-2', file: 'DynamicArrayState.tsx', component: DynamicArrayState, summary: '객체 배열 추가/삭제/수정' },
       { path: '/global-cart', label: '글로벌 장바구니', icon: 'ri-shopping-cart-2-line', file: 'GlobalCartSample.tsx', component: GlobalCartSample, summary: 'Zustand 기반 전역 데이터 동기화' },
       { path: '/undo-redo', label: '실행 취소(Undo/Redo)', icon: 'ri-arrow-go-back-line', file: 'UndoRedoHistory.tsx', component: UndoRedoHistory, summary: '과거/현재/미래 상태 배열 관리 패턴' },
     ],
