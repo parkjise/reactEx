@@ -48,6 +48,7 @@ import { ListTableFilterInteractions } from '../pages/ListTableFilterInteraction
 import { AdvancedPanelMediaInteractions } from '../pages/AdvancedPanelMediaInteractions';
 import { ComponentShowcase } from '../pages/ComponentShowcase';
 import { MultiStepWizard } from '../pages/MultiStepWizard';
+import { AdvancedDndKitSample } from '../pages/AdvancedDndKitSample';
 import { GlobalCartSample } from '../pages/GlobalCartSample';
 import { UndoRedoHistory } from '../pages/UndoRedoHistory';
 import ComplexProfileForm from '../pages/ComplexProfileForm';
@@ -240,7 +241,8 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
       { path: '/accordion', label: '아코디언 (FAQ)', icon: 'ri-question-answer-line', file: 'AccordionFaq.tsx', component: AccordionFaq, summary: '세로로 열고 닫히는 컨텐츠 블록' },
       { path: '/toast', label: '토스트 메시지', icon: 'ri-message-3-line', file: 'ToastAlert.tsx', component: ToastAlert, summary: '일정 시간 후 사라지는 비침투적 알림' },
       { path: '/darkmode', label: '다크모드 토글', icon: 'ri-moon-line', file: 'DarkModeSample.tsx', component: DarkModeSample, summary: '전역 테마 상태 변경' },
-      { path: '/dnd-list', label: '드래그 앤 드롭', icon: 'ri-drag-drop-line', file: 'DragDropList.tsx', component: DragDropList, summary: '리스트 순서 변경 패턴' },
+      { path: '/dnd-kit-sortable', label: '고급 드래그 앤 드롭 (@dnd-kit)', icon: 'ri-drag-drop-fill', file: 'AdvancedDndKitSample.tsx', component: AdvancedDndKitSample, summary: '접근성을 갖춘 Sortable List' },
+      { path: '/dnd-list', label: '기본 드래그 앤 드롭', icon: 'ri-drag-drop-line', file: 'DragDropList.tsx', component: DragDropList, summary: '리스트 순서 변경 패턴' },
       { path: '/adv-modal', label: '고급 모달 (Stack & Lock)', icon: 'ri-window-2-line', file: 'AdvancedModalInteraction.tsx', component: AdvancedModalInteraction, summary: 'ESC 닫기, 스크롤 락, 다중 모달' },
       { path: '/adv-form', label: '폼 고급 인터랙션', icon: 'ri-keyboard-line', file: 'FormInteractionShowcase.tsx', component: FormInteractionShowcase, summary: '카운트, 조건부 노출, 이탈 방지' },
       { path: '/adv-table', label: '반응형 고급 테이블', icon: 'ri-table-line', file: 'InteractiveTable.tsx', component: InteractiveTable, summary: '인라인 수정, 호버 액션, 다중 선택' },
