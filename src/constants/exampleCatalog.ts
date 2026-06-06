@@ -133,6 +133,9 @@ import {
   TypescriptReactHoverTipSample,
 } from '../pages/typescript/TypescriptGuidePage';
 
+// Javascript Guide
+import { JavascriptMethodsPage } from '../pages/javascript/JavascriptMethodsPage';
+
 // GSAP Guide
 import { Gsap01_Basics } from '../pages/gsap/Gsap01_Basics';
 import { Gsap02_UseGsapHook } from '../pages/gsap/Gsap02_UseGsapHook';
@@ -449,8 +452,17 @@ export const EXAMPLE_CATEGORIES: ExampleCategory[] = [
     ],
   },
   {
+    key: 'javascript-guide',
+    title: '16. JavaScript 기초 가이드',
+    icon: 'ri-javascript-fill',
+    description: 'React 개발에 필수적인 자바스크립트 내장 메서드와 동작 원리',
+    items: [
+      { path: '/js-array-methods', label: '1. 필수 배열 메서드', icon: 'ri-list-check-2', file: 'JavascriptMethodsPage.tsx', component: JavascriptMethodsPage, summary: 'map, filter, reduce 등 실무 활용' },
+    ],
+  },
+  {
     key: 'gsap-guide',
-    title: '16. GSAP 애니메이션',
+    title: '17. GSAP 애니메이션',
     icon: 'ri-film-line',
     description: 'React 환경에서 최적화된 GSAP 실무 애니메이션 패턴',
     items: [
